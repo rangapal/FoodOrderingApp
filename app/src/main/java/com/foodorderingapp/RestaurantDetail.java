@@ -21,6 +21,7 @@ public class RestaurantDetail extends AppCompatActivity {
     TextView textViewName;
     TextView textViewAddress;
     TextView textViewPhoneNumber;
+    TextView textViewPriceRange;
     ImageView imageViewIcon;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,12 @@ public class RestaurantDetail extends AppCompatActivity {
         textViewAddress = (TextView)findViewById(R.id.textViewRestaurantDetailAddress);
         textViewPhoneNumber = (TextView)findViewById(R.id.textViewRestaurantDetailPhoneNumber);
         imageViewIcon = (ImageView)findViewById(R.id.imageViewRestaurantDetail);
+        textViewPriceRange = (TextView) findViewById(R.id.textViewRestaurantDetailPriceRange);
 
         textViewName.setText(restaurantDetails.get(0));
         textViewAddress.setText(restaurantDetails.get(1));
         textViewPhoneNumber.setText(restaurantDetails.get(2));
+        textViewPriceRange.setText(restaurantDetails.get(4));
         
         //set logo of restaurant
         Picasso.with(RestaurantDetail.this)

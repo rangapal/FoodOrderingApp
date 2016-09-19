@@ -51,10 +51,12 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
         if(convertView == null){
             listView = inflater.inflate(R.layout.restaurant_grid_view_layout, parent, false);
             TextView textViewName = (TextView) listView.findViewById(R.id.textViewRestaurantName);
-            TextView textViewDescription = (TextView) listView.findViewById(R.id.textViewRestaurantDescription);
+            TextView textViewCuisine = (TextView) listView.findViewById(R.id.textViewRestaurantCuisine);
+            TextView textViewPriceRange = (TextView) listView.findViewById(R.id.textViewRestaurantPriceRange);
 
+            textViewPriceRange.setText(restaurantValueArray.get(4)); // set price range of restaurant
             textViewName.setText(restaurantValueArray.get(0)); //set name of restaurant
-            textViewDescription.setText(restaurantValueArray.get(3)); //set description of restaurant
+            textViewCuisine.setText(restaurantValueArray.get(3)); //set description of restaurant
 
         }else {
             listView = convertView;

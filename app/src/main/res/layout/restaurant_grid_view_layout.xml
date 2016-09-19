@@ -25,15 +25,25 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textViewRestaurantDescription"
+        android:id="@+id/textViewRestaurantCuisine"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewRestaurantName"
         android:layout_toRightOf="@+id/imageViewRestaurant"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="desc"
+        android:text="cuisine"
         android:textColor="@android:color/black"
         android:textSize="13dip" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="price range"
+        android:id="@+id/textViewRestaurantPriceRange"
+        android:layout_below="@+id/textViewRestaurantCuisine"
+        android:layout_toRightOf="@+id/imageViewRestaurant"
+        android:layout_toEndOf="@+id/imageViewRestaurant"
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>
