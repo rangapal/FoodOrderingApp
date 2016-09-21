@@ -73,7 +73,6 @@ public class GetJSON {
                         }
                         return sb.toString().trim();
                     }
-
                     //return sb.toString().trim();
 
                 } catch (Exception e) {

@@ -45,7 +45,7 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View listView; //this view is used to mimic view from restaurant_grid_view_layout.xml
 
-        //typecast restaurantValues from object to ArrayList
+        //typecast menuValues from object to ArrayList
         ArrayList<String> restaurantValueArray = (ArrayList<String>)restaurantValues[position];
 
         if(convertView == null){
@@ -67,7 +67,7 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
                 .load(restaurantValueArray.get(5))
                 .fit() // will explain later
                 .centerInside()
-                .into((ImageView) listView.findViewById(R.id.imageViewRestaurant));
+                .into((ImageView) listView.findViewById(R.id.imageViewMenu));
 
         return listView;
     }

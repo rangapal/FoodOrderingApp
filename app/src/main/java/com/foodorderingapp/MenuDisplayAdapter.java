@@ -14,19 +14,19 @@ import java.util.ArrayList;
 
 
 public class MenuDisplayAdapter extends BaseAdapter {
-    private Object[] restaurantValues;
+    private Object[] menuValue;
     private Context context;
     private LayoutInflater inflater;
 
-    public MenuDisplayAdapter(Context context, Object[] restaurantValues){
-        this.restaurantValues = restaurantValues;
+    public MenuDisplayAdapter(Context context, Object[] menuValue){
+        this.menuValue = menuValue;
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return restaurantValues.length;
+        return menuValue.length;
     }
 
     @Override
@@ -40,13 +40,13 @@ public class MenuDisplayAdapter extends BaseAdapter {
     }
 
     //Value in ArrayList is the following order
-    ////name, address, phoneNumber, cuisine, priceRange, image URL
+    //menuName, menuPrice, menuDescription, menuImage, restaurantName
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View listView; //this view is used to mimic view from restaurant_grid_view_layout.xml
+        View listView; //this view is used to mimic view from menu_grid_view_layout.xml
 
-        //typecast restaurantValues from object to ArrayList
-        ArrayList<String> restaurantValueArray = (ArrayList<String>)restaurantValues[position];
+        //typecast menuValues from object to ArrayList
+        ArrayList<String> menuValueArray = (ArrayList<String>) menuValue[position];
 
         if(convertView == null){
             listView = inflater.inflate(R.layout.menu_grid_view_layout, parent, false);
@@ -54,22 +54,21 @@ public class MenuDisplayAdapter extends BaseAdapter {
             TextView textViewPrice = (TextView) listView.findViewById(R.id.textViewMenuPrice);
             TextView textViewQuantity = (TextView) listView.findViewById(R.id.textViewMenuQuantity);
 
-            textViewName.setText("helo");
-            textViewPrice.setText("osa");
-            textViewQuantity.setText("2");
-            //textViewName.setText(restaurantValueArray.get(0)); //set name of restaurant
-            //textViewDescription.setText(restaurantValueArray.get(3)); //set description of restaurant
+
+            textViewName.setText(menuValueArray.get(0)); //set name of restaurant
+            textViewPrice.setText(menuValueArray.get(1));
+            textViewQuantity.setText("0");
 
         }else {
             listView = convertView;
         }
 
-        //set logo of restaurant
-         /*Picasso.with(context)
-                .load(restaurantValueArray.get(5))
+        //set menu logo of restaurant
+         Picasso.with(context)
+                .load(menuValueArray.get(3))
                 .fit() // will explain later
                 .centerInside()
-                .into((ImageView) listView.findViewById(R.id.imageViewRestaurant));*/
+                .into((ImageView) listView.findViewById(R.id.imageViewMenu));
 
         return listView;
     }

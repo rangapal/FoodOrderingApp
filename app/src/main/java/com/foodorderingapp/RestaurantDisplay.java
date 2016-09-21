@@ -32,7 +32,7 @@ public class RestaurantDisplay extends AppCompatActivity {
         ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
 
         //Value in TreeMap is the following order
-        //name, address, phoneNumber, cuisine, priceRange, image URL
+        //name, address, phoneNumber, cuisine, priceRange, imageURL
         restaurantTreeMap = convertJSON.getTreeMap();
 
         //Convert treemap into object array to pass into adapter
