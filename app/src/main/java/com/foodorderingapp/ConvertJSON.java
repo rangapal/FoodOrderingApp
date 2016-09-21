@@ -30,7 +30,7 @@ public class ConvertJSON {
             ArrayList<String> valueTag = new ArrayList<>();
 
             //this is used for adding value of the column to hashmap
-            ArrayList<String> eachRestaurantArray;
+            ArrayList<String> eachColumnArray;
 
             //add each column name to valueTag
             Iterator<String> iterator = jsonArray.getJSONObject(0).keys();
@@ -43,18 +43,18 @@ public class ConvertJSON {
             //loop to get number of item object in jsonArray
             for(int i = 0; i < jsonArray.length(); i++){
 
-                eachRestaurantArray = new ArrayList<>();// initiate new ArrayList
+                eachColumnArray = new ArrayList<>();// initiate new ArrayList
 
                 jo = jsonArray.getJSONObject(i); // get the i jsonObject
 
                 //loop to get value of each name/value pair
                 for(int j = 0; j < valueTag.size(); j++){
                     //get string value from name/value and add it to arraylist
-                    eachRestaurantArray.add(jo.getString(valueTag.get(j)));
+                    eachColumnArray.add(jo.getString(valueTag.get(j)));
                 }
 
                 //add each restaurant ArrayList to HashMap
-                treeMap.put(eachRestaurantArray.get(0),eachRestaurantArray);
+                treeMap.put(eachColumnArray.get(0),eachColumnArray);
             }
 
         } catch (JSONException e) {

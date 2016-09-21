@@ -23,6 +23,7 @@ public class RestaurantDetail extends AppCompatActivity {
     TextView textViewPhoneNumber;
     TextView textViewPriceRange;
     ImageView imageViewIcon;
+    private String restaurantName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,8 @@ public class RestaurantDetail extends AppCompatActivity {
         ////name, address, phoneNumber, cuisine, priceRange, image URL
         ArrayList<String> restaurantDetails = intent.getStringArrayListExtra("ClickRestaurant");
 
-        this.setTitle(restaurantDetails.get(0));
+        restaurantName = restaurantDetails.get(0);
+        this.setTitle(restaurantName);
 
         textViewName = (TextView)findViewById(R.id.textViewRestaurantDetailName);
         textViewAddress = (TextView)findViewById(R.id.textViewRestaurantDetailAddress);
@@ -42,7 +44,8 @@ public class RestaurantDetail extends AppCompatActivity {
         imageViewIcon = (ImageView)findViewById(R.id.imageViewRestaurantDetail);
         textViewPriceRange = (TextView) findViewById(R.id.textViewRestaurantDetailPriceRange);
 
-        textViewName.setText(restaurantDetails.get(0));
+        //set the restaurant details on screen
+        textViewName.setText(restaurantName);
         textViewAddress.setText(restaurantDetails.get(1));
         textViewPhoneNumber.setText(restaurantDetails.get(2));
         textViewPriceRange.setText(restaurantDetails.get(4));
@@ -56,8 +59,12 @@ public class RestaurantDetail extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        Intent newIntent = new Intent(RestaurantDetail.this, test.class);
-        GetJSON getJSON = new GetJSON(RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",test.class);
-        RestaurantDetail.this.startActivity(newIntent);
+        //Intent newIntent = new Intent(RestaurantDetail.this, MenuDisplay.class);
+
+        //this string is pass to menu activity so we know restaurant is select
+        //then we can populate the menu of that restaurant
+        //newIntent.putExtra("restaurantName", restaurantName);
+        GetJSON getJSON = new GetJSON(RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",MenuDisplay.class,restaurantName);
+        //RestaurantDetail.this.startActivity(newIntent);
     }
 }

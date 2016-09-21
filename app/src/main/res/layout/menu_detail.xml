@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:verticalScrollbarPosition="right">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageViewRestaurantDetail"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@mipmap/ic_launcher"
+        android:cropToPadding="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="Go to Menu"
+        android:id="@+id/buttonGoMenu"
+        android:onClick="onClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/quantityView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Menu Item"
+        android:id="@+id/textViewRestaurantDetailName"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:textColor="#2160de"
+        android:layout_below="@+id/imageViewRestaurantDetail"
+        android:layout_alignStart="@+id/quantityView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description of menu item"
+        android:id="@+id/textViewRestaurantDetailAddress"
+        android:textSize="20dp"
+        android:textColor="@color/abc_tint_default"
+        android:layout_below="@+id/textViewRestaurantDetailName"
+        android:layout_marginTop="10dp"
+        android:enabled="true"
+        android:layout_marginLeft="120dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:id="@+id/textView_Address"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="7dp"
+        android:enabled="true"
+        android:textColor="#0c0b0b"
+        android:layout_alignTop="@+id/textViewRestaurantDetailAddress"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/quantityText"
+        android:layout_above="@+id/buttonGoMenu"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Pleasee enter the amount you would like to order"
+        android:id="@+id/quantityView"
+        android:layout_above="@+id/quantityText"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="@string/add_to_order"
+        android:id="@+id/buttonOrder"
+        android:onClick="onClick"
+        android:layout_below="@+id/quantityText"
+        android:layout_alignEnd="@+id/quantityView" />
+
+
+</RelativeLayout>

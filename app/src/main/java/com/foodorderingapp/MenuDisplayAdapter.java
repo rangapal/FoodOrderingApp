@@ -7,18 +7,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
-/**
- * Created by User on 9/18/2016.
- */
-public class RestaurantDisplayAdapter extends BaseAdapter {
+
+public class MenuDisplayAdapter extends BaseAdapter {
     private Object[] restaurantValues;
     private Context context;
     private LayoutInflater inflater;
 
-    public RestaurantDisplayAdapter(Context context, Object[] restaurantValues){
+    public MenuDisplayAdapter(Context context, Object[] restaurantValues){
         this.restaurantValues = restaurantValues;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -49,25 +49,27 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
         ArrayList<String> restaurantValueArray = (ArrayList<String>)restaurantValues[position];
 
         if(convertView == null){
-            listView = inflater.inflate(R.layout.restaurant_grid_view_layout, parent, false);
+            listView = inflater.inflate(R.layout.menu_grid_view_layout, parent, false);
             TextView textViewName = (TextView) listView.findViewById(R.id.textViewMenuName);
-            TextView textViewCuisine = (TextView) listView.findViewById(R.id.textViewRestaurantCuisine);
-            TextView textViewPriceRange = (TextView) listView.findViewById(R.id.textViewRestaurantPriceRange);
+            TextView textViewPrice = (TextView) listView.findViewById(R.id.textViewMenuPrice);
+            TextView textViewQuantity = (TextView) listView.findViewById(R.id.textViewMenuQuantity);
 
-            textViewPriceRange.setText(restaurantValueArray.get(4)); // set price range of restaurant
-            textViewName.setText(restaurantValueArray.get(0)); //set name of restaurant
-            textViewCuisine.setText(restaurantValueArray.get(3)); //set description of restaurant
+            textViewName.setText("helo");
+            textViewPrice.setText("osa");
+            textViewQuantity.setText("2");
+            //textViewName.setText(restaurantValueArray.get(0)); //set name of restaurant
+            //textViewDescription.setText(restaurantValueArray.get(3)); //set description of restaurant
 
         }else {
             listView = convertView;
         }
 
         //set logo of restaurant
-         Picasso.with(context)
+         /*Picasso.with(context)
                 .load(restaurantValueArray.get(5))
                 .fit() // will explain later
                 .centerInside()
-                .into((ImageView) listView.findViewById(R.id.imageViewRestaurant));
+                .into((ImageView) listView.findViewById(R.id.imageViewRestaurant));*/
 
         return listView;
     }

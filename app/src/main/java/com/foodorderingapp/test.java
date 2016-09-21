@@ -21,7 +21,7 @@ public class test extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        GetJSON getJSON = new GetJSON(test.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class);
+        GetJSON getJSON = new GetJSON(test.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
 
         //String s = getJSON.getJsonString();
     }
