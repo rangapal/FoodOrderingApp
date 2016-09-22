@@ -32,7 +32,6 @@ public class ConvertJSON {
             //this is used for adding value of the column to hashmap
             ArrayList<String> eachColumnArray;
 
-
             //add each column name to valueTag
             Iterator<String> iterator = jsonArray.getJSONObject(0).keys();
             while(iterator.hasNext()){
@@ -55,9 +54,6 @@ public class ConvertJSON {
                 }
 
                 //add each restaurant ArrayList to HashMap
-                if(treeMap.containsKey(valueTag.get(i)))
-                    treeMap.put(Integer.toString(i),eachColumnArray);
-                else
                     treeMap.put(eachColumnArray.get(0),eachColumnArray);
             }
 
