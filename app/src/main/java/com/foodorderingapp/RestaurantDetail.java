@@ -3,9 +3,7 @@ package com.foodorderingapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,16 +30,16 @@ public class RestaurantDetail extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Value is the following order
-        ////name, address, phoneNumber, cuisine, priceRange, image URL
+        ////name, address, phoneNumber, cuisine, priceRange, image URL, ID
         ArrayList<String> restaurantDetails = intent.getStringArrayListExtra("ClickRestaurant");
 
         restaurantName = restaurantDetails.get(0);
         this.setTitle(restaurantName);
 
-        textViewName = (TextView)findViewById(R.id.textViewRestaurantDetailName);
-        textViewAddress = (TextView)findViewById(R.id.textViewRestaurantDetailAddress);
+        textViewName = (TextView)findViewById(R.id.textViewMenuDetailName);
+        textViewAddress = (TextView)findViewById(R.id.textViewMenuDetailDescription);
         textViewPhoneNumber = (TextView)findViewById(R.id.textViewRestaurantDetailPhoneNumber);
-        imageViewIcon = (ImageView)findViewById(R.id.imageViewRestaurantDetail);
+        imageViewIcon = (ImageView)findViewById(R.id.imageViewMenuDetail);
         textViewPriceRange = (TextView) findViewById(R.id.textViewRestaurantDetailPriceRange);
 
         //set the restaurant details on screen
@@ -65,6 +63,7 @@ public class RestaurantDetail extends AppCompatActivity {
         //then we can populate the menu of that restaurant
         //newIntent.putExtra("restaurantName", restaurantName);
         GetJSON getJSON = new GetJSON(RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",MenuDisplay.class,restaurantName);
+        GlobalVariable globalVariable= new GlobalVariable();
         //RestaurantDetail.this.startActivity(newIntent);
     }
 }

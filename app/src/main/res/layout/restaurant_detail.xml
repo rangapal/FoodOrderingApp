@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/imageViewRestaurantDetail"
+        android:id="@+id/imageViewMenuDetail"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -29,11 +29,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Subway"
-        android:id="@+id/textViewRestaurantDetailName"
+        android:id="@+id/textViewMenuDetailName"
         android:textStyle="bold"
         android:textSize="35dp"
         android:textColor="#2160de"
-        android:layout_below="@+id/imageViewRestaurantDetail"
+        android:layout_below="@+id/imageViewMenuDetail"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -42,10 +42,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="1486, Auckland"
-        android:id="@+id/textViewRestaurantDetailAddress"
+        android:id="@+id/textViewMenuDetailDescription"
         android:textSize="20dp"
         android:textColor="@color/abc_tint_default"
-        android:layout_below="@+id/textViewRestaurantDetailName"
+        android:layout_below="@+id/textViewMenuDetailName"
         android:layout_marginTop="10dp"
         android:enabled="true"
         android:layout_marginLeft="120dp" />
@@ -58,8 +58,8 @@
         android:id="@+id/textViewRestaurantDetailPhoneNumber"
         android:textSize="20dp"
         android:layout_alignTop="@+id/textView_PhoneNumber"
-        android:layout_alignLeft="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignStart="@+id/textViewRestaurantDetailAddress"
+        android:layout_alignLeft="@+id/textViewMenuDetailDescription"
+        android:layout_alignStart="@+id/textViewMenuDetailDescription"
         android:layout_marginTop="10dp"
         android:enabled="true" />
 
@@ -67,11 +67,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address:"
-        android:id="@+id/textView_Address"
+        android:id="@+id/textView_Price"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_alignBaseline="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignBottom="@+id/textViewRestaurantDetailAddress"
+        android:layout_alignBaseline="@+id/textViewMenuDetailDescription"
+        android:layout_alignBottom="@+id/textViewMenuDetailDescription"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="7dp"
@@ -86,11 +86,11 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/textViewRestaurantDetailAddress"
+        android:layout_below="@+id/textViewMenuDetailDescription"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView_Address"
-        android:layout_alignEnd="@+id/textView_Address"
+        android:layout_alignRight="@+id/textView_Price"
+        android:layout_alignEnd="@+id/textView_Price"
         android:layout_marginLeft="7dp"
         android:enabled="true"
         android:textColor="#0e0c0c" />
@@ -121,7 +121,7 @@
         android:textSize="20dp"
         android:enabled="true"
         android:layout_alignTop="@+id/textView_PriceRange"
-        android:layout_alignLeft="@+id/textViewRestaurantDetailAddress"
+        android:layout_alignLeft="@+id/textViewMenuDetailDescription"
         android:layout_marginTop="10dp" />
 
 </RelativeLayout>

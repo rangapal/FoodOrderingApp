@@ -11,17 +11,20 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.zip.GZIPOutputStream;
 
 
 public class MenuDisplayAdapter extends BaseAdapter {
     private Object[] menuValue;
     private Context context;
     private LayoutInflater inflater;
+    //private String quantity;
 
     public MenuDisplayAdapter(Context context, Object[] menuValue){
         this.menuValue = menuValue;
         this.context = context;
         inflater = LayoutInflater.from(context);
+        //this.quantity = quantity;
     }
 
     @Override
@@ -54,11 +57,19 @@ public class MenuDisplayAdapter extends BaseAdapter {
             TextView textViewPrice = (TextView) listView.findViewById(R.id.textViewMenuPrice);
             TextView textViewQuantity = (TextView) listView.findViewById(R.id.textViewMenuQuantity);
 
+            String menuName = menuValueArray.get(0);
+            String menuPrice = menuValueArray.get(1);
 
-            textViewName.setText(menuValueArray.get(0)); //set name of restaurant
-            textViewPrice.setText(menuValueArray.get(1));
+            textViewName.setText(menuName); //set name of menu
+            textViewPrice.setText(menuPrice); //set price of menu
             textViewQuantity.setText("0");
 
+//            if(GlobalVariable.menuItemQuantity.size() < menuValue.length)
+//                GlobalVariable.menuItemQuantity.put(menuValueArray.get(0),"0");
+////            }else{
+////                textViewQuantity.setText(GlobalVariable.menuItemQuantity.get(menuValueArray.get(0)));
+////            }
+//                textViewQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
         }else {
             listView = convertView;
         }

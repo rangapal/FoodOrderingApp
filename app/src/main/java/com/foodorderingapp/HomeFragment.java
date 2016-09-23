@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
     private Button logoutButton = null;
     private Profile profile = null;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +50,9 @@ public class HomeFragment extends Fragment {
         }
         tv.setText("Welcome \n" + profile.getName());
         Picasso.with(getActivity()).load(profile.getProfilePictureUri(400,400).toString()).into(profile_pic);
-        Log.d("D",profile.getId());
+
+
+
 
         logoutButton.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {

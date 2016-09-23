@@ -43,9 +43,21 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="quantity"
+        android:text="0"
         android:textColor="@android:color/black"
         android:textSize="18dp"
+        android:layout_alignTop="@+id/textView_Quantity"
+        android:layout_toRightOf="@+id/textView_Quantity"
+        android:layout_toEndOf="@+id/textView_Quantity"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Qty: "
+        android:id="@+id/textView_Quantity"
+        android:textColor="#0d0d0d"
         android:layout_below="@+id/textViewMenuPrice"
         android:layout_alignLeft="@+id/textViewMenuPrice"
         android:layout_alignStart="@+id/textViewMenuPrice" />

@@ -7,86 +7,117 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/imageViewRestaurantDetail"
+        android:id="@+id/imageViewMenuDetail"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:src="@mipmap/ic_launcher"
         android:cropToPadding="true" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:text="Go to Menu"
-        android:id="@+id/buttonGoMenu"
-        android:onClick="onClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/quantityView" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu Item"
-        android:id="@+id/textViewRestaurantDetailName"
+        android:text="Menu Name"
+        android:id="@+id/textViewMenuDetailName"
         android:textStyle="bold"
         android:textSize="35dp"
         android:textColor="#2160de"
-        android:layout_below="@+id/imageViewRestaurantDetail"
-        android:layout_alignStart="@+id/quantityView" />
+        android:layout_below="@+id/imageViewMenuDetail"
+        android:layout_alignStart="@+id/textView_quantityText"
+        android:layout_alignLeft="@+id/textView_quantityText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Description of menu item"
-        android:id="@+id/textViewRestaurantDetailAddress"
+        android:id="@+id/textViewMenuDetailDescription"
         android:textSize="20dp"
         android:textColor="@color/abc_tint_default"
-        android:layout_below="@+id/textViewRestaurantDetailName"
-        android:layout_marginTop="10dp"
         android:enabled="true"
-        android:layout_marginLeft="120dp" />
+        android:layout_below="@+id/textViewMenuDetailName"
+        android:layout_alignLeft="@+id/textViewMenuDetailName"
+        android:layout_alignStart="@+id/textViewMenuDetailName"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description:"
-        android:id="@+id/textView_Address"
-        android:textSize="20dp"
+        android:text="Price: "
+        android:id="@+id/textView_Price"
+        android:textSize="22dp"
         android:textStyle="bold"
-        android:layout_marginLeft="7dp"
         android:enabled="true"
         android:textColor="#0c0b0b"
-        android:layout_alignTop="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/quantityText"
-        android:layout_above="@+id/buttonGoMenu"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/textView_quantityText"
+        android:layout_alignLeft="@+id/textView_quantityText"
+        android:layout_alignStart="@+id/textView_quantityText"
+        android:layout_marginBottom="69dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Pleasee enter the amount you would like to order"
-        android:id="@+id/quantityView"
-        android:layout_above="@+id/quantityText"
+        android:text="Please enter the amount you would like to order"
+        android:id="@+id/textView_quantityText"
+        android:layout_above="@+id/editTextMenuDetailQuantity"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:text="@string/add_to_order"
-        android:id="@+id/buttonOrder"
-        android:onClick="onClick"
-        android:layout_below="@+id/quantityText"
-        android:layout_alignEnd="@+id/quantityView" />
+        android:id="@+id/buttonMenuDetailOrder"
+        android:layout_below="@+id/editTextMenuDetailQuantity"
+        android:layout_alignEnd="@+id/textView_quantityText"
+        android:layout_alignRight="@+id/textView_quantityText" />
+
+    <Button
+        android:text="+"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonPlusMenuDetail"
+        android:onClick="onClickPlus"
+        android:layout_alignBaseline="@+id/editTextMenuDetailQuantity"
+        android:layout_alignBottom="@+id/editTextMenuDetailQuantity"
+        android:layout_alignLeft="@+id/buttonMenuDetailOrder"
+        android:layout_alignStart="@+id/buttonMenuDetailOrder" />
+
+    <Button
+        android:text="-"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonMinusMenuDetail"
+        android:onClick="onClickMinus"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/editTextMenuDetailQuantity"
+        android:layout_toStartOf="@+id/editTextMenuDetailQuantity"
+        android:layout_marginBottom="50dp" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextMenuDetailQuantity"
+        android:layout_width="110dp"
+        android:layout_alignBottom="@+id/buttonMinusMenuDetail"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:text="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Menu Price"
+        android:id="@+id/textViewMenuDetailPrice"
+        android:textColor="#151414"
+        android:layout_alignBottom="@+id/textView_Price"
+        android:layout_toRightOf="@+id/textView_Price"
+        android:layout_toEndOf="@+id/textView_Price"
+        android:layout_marginLeft="20dp"
+        android:textSize="22dp" />
 
 
 </RelativeLayout>

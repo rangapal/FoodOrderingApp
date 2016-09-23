@@ -88,7 +88,7 @@ public class GetJSON {
                 Intent intent = new Intent(context, cls);
                 intent.putExtra("JSONString", s);
                 if(post != null){
-                    intent.putExtra("restaurantName",post);
+                    intent.putExtra("restaurantID",post);
                 }
                 context.startActivity(intent);
             }
@@ -127,10 +127,6 @@ public class GetJSON {
                 while ((json = bufferedReader.readLine()) != null) {
                     sb.append(json + "\n");
                 }
-
-
-
-
 
 //                Uri.Builder builder = new Uri.Builder().appendQueryParameter("restaurant",post);
 //                String query = builder.build().getEncodedQuery();
