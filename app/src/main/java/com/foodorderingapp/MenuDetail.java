@@ -94,8 +94,8 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
 //            finish();
         }
 
-        //Intent newIntent = new Intent(MenuDetail.this, test.class);
-        //GetJSON getJSON = new GetJSON(MenuDetail.this,"http://aaacars.co.nz/getMenu.php",test.class);
+        //Intent newIntent = new Intent(MenuDetail.this, testClass.class);
+        //GetJSON getJSON = new GetJSON(MenuDetail.this,"http://aaacars.co.nz/getMenu.php",testClass.class);
         //MenuDetail.this.startActivity(newIntent);
     }
 

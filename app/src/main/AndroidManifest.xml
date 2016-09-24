@@ -17,7 +17,7 @@
         <activity android:name=".RestaurantDisplay"
             android:label="@string/Restaurant">
         </activity>
-        <activity android:name=".test">
+        <activity android:name=".ButtonGoToRestaurantSelection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

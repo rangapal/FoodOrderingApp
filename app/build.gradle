@@ -6,11 +6,18 @@ android {
 
     defaultConfig {
         applicationId "com.foodorderingapp"
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+    lintOptions {
+        abortOnError false
     }
     buildTypes {
         release {
@@ -27,13 +34,19 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 
-//    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2') {
+    // Required for instrumented tests
+    androidTestCompile 'com.android.support:support-annotations:24.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+
+//    androidTestCompile('com.android.support.testClass.espresso:espresso-core:2.2') {
 //        // Necessary if your app targets Marshmallow (since Espresso
 //        // hasn't moved to Marshmallow yet)
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    }
-//    androidTestCompile('com.android.support.test:runner:0.3') {
-//        // Necessary if your app targets Marshmallow (since the test runner
+//    androidTestCompile('com.android.support.testClass:runner:0.3') {
+//        // Necessary if your app targets Marshmallow (since the testClass runner
 //        // hasn't moved to Marshmallow yet)
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    }
