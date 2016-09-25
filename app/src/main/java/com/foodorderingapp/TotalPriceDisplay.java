@@ -1,0 +1,67 @@
+package com.foodorderingapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * Created by JeffChoi on 19/09/2016.
+ */
+public class TotalPriceDisplay extends AppCompatActivity {
+    private ListView listViewTotalPrice;
+    private float totalPrice;
+
+//    public float getTotalPrice(){
+//        float totalPrice = 0f;
+//
+//        for(int i = 0; i < price.length; i++){
+//            float value = Float.parseFloat(price[i]);
+//            float quantityValue = Float.parseFloat(quantity[i]);
+//            totalPrice += (value*quantityValue);
+//        }
+//
+//        return totalPrice;
+//    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.total_price_grid_view);
+
+        TextView totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
+        //String totalPriceNumberInString= Float.toString(getTotalPrice());
+        //totalPriceNumber.setText(totalPriceNumberInString);
+
+        listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
+        //TotalPriceDisplayAdapter adapter = new TotalPriceDisplayAdapter(this, name, price, quantity, imageId);
+        //listViewTotalPrice.setAdapter(adapter);
+        listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Menu class is the container for the intent.
+                //Menu menu = new Menu(name[position], price[position], quantity[position], imageId[position]);
+                Intent totalPriceDetail = new Intent(TotalPriceDisplay.this, TotalPriceDetail.class);
+                //totalPriceDetail.putExtra("ClickTotalPriceList", menu);
+                startActivity(totalPriceDetail);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(data != null){
+            int changedQuantity = data.getIntExtra("changedQuantity", 0);
+            Toast.makeText(this, "Quantity is : " + changedQuantity, Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "There is no value to get", Toast.LENGTH_LONG).show();
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+}
