@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Price : $"
+        android:id="@+id/textViewTotalPriceGridViewTotalPrice"
+        android:textSize="25dp"
+        android:layout_above="@+id/buttonGoBack"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go back"
+        android:id="@+id/buttonGoBack"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="confirm"
+        android:id="@+id/buttonConFirm"
+        android:layout_alignTop="@+id/buttonGoBack"
+        android:layout_toRightOf="@+id/buttonGoBack"
+        android:layout_toEndOf="@+id/buttonGoBack"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/textViewTotalPriceGridViewTotalPrice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="459dp"
+            android:id="@+id/listViewTotalPrice"
+            android:layout_gravity="center_horizontal|top"
+            android:numColumns="2" />
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textViewTotalPriceGridViewPriceNumber"
+        android:textSize="25dp"
+        android:layout_toRightOf="@+id/textViewTotalPriceGridViewTotalPrice"
+        android:layout_marginLeft="15dp"
+        android:layout_above="@+id/buttonConFirm"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>
