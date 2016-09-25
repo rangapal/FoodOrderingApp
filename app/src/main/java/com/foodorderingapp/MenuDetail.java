@@ -26,6 +26,7 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
     Button buttonPlus;
     Button buttonMinus;
     Button buttonOrder;
+    Button buttonOrderSummary;
     EditText editTextQuantity;
     ArrayList<String> menuDetails;
 

@@ -37,12 +37,12 @@ public class TotalPriceDetail extends AppCompatActivity {
 
         //buttonConfirm.setOnClickListener(this);
 
-        textViewName.setText(totalPriceDetails.getName());
-        textViewPrice.setText(totalPriceDetails.getPrice());
-        editViewQuantity.setText(totalPriceDetails.getQuantity());
-        imageViewIcon.setImageResource(totalPriceDetails.getImageId());
-
-        changableQuantity = Integer.parseInt(totalPriceDetails.getQuantity());
+//        textViewName.setText(totalPriceDetails.getName());
+//        textViewPrice.setText(totalPriceDetails.getPrice());
+//        editViewQuantity.setText(totalPriceDetails.getQuantity());
+//        imageViewIcon.setImageResource(totalPriceDetails.getImageId());
+//
+//        changableQuantity = Integer.parseInt(totalPriceDetails.getQuantity());
 
     }
     // this doesn't work so far...

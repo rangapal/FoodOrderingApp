@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -17,9 +18,11 @@ import java.util.TreeMap;
 
 public class MenuDisplay extends AppCompatActivity {
     ListView listViewMenu;
+    Button buttonOrderSummary;
     private final String JSONARRAY = "Menu";
     String quanity;
     TreeMap<String, ArrayList<String>> menuTreeMap;
+    ArrayList<String> menuDetailArray;
     Object[] menuValues;
     BaseAdapter adapter;
 
@@ -32,6 +35,8 @@ public class MenuDisplay extends AppCompatActivity {
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
 
         Intent intent = getIntent();
+
+        buttonOrderSummary = (Button)findViewById(R.id.buttonMenuOrderSummary);
 
         //get the restaurant ID so we can populate the menu for the restaurant
         String restaurantName = intent.getStringExtra("restaurantID");
@@ -59,7 +64,7 @@ public class MenuDisplay extends AppCompatActivity {
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ArrayList<String> menuDetailArray = (ArrayList<String>) menuValues[position];
+                menuDetailArray = (ArrayList<String>) menuValues[position];
 
                 String menuName = menuDetailArray.get(0);
                 GlobalVariable.menuItemQuantity.put(menuName,quanity);
@@ -74,6 +79,17 @@ public class MenuDisplay extends AppCompatActivity {
             }
         });
     }
+
+    public void onClick(View view) {
+        Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
+
+        //totalPriceDisplay.putExtra("")
+        MenuDisplay.this.startActivity(totalPriceDisplay);
+
+
+
+    }
+
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

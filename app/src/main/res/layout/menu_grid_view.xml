@@ -23,6 +23,7 @@
         android:text="View Order Summary"
         android:id="@+id/buttonMenuOrderSummary"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick"/>
 
 </RelativeLayout>
