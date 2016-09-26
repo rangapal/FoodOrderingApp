@@ -17,10 +17,5 @@ public class Login extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.login_activity);
 
-        //1338482536164282 myid
-        //1589787581323737 dom id
-        //1265187020178738 ranga id
-
-
     }
 }

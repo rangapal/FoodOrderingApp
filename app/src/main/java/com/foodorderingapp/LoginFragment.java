@@ -36,9 +36,6 @@ public class LoginFragment extends Fragment {
 
         @Override
         public void onSuccess(LoginResult loginResult) {
-            //testClass t = new testClass();
-
-            //Intent intent = new Intent(t.getClass());
             Profile profile = Profile.getCurrentProfile();
             homeFragment(profile);
         }
