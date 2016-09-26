@@ -40,17 +40,17 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
     }
 
     //Value in ArrayList is the following order
-    ////name, address, phoneNumber, cuisine, priceRange, image URL
+    //name, address, phoneNumber, cuisine, priceRange, image URL
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View listView; //this view is used to mimic view from restaurant_grid_view_layout.xml
+        View listView; //this view is used to mimic view from restaurant_list_view_layout.xml
 
         //typecast menuValues from object to ArrayList
         ArrayList<String> restaurantValueArray = (ArrayList<String>)restaurantValues[position];
 
         if(convertView == null){
-            listView = inflater.inflate(R.layout.restaurant_grid_view_layout, parent, false);
-            TextView textViewName = (TextView) listView.findViewById(R.id.textViewMenuName);
+            listView = inflater.inflate(R.layout.restaurant_list_view_layout, parent, false);
+            TextView textViewName = (TextView) listView.findViewById(R.id.textViewRestaurantName);
             TextView textViewCuisine = (TextView) listView.findViewById(R.id.textViewRestaurantCuisine);
             TextView textViewPriceRange = (TextView) listView.findViewById(R.id.textViewRestaurantPriceRange);
 
@@ -67,7 +67,7 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
                 .load(restaurantValueArray.get(5))
                 .fit() // will explain later
                 .centerInside()
-                .into((ImageView) listView.findViewById(R.id.imageViewMenu));
+                .into((ImageView) listView.findViewById(R.id.imageViewRestaurant));
 
         return listView;
     }

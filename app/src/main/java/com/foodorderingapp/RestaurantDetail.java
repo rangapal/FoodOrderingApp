@@ -36,10 +36,10 @@ public class RestaurantDetail extends AppCompatActivity {
         restaurantName = restaurantDetails.get(0);
         this.setTitle(restaurantName);
 
-        textViewName = (TextView)findViewById(R.id.textViewMenuDetailName);
-        textViewAddress = (TextView)findViewById(R.id.textViewMenuDetailDescription);
+        textViewName = (TextView)findViewById(R.id.textViewRestaurantDetailName);
+        textViewAddress = (TextView)findViewById(R.id.textViewRestaurantDetailAddress);
         textViewPhoneNumber = (TextView)findViewById(R.id.textViewRestaurantDetailPhoneNumber);
-        imageViewIcon = (ImageView)findViewById(R.id.imageViewMenuDetail);
+        imageViewIcon = (ImageView)findViewById(R.id.imageViewRestaurantDetail);
         textViewPriceRange = (TextView) findViewById(R.id.textViewRestaurantDetailPriceRange);
 
         //set the restaurant details on screen

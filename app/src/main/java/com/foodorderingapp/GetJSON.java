@@ -127,18 +127,6 @@ public class GetJSON {
                 while ((json = bufferedReader.readLine()) != null) {
                     sb.append(json + "\n");
                 }
-
-//                Uri.Builder builder = new Uri.Builder().appendQueryParameter("restaurant",post);
-//                String query = builder.build().getEncodedQuery();
-//
-//                OutputStream os = con.getOutputStream();
-//                BufferedWriter writer = new BufferedWriter(
-//                        new OutputStreamWriter(os, "UTF-8"));
-//                writer.write(query);
-//                writer.flush();
-//                writer.close();
-//                os.close();
-//                con.connect();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {

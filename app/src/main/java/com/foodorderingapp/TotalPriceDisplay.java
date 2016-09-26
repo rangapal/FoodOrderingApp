@@ -67,12 +67,12 @@ public class TotalPriceDisplay extends AppCompatActivity {
         this.quantity = quantity;
     }
 
-    public float getTotalPrice(){
+    public float getTotalPrice(String[] stringPrice, String[] StringQuantityValue){
         float totalPrice = 0f;
 
-        for(int i = 0; i < price.length; i++){
-            float value = Float.parseFloat(price[i]);
-            float quantityValue = Float.parseFloat(quantity[i]);
+        for(int i = 0; i < stringPrice.length; i++){
+            float value = Float.parseFloat(stringPrice[i]);
+            float quantityValue = Float.parseFloat(StringQuantityValue[i]);
             totalPrice += (value*quantityValue);
         }
 
@@ -82,10 +82,10 @@ public class TotalPriceDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.total_price_grid_view);
+        setContentView(R.layout.total_price_list_view);
 
         TextView totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
-        String totalPriceNumberInString= Float.toString(getTotalPrice());
+        String totalPriceNumberInString= Float.toString(getTotalPrice(price, quantity));
         totalPriceNumber.setText(totalPriceNumberInString);
 
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);

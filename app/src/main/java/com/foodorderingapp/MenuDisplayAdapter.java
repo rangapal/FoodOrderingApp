@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.zip.GZIPOutputStream;
 
 
 public class MenuDisplayAdapter extends BaseAdapter {
@@ -46,13 +45,13 @@ public class MenuDisplayAdapter extends BaseAdapter {
     //menuName, menuPrice, menuDescription, menuImage, restaurantName
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View listView; //this view is used to mimic view from menu_grid_view_layout.xml
+        View listView; //this view is used to mimic view from menu_list_view_layout.xml
 
         //typecast menuValues from object to ArrayList
         ArrayList<String> menuValueArray = (ArrayList<String>) menuValue[position];
 
         if(convertView == null){
-            listView = inflater.inflate(R.layout.menu_grid_view_layout, parent, false);
+            listView = inflater.inflate(R.layout.menu_list_view_layout, parent, false);
             TextView textViewName = (TextView) listView.findViewById(R.id.textViewMenuName);
             TextView textViewPrice = (TextView) listView.findViewById(R.id.textViewMenuPrice);
             TextView textViewQuantity = (TextView) listView.findViewById(R.id.textViewMenuQuantity);

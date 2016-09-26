@@ -23,7 +23,7 @@ public class RestaurantDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.restaurant_grid_view);
+        setContentView(R.layout.restaurant_list_view);
 
         listViewRestaurant = (ListView) findViewById(R.id.listViewRestaurant);
 

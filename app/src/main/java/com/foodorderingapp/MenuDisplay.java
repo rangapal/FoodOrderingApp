@@ -1,15 +1,12 @@
 package com.foodorderingapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -29,7 +26,7 @@ public class MenuDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_grid_view);
+        setContentView(R.layout.menu_list_view);
         menuTreeMap = new TreeMap<>();
         quanity = "0";
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
@@ -85,9 +82,6 @@ public class MenuDisplay extends AppCompatActivity {
 
         //totalPriceDisplay.putExtra("")
         MenuDisplay.this.startActivity(totalPriceDisplay);
-
-
-
     }
 
 

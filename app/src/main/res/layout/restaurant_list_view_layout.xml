@@ -5,7 +5,7 @@
     android:background="#e1dede">
 
     <ImageView
-        android:id="@+id/imageViewMenu"
+        android:id="@+id/imageViewRestaurant"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerVertical="true"
@@ -14,11 +14,11 @@
         android:padding="3dp" />
 
     <TextView
-        android:id="@+id/textViewMenuName"
+        android:id="@+id/textViewRestaurantName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dip"
-        android:layout_toRightOf="@+id/imageViewMenu"
+        android:layout_toRightOf="@+id/imageViewRestaurant"
         android:maxLines="1"
         android:text="title"
         android:textColor="@android:color/black"
@@ -29,8 +29,8 @@
         android:id="@+id/textViewRestaurantCuisine"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewMenuName"
-        android:layout_toRightOf="@+id/imageViewMenu"
+        android:layout_below="@+id/textViewRestaurantName"
+        android:layout_toRightOf="@+id/imageViewRestaurant"
         android:ellipsize="end"
         android:maxLines="4"
         android:text="cuisine"
@@ -43,8 +43,8 @@
         android:text="price range"
         android:id="@+id/textViewRestaurantPriceRange"
         android:layout_below="@+id/textViewRestaurantCuisine"
-        android:layout_toRightOf="@+id/imageViewMenu"
-        android:layout_toEndOf="@+id/imageViewMenu"
+        android:layout_toRightOf="@+id/imageViewRestaurant"
+        android:layout_toEndOf="@+id/imageViewRestaurant"
         android:textColor="@android:color/black"/>
 
 </RelativeLayout>

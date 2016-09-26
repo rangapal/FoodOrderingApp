@@ -20,7 +20,7 @@ public class TotalPriceDisplayAdapter extends ArrayAdapter<String> {
 
     public TotalPriceDisplayAdapter(Activity context, String[] name, String[] price,
                                     String[] quantity, Integer[] ImageId){
-        super(context, R.layout.total_price_grid_view_layout, name);
+        super(context, R.layout.total_price_list_view_layout, name);
         this.context = context;
         this.name = name;
         this.price = price;
@@ -32,7 +32,7 @@ public class TotalPriceDisplayAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.total_price_grid_view_layout, null, true);
+        View rowView= inflater.inflate(R.layout.total_price_list_view_layout, null, true);
 
         TextView nameMenu = (TextView) rowView.findViewById(R.id.textViewNameTotalPriceLayout);
         TextView priceMenu = (TextView) rowView.findViewById(R.id.textViewPriceTotalPriceLayout);

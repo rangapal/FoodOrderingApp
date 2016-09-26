@@ -61,8 +61,8 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
         textViewName.setText(menuName);
         textViewPrice.setText(menuPrice);
         textViewDescription.setText(menuDescription);
-
         editTextQuantity.setText("0");
+
         //editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
 
         //set logo of menu
