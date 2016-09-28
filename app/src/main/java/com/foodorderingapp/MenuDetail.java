@@ -1,6 +1,5 @@
 package com.foodorderingapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import static com.foodorderingapp.R.*;
-
-
 public class MenuDetail extends AppCompatActivity implements View.OnClickListener {
 
     TextView textViewName;
@@ -26,13 +22,13 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
     Button buttonPlus;
     Button buttonMinus;
     Button buttonOrder;
-    Button buttonOrderSummary;
+    String menuName;
     EditText editTextQuantity;
     ArrayList<String> menuDetails;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.menu_detail);
+        setContentView(R.layout.menu_detail);
 
         Intent intent = getIntent();
         //Value is the following order
@@ -44,26 +40,26 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
         editTextQuantity = (EditText) findViewById(R.id.editTextMenuDetailQuantity);
         buttonPlus = (Button) findViewById(R.id.buttonPlusMenuDetail);
         buttonMinus = (Button) findViewById(R.id.buttonMinusMenuDetail);
-        buttonOrder = (Button) findViewById(id.buttonMenuDetailOrder);
+        buttonOrder = (Button) findViewById(R.id.buttonMenuDetailOrder);
         textViewName = (TextView)findViewById(R.id.textViewMenuDetailName);
         textViewDescription = (TextView) findViewById(R.id.textViewMenuDetailDescription);
-        imageViewIcon = (ImageView)findViewById(id.imageViewMenuDetail);
-        textViewPrice = (TextView) findViewById(id.textViewMenuDetailPrice);
+        imageViewIcon = (ImageView)findViewById(R.id.imageViewMenuDetail);
+        textViewPrice = (TextView) findViewById(R.id.textViewMenuDetailPrice);
 
         buttonPlus.setOnClickListener(this);
         buttonMinus.setOnClickListener(this);
         buttonOrder.setOnClickListener(this);
 
-        String menuName = menuDetails.get(0);
+        menuName = menuDetails.get(0);
         String menuPrice = menuDetails.get(1);
         String menuDescription = menuDetails.get(2);
 
         textViewName.setText(menuName);
         textViewPrice.setText(menuPrice);
         textViewDescription.setText(menuDescription);
-        editTextQuantity.setText("0");
+        //editTextQuantity.setText("0");
 
-        //editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
+        editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
 
         //set logo of menu
         Picasso.with(MenuDetail.this)
@@ -81,18 +77,24 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
             editTextQuantity.setText(Integer.toString(quantity));
 
         }
-        if(view == buttonMinus){
+
+        else if(view == buttonMinus){
             if (quantity>0){
                 quantity--;
                 editTextQuantity.setText(Integer.toString(quantity));
             }
         }
 
-        if(view == buttonOrder){
-//            Intent returnIntent = new Intent();
+        else if(view == buttonOrder){
+            GlobalVariable.menuItemQuantity.put(menuName,Integer.toString(quantity));
+            onBackPressed();
+            //Intent intent = new Intent(MenuDetail.this,MenuDisplay.class);
+            //MenuDetail.this.startActivity(intent);
+           //Intent returnIntent = new Intent();
+
 //            returnIntent.putExtra("Quantity",Integer.toString(quantity));
-//            setResult(Activity.RESULT_OK,returnIntent);
-//            finish();
+            //setResult(Activity.RESULT_OK,returnIntent);
+            finish();
         }
 
         //Intent newIntent = new Intent(MenuDetail.this, testClass.class);

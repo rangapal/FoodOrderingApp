@@ -30,7 +30,7 @@ public class RestaurantDetail extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Value is the following order
-        ////name, address, phoneNumber, cuisine, priceRange, image URL, ID
+        //name, address, phoneNumber, cuisine, priceRange, image URL, ID
         ArrayList<String> restaurantDetails = intent.getStringArrayListExtra("ClickRestaurant");
 
         restaurantName = restaurantDetails.get(0);
@@ -63,7 +63,8 @@ public class RestaurantDetail extends AppCompatActivity {
         //then we can populate the menu of that restaurant
         //newIntent.putExtra("restaurantName", restaurantName);
         GetJSON getJSON = new GetJSON(RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",MenuDisplay.class,restaurantName);
-        GlobalVariable globalVariable= new GlobalVariable();
+        //GlobalVariable globalVariable= new GlobalVariable();
+
         //RestaurantDetail.this.startActivity(newIntent);
     }
 }

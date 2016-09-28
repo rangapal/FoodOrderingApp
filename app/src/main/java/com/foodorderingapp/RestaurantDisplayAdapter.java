@@ -56,7 +56,7 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
 
             textViewPriceRange.setText(restaurantValueArray.get(4)); // set price range of restaurant
             textViewName.setText(restaurantValueArray.get(0)); //set name of restaurant
-            textViewCuisine.setText(restaurantValueArray.get(3)); //set description of restaurant
+            textViewCuisine.setText(restaurantValueArray.get(3)); //set cuisine of restaurant
 
         }else {
             listView = convertView;

@@ -1,11 +1,7 @@
 package com.foodorderingapp;
 
 
-import android.util.Log;
-
-import org.junit.Assert;
 import org.junit.Test;
-
 
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -24,10 +20,8 @@ public class ExampleUnitTest {
         String JsonString = "{\"Restaurant\":" +
                                 "[" +
                                     "{\"name\":\"Burger King\"," +
-                                    //"\"phoneNumber\":\"95315841\"," +
                                     "\"ID\":\"001\"}," +
                                     "{\"name\":\"Subway\"," +
-                                    //"\"phoneNumber\":\"98132566\"," +
                                     "\"ID\":\"002\"}," +
                                 "]" +
                             "}";

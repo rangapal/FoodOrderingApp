@@ -28,6 +28,7 @@ public class ButtonGoToRestaurantSelection extends AppCompatActivity{
 
         GetJSON getJSON = new GetJSON(ButtonGoToRestaurantSelection.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
 
+
         //String s = getJSON.getJsonString();
     }
 

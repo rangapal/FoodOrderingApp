@@ -11,19 +11,26 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 
 public class MenuDisplayAdapter extends BaseAdapter {
     private Object[] menuValue;
     private Context context;
     private LayoutInflater inflater;
-    //private String quantity;
+    private TreeMap<String,String> quantity;
 
     public MenuDisplayAdapter(Context context, Object[] menuValue){
         this.menuValue = menuValue;
         this.context = context;
         inflater = LayoutInflater.from(context);
         //this.quantity = quantity;
+    }
+
+    public void updateResult(TreeMap<String,String> quan){
+        this.quantity = quan;
+        notifyDataSetChanged();
+
     }
 
     @Override
@@ -61,14 +68,10 @@ public class MenuDisplayAdapter extends BaseAdapter {
 
             textViewName.setText(menuName); //set name of menu
             textViewPrice.setText(menuPrice); //set price of menu
-            textViewQuantity.setText("0");
 
-//            if(GlobalVariable.menuItemQuantity.size() < menuValue.length)
-//                GlobalVariable.menuItemQuantity.put(menuValueArray.get(0),"0");
-////            }else{
-////                textViewQuantity.setText(GlobalVariable.menuItemQuantity.get(menuValueArray.get(0)));
-////            }
-//                textViewQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
+            quantity = GlobalVariable.menuItemQuantity;
+
+            textViewQuantity.setText(quantity.get(menuName));
         }else {
             listView = convertView;
         }
@@ -82,6 +85,8 @@ public class MenuDisplayAdapter extends BaseAdapter {
 
         return listView;
     }
+
+
 
 
 }

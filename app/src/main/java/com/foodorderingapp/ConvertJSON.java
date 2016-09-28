@@ -1,7 +1,5 @@
 package com.foodorderingapp;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,10 +16,10 @@ public class ConvertJSON {
 
     public ConvertJSON(String JSONString, String JSONArray){
         treeMap = new TreeMap<>();
-        convertToHashMap(JSONString, JSONArray);
+        convertToTreeMap(JSONString, JSONArray);
     }
 
-    public void convertToHashMap(String JSONString, String JSONArray){
+    public void convertToTreeMap(String JSONString, String JSONArray){
         try {
             JSONObject jsonObjectRoot = new JSONObject(JSONString);
             JSONArray jsonArray = jsonObjectRoot.getJSONArray(JSONArray);

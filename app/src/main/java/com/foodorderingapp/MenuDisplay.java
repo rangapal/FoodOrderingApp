@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -17,19 +16,19 @@ public class MenuDisplay extends AppCompatActivity {
     ListView listViewMenu;
     Button buttonOrderSummary;
     private final String JSONARRAY = "Menu";
-    String quanity;
-    TreeMap<String, ArrayList<String>> menuTreeMap;
     ArrayList<String> menuDetailArray;
+    TreeMap<String, ArrayList<String>> menuTreeMap;
+    String menuName;
     Object[] menuValues;
-    BaseAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_list_view);
         menuTreeMap = new TreeMap<>();
-        quanity = "0";
+        //quanity = "0";
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
+
 
         Intent intent = getIntent();
 
@@ -55,46 +54,42 @@ public class MenuDisplay extends AppCompatActivity {
         Collection<ArrayList<String>> collection = menuTreeMap.values();
         menuValues = collection.toArray();
 
-        adapter = new MenuDisplayAdapter(MenuDisplay.this, menuValues);
-        listViewMenu.setAdapter(adapter);
+        //
+        for(int i =0; i < menuValues.length;i++)
+        {
+            menuDetailArray = (ArrayList<String>) menuValues[i];
+            menuName = menuDetailArray.get(0);
+            if(!(GlobalVariable.menuItemQuantity.containsKey(menuName)))
+            GlobalVariable.menuItemQuantity.put(menuName,"0");
+        }
+
+        listViewMenu.setAdapter(new MenuDisplayAdapter(MenuDisplay.this, menuValues));
 
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 menuDetailArray = (ArrayList<String>) menuValues[position];
 
-                String menuName = menuDetailArray.get(0);
-                GlobalVariable.menuItemQuantity.put(menuName,quanity);
-
                 Intent menuDetail = new Intent(MenuDisplay.this,MenuDetail.class);
                 menuDetail.putExtra("ClickMenu", menuDetailArray);
 
-                //menuDetail.putExtra("Quantity",quanity);
-                //startActivityForResult(menuDetail, 1);
                 MenuDisplay.this.startActivity(menuDetail);
 
             }
         });
+
     }
 
     public void onClick(View view) {
         Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
 
-        //totalPriceDisplay.putExtra("")
         MenuDisplay.this.startActivity(totalPriceDisplay);
     }
 
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == 1) {
-//            if(resultCode == Activity.RESULT_OK){
-//                quanity = data.getStringExtra("Quantity");
-//                adapter.notifyDataSetChanged();
-//            }
-//            if (resultCode == Activity.RESULT_CANCELED) {
-//                //Write your code if there's no result
-//            }
-//        }
-//    }
+    //refresh the listview when menu quantity is changed
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        listViewMenu.setAdapter(new MenuDisplayAdapter(MenuDisplay.this, menuValues));
+    }
 }
