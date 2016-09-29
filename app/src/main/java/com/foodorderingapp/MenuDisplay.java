@@ -16,19 +16,17 @@ public class MenuDisplay extends AppCompatActivity {
     ListView listViewMenu;
     Button buttonOrderSummary;
     private final String JSONARRAY = "Menu";
-    ArrayList<String> menuDetailArray;
+    private ArrayList<String> menuDetailArray;
     TreeMap<String, ArrayList<String>> menuTreeMap;
-    String menuName;
-    Object[] menuValues;
+    private String menuName;
+    private Object[] menuValues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_list_view);
         menuTreeMap = new TreeMap<>();
-        //quanity = "0";
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
-
 
         Intent intent = getIntent();
 
@@ -54,35 +52,58 @@ public class MenuDisplay extends AppCompatActivity {
         Collection<ArrayList<String>> collection = menuTreeMap.values();
         menuValues = collection.toArray();
 
-        //
+        //putting the menu name and quantity to the menuItemQuantity variable
         for(int i =0; i < menuValues.length;i++)
         {
             menuDetailArray = (ArrayList<String>) menuValues[i];
-            menuName = menuDetailArray.get(0);
+            menuName = menuDetailArray.get(0); // getting the menu name
+            //check if the menu exist in the menuItemQuantity yet
+            //if it does not exsit, set it to zero
             if(!(GlobalVariable.menuItemQuantity.containsKey(menuName)))
             GlobalVariable.menuItemQuantity.put(menuName,"0");
         }
 
+        //set adapter for lsitview
         listViewMenu.setAdapter(new MenuDisplayAdapter(MenuDisplay.this, menuValues));
 
+        //when an item is click from the listview, it goes to menu detail activity
         listViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 menuDetailArray = (ArrayList<String>) menuValues[position];
-
                 Intent menuDetail = new Intent(MenuDisplay.this,MenuDetail.class);
+
+                //passing the details of the menu to menu detail activity
                 menuDetail.putExtra("ClickMenu", menuDetailArray);
-
                 MenuDisplay.this.startActivity(menuDetail);
-
             }
         });
-
     }
 
+    //when viewOrderSummary button is click, it goes to totalprice activity
     public void onClick(View view) {
         Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
 
+        //ArrayList that contains all menu details that is select
+        ArrayList<ArrayList<String>> selectedMenu = new ArrayList<>();
+
+        //loop to get all menu detail
+        for(int i =0; i < menuValues.length;i++) {
+            menuDetailArray = (ArrayList<String>) menuValues[i]; //get the each menu detail
+            menuName = menuDetailArray.get(0); // get menu Name
+
+            // get integer value of the menu
+            int quantity = Integer.parseInt(GlobalVariable.menuItemQuantity.get(menuName));
+
+            //add menu quantity only when the value is greater than 0
+            if(quantity > 0){
+                menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));
+                selectedMenu.add(menuDetailArray);
+            }
+        }
+
+        totalPriceDisplay.putExtra("SelectedMenu", selectedMenu);
         MenuDisplay.this.startActivity(totalPriceDisplay);
     }
 
