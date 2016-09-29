@@ -35,7 +35,6 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
         menuDetails = intent.getStringArrayListExtra("ClickMenu");
         this.setTitle(menuDetails.get(4));
-        //String quantity = intent.getStringExtra("Quantity");
 
         editTextQuantity = (EditText) findViewById(R.id.editTextMenuDetailQuantity);
         buttonPlus = (Button) findViewById(R.id.buttonPlusMenuDetail);
@@ -57,8 +56,6 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
         textViewName.setText(menuName);
         textViewPrice.setText(menuPrice);
         textViewDescription.setText(menuDescription);
-        //editTextQuantity.setText("0");
-
         editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
 
         //set logo of menu
@@ -85,21 +82,12 @@ public class MenuDetail extends AppCompatActivity implements View.OnClickListene
             }
         }
 
+        //when confirm to order is pressed, change the screen back to menu display
         else if(view == buttonOrder){
             GlobalVariable.menuItemQuantity.put(menuName,Integer.toString(quantity));
             onBackPressed();
-            //Intent intent = new Intent(MenuDetail.this,MenuDisplay.class);
-            //MenuDetail.this.startActivity(intent);
-           //Intent returnIntent = new Intent();
-
-//            returnIntent.putExtra("Quantity",Integer.toString(quantity));
-            //setResult(Activity.RESULT_OK,returnIntent);
             finish();
         }
-
-        //Intent newIntent = new Intent(MenuDetail.this, testClass.class);
-        //GetJSON getJSON = new GetJSON(MenuDetail.this,"http://aaacars.co.nz/getMenu.php",testClass.class);
-        //MenuDetail.this.startActivity(newIntent);
     }
 
 
