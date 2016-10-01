@@ -7,13 +7,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by JeffChoi on 19/09/2016.
  */
 public class TotalPriceDisplay extends AppCompatActivity {
     private ListView listViewTotalPrice;
+    private TextView totalPriceNumber;
+    private ArrayList<ArrayList<String>> totalPriceInformation;
+
     private float totalPrice;
 
     String[] name = {
@@ -84,7 +88,11 @@ public class TotalPriceDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.total_price_list_view);
 
-        TextView totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
+        Intent intent = getIntent();
+        //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
+        totalPriceInformation = (ArrayList<ArrayList<String>>) intent.getSerializableExtra("SelectedMenu");
+
+        totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         String totalPriceNumberInString= Float.toString(getTotalPrice(price, quantity));
         totalPriceNumber.setText(totalPriceNumberInString);
 
@@ -103,16 +111,4 @@ public class TotalPriceDisplay extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(data != null){
-            int changedQuantity = data.getIntExtra("changedQuantity", 0);
-            Toast.makeText(this, "Quantity is : " + changedQuantity, Toast.LENGTH_LONG).show();
-        }else{
-            int changedQuantity = data.getIntExtra("changedQuantity", 0);
-            Toast.makeText(this, "There is no value to get", Toast.LENGTH_LONG).show();
-        }
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }
