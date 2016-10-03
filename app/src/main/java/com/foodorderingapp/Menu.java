@@ -11,15 +11,17 @@ public class Menu implements Serializable {
     private String name;
     private String price;
     private String quantity;
-    private Integer imageId;
+    private String description;
+    private String imageId;
 
     public Menu() {
     }
 
-    public Menu(String name, String price, String quantity, Integer imageId){
+    public Menu(String name, String price, String quantity, String description, String imageId){
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.description = description;
         this.imageId = imageId;
     }
 
@@ -53,11 +55,11 @@ public class Menu implements Serializable {
         this.quantity = quantity;
     }
 
-    public Integer getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
-    public void setImageId(Integer imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
     }
 }

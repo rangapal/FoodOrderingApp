@@ -3,8 +3,11 @@ package com.foodorderingapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,16 +56,29 @@ public class TotalPriceDisplay extends AppCompatActivity {
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
         listViewTotalPrice.setAdapter(new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation));
 
-//        listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-//                // Menu class is the container for the intent.
-//                Menu menu = new Menu(name[position], price[position], quantity[position], imageId[position]);
-//                Intent totalPriceDetail = new Intent(TotalPriceDisplay.this, TotalPriceDetail.class);
-//                totalPriceDetail.putExtra("ClickTotalPriceList", menu);
-//                startActivity(totalPriceDetail);
-//            }
-//        });
+        listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Toast.makeText(getApplicationContext(), "click one item : "+position, Toast.LENGTH_SHORT).show();
+                // Menu class is the container for the intent.
+                Menu menu = new Menu(totalPriceInformation.get(position).get(0),
+                        totalPriceInformation.get(position).get(1),
+                        totalPriceInformation.get(position).get(6),
+                        totalPriceInformation.get(position).get(2),
+                        totalPriceInformation.get(position).get(3));
+                Intent totalPriceDetail = new Intent(TotalPriceDisplay.this, TotalPriceDetail.class);
+                totalPriceDetail.putExtra("ClickTotalPriceList", menu);
+                startActivity(totalPriceDetail);
+            }
+        });
+
+        listViewTotalPrice.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "click Long one item : "+position, Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
     }
 
 }

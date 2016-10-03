@@ -39,7 +39,7 @@ public class TotalPriceDetail extends AppCompatActivity {
         textViewName.setText(totalPriceDetails.getName());
         textViewPrice.setText(totalPriceDetails.getPrice());
         editViewQuantity.setText(totalPriceDetails.getQuantity());
-        imageViewIcon.setImageResource(totalPriceDetails.getImageId());
+        //imageViewIcon.setImageResource(totalPriceDetails.getImageId());
 
         changableQuantity = Integer.parseInt(totalPriceDetails.getQuantity());
 

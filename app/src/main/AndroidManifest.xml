@@ -43,7 +43,6 @@
         <activity android:name=".TotalPriceDisplay"></activity>
         <activity android:name=".TotalPriceDetail"></activity>
 
-
     </application>
 
 </manifest>
