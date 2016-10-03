@@ -51,7 +51,7 @@ public class TotalPriceDisplay extends AppCompatActivity {
         totalPriceNumber.setText(totalPriceNumberInString);
 
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
-        listViewTotalPrice.setAdapter(new TotalPriceDisplayAdapter(this, totalPriceInformation));
+        listViewTotalPrice.setAdapter(new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation));
 
 //        listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

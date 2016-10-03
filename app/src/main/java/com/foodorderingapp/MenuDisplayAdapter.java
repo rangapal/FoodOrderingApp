@@ -52,7 +52,7 @@ public class MenuDisplayAdapter extends BaseAdapter {
         if(convertView == null){
             listView = inflater.inflate(R.layout.menu_list_view_layout, parent, false);
             TextView textViewName = (TextView) listView.findViewById(R.id.textViewMenuName);
-            TextView textViewPrice = (TextView) listView.findViewById(R.id.textViewMenuPrice);
+            TextView textViewPrice = (TextView) listView.findViewById(R.id.textViewMenuPriceValue);
             TextView textViewQuantity = (TextView) listView.findViewById(R.id.textViewMenuQuantity);
 
             String menuName = menuValueArray.get(0);

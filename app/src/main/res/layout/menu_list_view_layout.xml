@@ -33,7 +33,7 @@
         android:layout_toRightOf="@+id/imageViewMenu"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="price"
+        android:text="price : $"
         android:textSize="20dp"
         android:textColor="#fa2929" />
 
@@ -44,8 +44,8 @@
         android:ellipsize="end"
         android:maxLines="4"
         android:text="0"
+        android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:textSize="18dp"
         android:layout_alignTop="@+id/textView_Quantity"
         android:layout_toRightOf="@+id/textView_Quantity"
         android:layout_toEndOf="@+id/textView_Quantity"
@@ -56,11 +56,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Qty: "
+        android:text="Qty : "
+        android:textSize="20dp"
         android:id="@+id/textView_Quantity"
         android:textColor="#0d0d0d"
         android:layout_below="@+id/textViewMenuPrice"
         android:layout_alignLeft="@+id/textViewMenuPrice"
         android:layout_alignStart="@+id/textViewMenuPrice" />
+
+    <TextView
+        android:text="000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textViewMenuPrice"
+        android:layout_toRightOf="@+id/textViewMenuPrice"
+        android:layout_toEndOf="@+id/textViewMenuPrice"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:textSize="20dp"
+        android:textColor="#fa2929"
+        android:id="@+id/textViewMenuPriceValue" />
 
 </RelativeLayout>

@@ -1,6 +1,6 @@
 package com.foodorderingapp;
 
-import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +16,11 @@ import java.util.ArrayList;
  * Created by JeffChoi on 19/09/2016.
  */
 public class TotalPriceDisplayAdapter extends BaseAdapter {
-    private Activity context;
+    private Context context;
     private ArrayList<ArrayList<String>> totalPriceInfor;
     private LayoutInflater inflater;
 
-    public TotalPriceDisplayAdapter(Activity context, ArrayList<ArrayList<String>> totalPriceInfor){
+    public TotalPriceDisplayAdapter(Context context, ArrayList<ArrayList<String>> totalPriceInfor){
 
         this.context = context;
         this.totalPriceInfor = totalPriceInfor;
@@ -42,12 +42,12 @@ public class TotalPriceDisplayAdapter extends BaseAdapter {
         View listView;
 
         if(convertView == null){
-            listView= inflater.inflate(R.layout.total_price_list_view_layout, parent, true);
+            listView= inflater.inflate(R.layout.total_price_list_view_layout, parent, false);
 
             //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
             TextView nameMenu = (TextView) listView.findViewById(R.id.textViewNameTotalPriceLayout);
-            TextView priceMenu = (TextView) listView.findViewById(R.id.textViewPriceTotalPriceLayout);
-            TextView quantityMenu = (TextView) listView.findViewById(R.id.textViewQuantityTotalPriceLayout);
+            TextView priceMenu = (TextView) listView.findViewById(R.id.textViewPriceValueTotalPriceLayout);
+            TextView quantityMenu = (TextView) listView.findViewById(R.id.textViewQuantityValueTotalPriceLayout);
             //ImageView imageViewMenu = (ImageView) listView.findViewById(R.id.imageViewTotalPriceLayout);
 
             String menuName = totalPriceInfor.get(position).get(0);

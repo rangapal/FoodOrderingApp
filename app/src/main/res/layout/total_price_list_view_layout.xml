@@ -10,7 +10,7 @@
         android:layout_height="100dp"
         android:layout_centerVertical="true"
         android:layout_margin="5dp"
-        android:background="#444"
+        android:background="@color/abc_search_url_text_normal"
         android:padding="3dp" />
 
     <TextView
@@ -18,9 +18,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:text="title"
-        android:textColor="@android:color/black"
-        android:textSize="15dip"
+        android:text="Menu"
+        android:textColor="#325afb"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageViewTotalPriceLayout"
@@ -29,29 +29,52 @@
 
     <TextView
         android:id="@+id/textViewPriceTotalPriceLayout"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="price"
-        android:textColor="@android:color/black"
-        android:textSize="15dip"
+        android:text="price : $"
+        android:textColor="#fa2929"
+        android:textSize="20dp"
         android:layout_below="@+id/textViewNameTotalPriceLayout"
         android:layout_toRightOf="@+id/imageViewTotalPriceLayout"
         android:layout_toEndOf="@+id/imageViewTotalPriceLayout" />
 
     <TextView
         android:id="@+id/textViewQuantityTotalPriceLayout"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="Quantity"
+        android:text="Qty : "
         android:textColor="@android:color/black"
-        android:textSize="15dip"
+        android:textSize="20dp"
         android:layout_below="@+id/textViewPriceTotalPriceLayout"
         android:layout_toRightOf="@+id/imageViewTotalPriceLayout"
         android:layout_toEndOf="@+id/imageViewTotalPriceLayout" />
+
+    <TextView
+        android:text="000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewPriceValueTotalPriceLayout"
+        android:textColor="#fa2929"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textViewPriceTotalPriceLayout"
+        android:layout_toRightOf="@+id/textViewPriceTotalPriceLayout"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="@android:color/black"
+        android:layout_alignTop="@+id/textViewQuantityTotalPriceLayout"
+        android:layout_toRightOf="@+id/textViewQuantityTotalPriceLayout"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/textViewQuantityValueTotalPriceLayout" />
 
 
 </RelativeLayout>
