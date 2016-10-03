@@ -48,7 +48,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
         }
         else if(v == buttonOrder){
 
-            ConnectDB connectDB = new ConnectDB(
+            ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
                     testClass.this,"http://aaacars.co.nz/getRestaurant.php",initiateRestaurantDisplay(),"none");
             connectDB.execute();
         }

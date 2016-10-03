@@ -60,7 +60,7 @@ public class RestaurantDetail extends AppCompatActivity {
         //this string is pass to menu activity so we know which restaurant is select
         //then we can populate the menu of that restaurant
 
-        ConnectDB connectDB = new ConnectDB(
+        ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
                 RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",initiateMenuDisplay(),restaurantName);
         connectDB.execute();
 

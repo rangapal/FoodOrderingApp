@@ -19,14 +19,14 @@ import java.net.URLEncoder;
  * Created by User on 10/3/2016.
  */
 
-public class ConnectDB extends AsyncTask<String, Void, String> {
+public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
     private String jsonURL;
     private String post;
     private Context context;
     private AsyncResponse asyncResponse;
     ProgressDialog loading;
 
-    public ConnectDB(Context context, String jsonURL, AsyncResponse asyncResponse, String post){
+    public ConnectAndRetrieveDB(Context context, String jsonURL, AsyncResponse asyncResponse, String post){
         this.post = post;
         this.context = context;
         this.asyncResponse = asyncResponse;
