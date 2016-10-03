@@ -3,22 +3,21 @@ package com.foodorderingapp;
 /**
  * Created by User on 9/21/2016.
  */
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.squareup.picasso.Picasso;
+
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
+import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends Fragment {
     private ImageView profile_pic = null;
@@ -42,7 +41,6 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Bundle bundle = getArguments();
 
-
         if(bundle!=null){
             profile = (Profile) bundle.getParcelable(LoginFragment.PARCEL_KEY);
         }else{
@@ -50,9 +48,6 @@ public class HomeFragment extends Fragment {
         }
         tv.setText("Welcome \n" + profile.getName());
         Picasso.with(getActivity()).load(profile.getProfilePictureUri(400,400).toString()).into(profile_pic);
-
-
-
 
         logoutButton.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {

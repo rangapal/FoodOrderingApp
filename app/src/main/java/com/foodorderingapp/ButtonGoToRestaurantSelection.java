@@ -16,9 +16,8 @@ public class ButtonGoToRestaurantSelection extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        //this is a button
-        button = (Button)findViewById(R.id.buttonGet);
-
+        //button change
+        button = (Button)findViewById(R.id.buttonOrder);
     }
 
     public void onClick(View view) {
@@ -26,7 +25,7 @@ public class ButtonGoToRestaurantSelection extends AppCompatActivity{
 //        Intent intent = new Intent(testClass.this, homeFragment.getClass());
 //        testClass.this.startActivity(intent);
 
-        GetJSON getJSON = new GetJSON(ButtonGoToRestaurantSelection.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
+//        GetJSON getJSON = new GetJSON(ButtonGoToRestaurantSelection.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
 
 
         //String s = getJSON.getJsonString();

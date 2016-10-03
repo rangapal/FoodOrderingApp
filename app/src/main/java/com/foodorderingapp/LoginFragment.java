@@ -4,12 +4,10 @@ package com.foodorderingapp;
  * Created by User on 9/22/2016.
  */
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,16 +75,18 @@ public class LoginFragment extends Fragment {
 
     private void homeFragment(Profile profile){
         if(profile!=null){
-            Bundle mBundle = new Bundle();
-            mBundle.putParcelable(PARCEL_KEY,profile);
-            HomeFragment hf = new HomeFragment();
-            hf.setArguments(mBundle);
-
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            fragmentTransaction.replace(R.id.mainContainer, new HomeFragment());
-            fragmentTransaction.commit();
+            Intent intent = new Intent(getActivity(), testClass.class);
+            startActivity(intent);
+            //Bundle mBundle = new Bundle();
+            //mBundle.putParcelable(PARCEL_KEY,profile);
+//            HomeFragment hf = new HomeFragment();
+//            hf.setArguments(mBundle);
+//
+//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//            fragmentTransaction.replace(R.id.mainContainer, new HomeFragment());
+//            fragmentTransaction.commit();
         }
     }
 
@@ -133,7 +133,13 @@ public class LoginFragment extends Fragment {
             loginButton.setVisibility(View.INVISIBLE);
             Profile profile = Profile.getCurrentProfile();
             homeFragment(profile);
+
         }
+//        if(isLoggedIn()){
+//            loginButton.setVisibility(View.INVISIBLE);
+//            Profile profile = Profile.getCurrentProfile();
+//            homeFragment(profile);
+//        }
     }
 
 
