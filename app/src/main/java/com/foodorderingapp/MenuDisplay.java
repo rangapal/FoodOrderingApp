@@ -83,28 +83,31 @@ public class MenuDisplay extends AppCompatActivity {
 
     //when viewOrderSummary button is click, it goes to totalprice activity
     public void onClick(View view) {
-        Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
+        if(view == buttonOrderSummary){
+            Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
 
-        //ArrayList that contains all menu details that is select
-        ArrayList<ArrayList<String>> selectedMenu = new ArrayList<>();
+            //ArrayList that contains all menu details that is select
+            ArrayList<ArrayList<String>> selectedMenu = new ArrayList<>();
 
-        //loop to get all menu detail
-        for(int i =0; i < menuValues.length;i++) {
-            menuDetailArray = (ArrayList<String>) menuValues[i]; //get the each menu detail
-            menuName = menuDetailArray.get(0); // get menu Name
+            //loop to get all menu detail
+            for(int i =0; i < menuValues.length;i++) {
+                menuDetailArray = (ArrayList<String>) menuValues[i]; //get the each menu detail
+                menuName = menuDetailArray.get(0); // get menu Name
 
-            // get integer value of the menu
-            int quantity = Integer.parseInt(GlobalVariable.menuItemQuantity.get(menuName));
+                // get integer value of the menu
+                int quantity = Integer.parseInt(GlobalVariable.menuItemQuantity.get(menuName));
 
-            //add menu quantity only when the value is greater than 0
-            if(quantity > 0){
-                menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));
-                selectedMenu.add(menuDetailArray);
+                //add menu quantity only when the value is greater than 0
+                if(quantity > 0){
+                    menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));
+                    selectedMenu.add(menuDetailArray);
+                }
             }
+
+            totalPriceDisplay.putExtra("SelectedMenu", selectedMenu);
+            MenuDisplay.this.startActivity(totalPriceDisplay);
         }
 
-        totalPriceDisplay.putExtra("SelectedMenu", selectedMenu);
-        MenuDisplay.this.startActivity(totalPriceDisplay);
     }
 
     //refresh the listview when menu quantity is changed
