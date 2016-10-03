@@ -57,14 +57,28 @@ public class RestaurantDetail extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        //Intent newIntent = new Intent(RestaurantDetail.this, MenuDisplay.class);
-
-        //this string is pass to menu activity so we know restaurant is select
+        //this string is pass to menu activity so we know which restaurant is select
         //then we can populate the menu of that restaurant
-        //newIntent.putExtra("restaurantName", restaurantName);
-        GetJSON getJSON = new GetJSON(RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",MenuDisplay.class,restaurantName);
-        //GlobalVariable globalVariable= new GlobalVariable();
 
-        //RestaurantDetail.this.startActivity(newIntent);
+        ConnectDB connectDB = new ConnectDB(
+                RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",initiateMenuDisplay(),restaurantName);
+        connectDB.execute();
+
+        //GetJSON getJSON = new GetJSON(RestaurantDetail.this,"http://aaacars.co.nz/getMenu.php",MenuDisplay.class,restaurantName);
+    }
+
+    private AsyncResponse initiateMenuDisplay(){
+        AsyncResponse asyncResponse = new AsyncResponse() {
+            @Override
+            public void onTaskComplete(Object object) {
+                String s = (String) object;
+                Intent intent = new Intent(RestaurantDetail.this, MenuDisplay.class);
+                intent.putExtra("JSONString", s);
+                intent.putExtra("restaurantID",restaurantName);
+                startActivity(intent);
+            }
+        };
+
+        return asyncResponse;
     }
 }

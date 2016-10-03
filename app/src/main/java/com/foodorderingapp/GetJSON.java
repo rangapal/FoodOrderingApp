@@ -29,7 +29,6 @@ public class GetJSON {
     private String post;
     //private URL url;
     //private HttpURLConnection con;
-
     //TextView textView;
 
     public GetJSON(Context context, String jsonURL, Class<?> cls, String post){
@@ -42,8 +41,9 @@ public class GetJSON {
     }
 
     private void getJSON(){
-        class RetrieveJSON extends AsyncTask<String, Void, String> {
+        class RetrieveJSON extends AsyncTask<String, Void, String>  {
             ProgressDialog loading;
+            public AsyncResponse delegate = null;
 
             @Override
             protected void onPreExecute() {
@@ -83,17 +83,6 @@ public class GetJSON {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-
-                if(post != null){
-                    String user = checkUser(s);
-
-                    if(user.equals("admin")){
-                        cls = testClass.class;
-                    }
-                    else if(user.equals("newUser")){
-                        cls = UserDetails.class;
-                    }
-                }
 
                 Intent intent = new Intent(context, cls);
                 intent.putExtra("JSONString", s);
@@ -150,7 +139,7 @@ public class GetJSON {
     public String checkUser(String JSONString){
         ConvertJSON convertJSON = new ConvertJSON(JSONString, "User");
         TreeMap<String, ArrayList<String>> userDetailTreeMap = convertJSON.getTreeMap();
-        String ID = GlobalVariable.profile.getId();
+        String ID = post;
 
         String permission;
 
@@ -165,12 +154,6 @@ public class GetJSON {
         }
 
         return permission;
-
-
-
-
-
-
     }
 
 

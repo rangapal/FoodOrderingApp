@@ -17,8 +17,7 @@ public class ButtonGoToRestaurantSelection extends AppCompatActivity{
         setContentView(R.layout.activity_test);
 
         //button change
-        button = (Button)findViewById(R.id.buttonGet);
-
+        button = (Button)findViewById(R.id.buttonOrder);
     }
 
     public void onClick(View view) {
