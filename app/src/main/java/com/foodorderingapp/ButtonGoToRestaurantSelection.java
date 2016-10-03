@@ -26,7 +26,7 @@ public class ButtonGoToRestaurantSelection extends AppCompatActivity{
 //        Intent intent = new Intent(testClass.this, homeFragment.getClass());
 //        testClass.this.startActivity(intent);
 
-        GetJSON getJSON = new GetJSON(ButtonGoToRestaurantSelection.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
+//        GetJSON getJSON = new GetJSON(ButtonGoToRestaurantSelection.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
 
 
         //String s = getJSON.getJsonString();

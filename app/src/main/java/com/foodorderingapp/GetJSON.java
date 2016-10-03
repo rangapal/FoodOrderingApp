@@ -3,10 +3,7 @@ package com.foodorderingapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,6 +15,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 /**
  * Created by User on 9/18/2016.
@@ -85,6 +84,17 @@ public class GetJSON {
                 super.onPostExecute(s);
                 loading.dismiss();
 
+                if(post != null){
+                    String user = checkUser(s);
+
+                    if(user.equals("admin")){
+                        cls = testClass.class;
+                    }
+                    else if(user.equals("newUser")){
+                        cls = UserDetails.class;
+                    }
+                }
+
                 Intent intent = new Intent(context, cls);
                 intent.putExtra("JSONString", s);
                 if(post != null){
@@ -136,6 +146,33 @@ public class GetJSON {
 
         return sb.toString().trim();
     }
+
+    public String checkUser(String JSONString){
+        ConvertJSON convertJSON = new ConvertJSON(JSONString, "User");
+        TreeMap<String, ArrayList<String>> userDetailTreeMap = convertJSON.getTreeMap();
+        String ID = GlobalVariable.profile.getId();
+
+        String permission;
+
+        if(userDetailTreeMap.containsKey(ID)){
+            //The value in arrayList is in the following order
+            //ID, firstName, lastName, age, address, permission
+            ArrayList<String> userDetails = userDetailTreeMap.get(ID);
+            permission = userDetails.get(5); // get user permission
+        }
+        else{
+            permission = "newUser";
+        }
+
+        return permission;
+
+
+
+
+
+
+    }
+
 
 
 }

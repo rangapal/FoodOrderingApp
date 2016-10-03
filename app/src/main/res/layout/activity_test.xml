@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get"
+        android:text="admin"
         android:id="@+id/buttonGet"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

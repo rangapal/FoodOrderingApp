@@ -1,5 +1,7 @@
 package com.foodorderingapp;
 
+import com.facebook.Profile;
+
 import java.util.TreeMap;
 
 /**
@@ -7,4 +9,5 @@ import java.util.TreeMap;
  */
 public class GlobalVariable {
     public static TreeMap<String,String> menuItemQuantity = new TreeMap<>();
+    public static Profile profile = null;
 }
