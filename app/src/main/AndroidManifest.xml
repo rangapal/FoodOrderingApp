@@ -44,6 +44,7 @@
         <activity android:name=".testClass"></activity>
         <activity android:name=".TotalPriceDetail"></activity>
         <activity android:name=".TotalPriceDisplay"></activity>
+        <activity android:name=".Welcome"></activity>
 
 
 

@@ -18,7 +18,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        buttonLogOut = (Button)findViewById(R.id.buttonLogOut);
+        buttonLogOut = (Button)findViewById(R.id.buttonLogOutTest);
         buttonOrder = (Button)findViewById(R.id.buttonOrder);
         buttonUser = (Button)findViewById(R.id.buttonUser);
 
