@@ -102,9 +102,9 @@ public class MenuDisplay extends AppCompatActivity {
                     // if the quantity is not in the arraylist, add it to arraylist
                     // else set the quantity with new value
                     if(menuDetailArray.size() == 6)
-                    menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));
+                        menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));
                     else
-                    menuDetailArray.set(6,GlobalVariable.menuItemQuantity.get(menuName));
+                        menuDetailArray.set(6,GlobalVariable.menuItemQuantity.get(menuName));
                     selectedMenu.add(menuDetailArray);
                 }
             }
