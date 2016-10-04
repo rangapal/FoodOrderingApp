@@ -60,7 +60,7 @@ public class MenuDisplayAdapter extends BaseAdapter {
             String quantity = GlobalVariable.menuItemQuantity.get(menuName);
 
             textViewName.setText(menuName); //set name of menu
-            textViewPrice.setText(menuPrice); //set price of menu
+            textViewPrice.setText("$ "+menuPrice); //set price of menu
             textViewQuantity.setText(quantity); //set quantity of menu
         }else {
             listView = convertView;

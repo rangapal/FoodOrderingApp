@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="price : $"
+        android:text="price :"
         android:textColor="#fa2929"
         android:textSize="20dp"
         android:layout_below="@+id/textViewNameTotalPriceLayout"

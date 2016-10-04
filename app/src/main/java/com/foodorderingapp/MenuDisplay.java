@@ -89,6 +89,10 @@ public class MenuDisplay extends AppCompatActivity {
             //ArrayList that contains all menu details that is select
             ArrayList<ArrayList<String>> selectedMenu = new ArrayList<>();
 
+            if(selectedMenu.size() != 0){
+               selectedMenu.clear();
+            }
+
             //loop to get all menu detail
             for(int i =0; i < menuValues.length;i++) {
                 menuDetailArray = (ArrayList<String>) menuValues[i]; //get the each menu detail
