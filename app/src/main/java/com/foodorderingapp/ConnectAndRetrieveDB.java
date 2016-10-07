@@ -21,9 +21,9 @@ import java.net.URLEncoder;
 
 public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
     private String jsonURL;
-    private String post;
+    private String post; //
     private Context context;
-    private AsyncResponse asyncResponse;
+    private AsyncResponse asyncResponse; //An interface
     ProgressDialog loading;
 
     public ConnectAndRetrieveDB(Context context, String jsonURL, AsyncResponse asyncResponse, String post){
@@ -39,7 +39,6 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
         loading = ProgressDialog.show(context, "Please Wait...", null, true, true);
     }
 
-
     @Override
     protected String doInBackground(String... params) {
         return getJSONData();
@@ -49,6 +48,8 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         loading.dismiss();
+        //need to implement the onTaskComplete method when using this class
+        //since asyncResponse is an interface
         asyncResponse.onTaskComplete(s);
     }
 
@@ -58,6 +59,7 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
             String data = URLEncoder.encode("restaurant", "UTF-8")
                     + "=" + URLEncoder.encode(post, "UTF-8");
 
+            //open connection to database
             URL url = new URL(jsonURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
@@ -67,8 +69,7 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
             //Creating an output stream
             OutputStream os = con.getOutputStream();
 
-            //Writing parameters to the request
-            //We are using a method getPostDataString which is defined below
+            //Writing data to php file on database
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
             writer.write(data);
@@ -76,8 +77,8 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
             writer.close();
             os.close();
 
+            //read from database and get the JSONString
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
             String json;
             while ((json = bufferedReader.readLine()) != null) {
                 sb.append(json + "\n");
@@ -87,8 +88,7 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
+        //this is the JSONString
         return sb.toString().trim();
     }
 }
