@@ -9,13 +9,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TotalPriceDetail extends AppCompatActivity {
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+public class TotalPriceDetail extends AppCompatActivity implements View.OnClickListener {
+
     TextView textViewName;
+    TextView textViewDescription;
     TextView textViewPrice;
-    EditText editViewQuantity;
     ImageView imageViewIcon;
-    Button buttonConfirm;
-    int changableQuantity;
+    Button buttonPlus;
+    Button buttonMinus;
+    Button buttonOrder;
+    String menuName;
+    String menuPrice;
+    String menuDescription;
+    EditText editTextQuantity;
+    ArrayList<String> totalPrieDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,31 +36,63 @@ public class TotalPriceDetail extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Value is the following order
-        ////name, price, quantity, image
-        Menu totalPriceDetails = (Menu) intent.getSerializableExtra("ClickTotalPriceList");
+        //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID, quantity
+        totalPrieDetail = intent.getStringArrayListExtra("ClickTotalPriceList");
+        this.setTitle(totalPrieDetail.get(4));
 
+        editTextQuantity = (EditText) findViewById(R.id.editTextTotalPriceDetailQuantity);
+        buttonPlus = (Button) findViewById(R.id.buttonForPlus);
+        buttonMinus = (Button) findViewById(R.id.buttonForMinus);
+        buttonOrder = (Button) findViewById(R.id.buttonTotalPriceDetailOrder);
         textViewName = (TextView)findViewById(R.id.textViewTotalPriceDetailName);
+        textViewDescription = (TextView) findViewById(R.id.textViewTotalPriceDetailDescription);
+        imageViewIcon = (ImageView)findViewById(R.id.imageViewToTalPriceDetail);
         textViewPrice = (TextView) findViewById(R.id.textViewTotalPriceDetailPriceNumber);
-        //editViewQuantity = (EditText) findViewById(R.id.editTextTotalPriceDetailQuantity);
-        imageViewIcon = (ImageView) findViewById(R.id.imageViewToTalPriceDetail);
-        //buttonConfirm = (Button) findViewById(R.id.buttonTotalPriceDetail);
 
-        //buttonConfirm.setOnClickListener(this);
+        buttonPlus.setOnClickListener(this);
+        buttonMinus.setOnClickListener(this);
+        buttonOrder.setOnClickListener(this);
 
-        textViewName.setText(totalPriceDetails.getName());
-        textViewPrice.setText("$ " + totalPriceDetails.getPrice());
-        editViewQuantity.setText(totalPriceDetails.getQuantity());
-        //imageViewIcon.setImageResource(totalPriceDetails.getImageId());
+        menuName = totalPrieDetail.get(0);
+        menuPrice = totalPrieDetail.get(1);
+        menuDescription = totalPrieDetail.get(2);
 
-        changableQuantity = Integer.parseInt(totalPriceDetails.getQuantity());
+        textViewName.setText(menuName);
+        textViewPrice.setText(menuPrice);
+        textViewDescription.setText(menuDescription);
+        editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
+
+        //set logo of menu
+        Picasso.with(TotalPriceDetail.this)
+                .load(totalPrieDetail.get(3))
+                .fit() // will explain later
+                .centerInside()
+                .into(imageViewIcon);
 
     }
-    // this doesn't work so far...
-    public void onButtonConfirm(View v){
-        Intent intent = new Intent();
-        intent.putExtra("changedQuantity", changableQuantity);
-        setResult(RESULT_OK, intent);
+    @Override
+    public void onClick(View v) {
+        int quantity = Integer.parseInt(editTextQuantity.getText().toString());
 
-        finish();
+        if(v == buttonPlus){
+            quantity++;
+            editTextQuantity.setText(Integer.toString(quantity));
+
+        }
+
+        else if(v == buttonMinus){
+            if (quantity>0){
+                quantity--;
+                editTextQuantity.setText(Integer.toString(quantity));
+            }
+        }
+
+        //when confirm to order is pressed, change the screen back to menu display
+        else if(v == buttonOrder){
+            GlobalVariable.menuItemQuantity.put(menuName,Integer.toString(quantity));
+            onBackPressed();
+            finish();
+        }
     }
+
 }
