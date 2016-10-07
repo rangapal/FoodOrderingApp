@@ -30,14 +30,14 @@ public class TotalPriceDetail extends AppCompatActivity {
 
         textViewName = (TextView)findViewById(R.id.textViewTotalPriceDetailName);
         textViewPrice = (TextView) findViewById(R.id.textViewTotalPriceDetailPriceNumber);
-        editViewQuantity = (EditText) findViewById(R.id.editTextTotalPriceDetailQuantity);
+        //editViewQuantity = (EditText) findViewById(R.id.editTextTotalPriceDetailQuantity);
         imageViewIcon = (ImageView) findViewById(R.id.imageViewToTalPriceDetail);
-        buttonConfirm = (Button) findViewById(R.id.buttonTotalPriceDetail);
+        //buttonConfirm = (Button) findViewById(R.id.buttonTotalPriceDetail);
 
         //buttonConfirm.setOnClickListener(this);
 
         textViewName.setText(totalPriceDetails.getName());
-        textViewPrice.setText(totalPriceDetails.getPrice());
+        textViewPrice.setText("$ " + totalPriceDetails.getPrice());
         editViewQuantity.setText(totalPriceDetails.getQuantity());
         //imageViewIcon.setImageResource(totalPriceDetails.getImageId());
 

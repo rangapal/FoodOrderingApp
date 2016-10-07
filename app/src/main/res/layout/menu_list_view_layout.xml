@@ -33,7 +33,7 @@
         android:layout_toRightOf="@+id/imageViewMenu"
         android:ellipsize="end"
         android:maxLines="4"
-        android:text="price : $"
+        android:text="price :"
         android:textSize="20dp"
         android:textColor="#fa2929" />
 

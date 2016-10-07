@@ -55,7 +55,7 @@ public class TotalPriceDisplayAdapter extends BaseAdapter {
             String menuQuantity = totalPriceInfor.get(position).get(6);
 
             nameMenu.setText(menuName);
-            priceMenu.setText(menuPrice);
+            priceMenu.setText("$ "+menuPrice);
             quantityMenu.setText(menuQuantity);
 
         }else{
