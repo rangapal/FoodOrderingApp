@@ -157,11 +157,11 @@ public class LoginFragment extends Fragment {
 
                 //go to user detail page for new user to input their details
                 if(isNewUser(s)){
-                    intent = new Intent(getContext(), UserDetails.class);
+                    intent = new Intent(getContext(), FirstTimeUser.class);
                 }else{
-                    //go to Welcome page for admin
+                    //go to RestaurantOwnerPage page for admin
                     if(isAdmin(s)){
-                        intent = new Intent(getContext(), Welcome.class);
+                        intent = new Intent(getContext(), RestaurantOwnerPage.class);
                     }else{ // go to restaurant selection page for current user
                         intent = new Intent(getContext(), testClass.class);
                     }

@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         }else{
             profile = Profile.getCurrentProfile();
         }
-        tv.setText("Welcome \n" + profile.getName());
+        tv.setText("RestaurantOwnerPage \n" + profile.getName());
         Picasso.with(getActivity()).load(profile.getProfilePictureUri(400,400).toString()).into(profile_pic);
 
         logoutButton.setOnClickListener(new View.OnClickListener(){

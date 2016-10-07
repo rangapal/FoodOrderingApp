@@ -12,7 +12,7 @@ import com.facebook.login.LoginManager;
  * Created by User on 10/4/2016.
  */
 
-public class Welcome extends AppCompatActivity {
+public class RestaurantOwnerPage extends AppCompatActivity {
     Button buttonLogOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class Welcome extends AppCompatActivity {
 
     public void onClick(View view) {
         LoginManager.getInstance().logOut();
-        Intent intent = new Intent(Welcome.this,Login.class);
+        Intent intent = new Intent(RestaurantOwnerPage.this,Login.class);
         startActivity(intent);
     }
 }

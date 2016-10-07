@@ -40,11 +40,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserDetails"></activity>
+        <activity android:name=".FirstTimeUser"></activity>
         <activity android:name=".testClass"></activity>
         <activity android:name=".TotalPriceDetail"></activity>
         <activity android:name=".TotalPriceDisplay"></activity>
-        <activity android:name=".Welcome"></activity>
+        <activity android:name=".RestaurantOwnerPage"></activity>
 
 
 

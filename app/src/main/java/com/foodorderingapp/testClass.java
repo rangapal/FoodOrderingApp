@@ -53,7 +53,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
             connectDB.execute();
         }
         else if(v == buttonUser){
-            Intent intent = new Intent(testClass.this,UserDetails.class);
+            Intent intent = new Intent(testClass.this,FirstTimeUser.class);
             startActivity(intent);
 
         }

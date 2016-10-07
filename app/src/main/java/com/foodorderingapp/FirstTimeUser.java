@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by User on 10/3/2016.
  */
 
-public class UserDetails extends AppCompatActivity {
+public class FirstTimeUser extends AppCompatActivity {
     Button buttonSave;
     EditText editTextName;
     EditText editTextAddress;
@@ -28,7 +28,7 @@ public class UserDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_detail);
+        setContentView(R.layout.first_time_user);
         buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
         editTextAddress = (EditText) findViewById(R.id.editTextAddress);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
@@ -57,10 +57,10 @@ public class UserDetails extends AppCompatActivity {
         dataToWrite.add(editTextAddress.getText().toString());
         dataToWrite.add(permission);
 
-        WriteToDatabase writeToDatabase = new WriteToDatabase(columnName,dataToWrite,url,UserDetails.this);
+        WriteToDatabase writeToDatabase = new WriteToDatabase(columnName,dataToWrite,url,FirstTimeUser.this);
         writeToDatabase.write();
 
-        Intent intent = new Intent(UserDetails.this, testClass.class);
+        Intent intent = new Intent(FirstTimeUser.this, testClass.class);
         startActivity(intent);
     }
 }
