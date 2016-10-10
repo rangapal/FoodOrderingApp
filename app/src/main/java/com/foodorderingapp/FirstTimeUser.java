@@ -17,7 +17,8 @@ import java.util.ArrayList;
 
 public class FirstTimeUser extends AppCompatActivity {
     Button buttonSave;
-    EditText editTextName;
+    EditText editTextFirstName;
+    EditText editTextLastName;
     EditText editTextAddress;
     EditText editTextAge;
     String permission;
@@ -30,9 +31,11 @@ public class FirstTimeUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_time_user);
         buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
+        editTextFirstName = (EditText) findViewById(R.id.etFirstTimeUserFirstName);
+        editTextLastName = (EditText) findViewById(R.id.etFirstTimeUserLastName);
         editTextAddress = (EditText) findViewById(R.id.editTextAddress);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
-        editTextName = (EditText) findViewById(R.id.etFirstTimeUserFirstName);
+
 
         Profile profile = Profile.getCurrentProfile();
         ID = profile.getId();
@@ -50,9 +53,10 @@ public class FirstTimeUser extends AppCompatActivity {
     public void onClick(View view) {
         ArrayList<String> dataToWrite = new ArrayList<>();
         dataToWrite.add(ID);
-        dataToWrite.add(editTextName.getText().toString());
+        dataToWrite.add(editTextFirstName.getText().toString());
+        dataToWrite.add(editTextLastName.getText().toString());
         //Log.d("Text is", editTextName.getText().toString());
-        dataToWrite.add("there");
+        //dataToWrite.add("there");
         dataToWrite.add(editTextAge.getText().toString());
         dataToWrite.add(editTextAddress.getText().toString());
         dataToWrite.add(permission);
