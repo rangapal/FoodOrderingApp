@@ -86,12 +86,8 @@ public class MenuDisplay extends AppCompatActivity {
         if(view == buttonOrderSummary){
             Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
 
-            //ArrayList that contains all menu details that is select
+            //ArrayList that contains all menu details that is selected
             ArrayList<ArrayList<String>> selectedMenu = new ArrayList<>();
-
-            if(selectedMenu.size() != 0){
-               selectedMenu.clear();
-            }
 
             //loop to get all menu detail
             for(int i =0; i < menuValues.length;i++) {
@@ -113,7 +109,7 @@ public class MenuDisplay extends AppCompatActivity {
                 }
             }
 
-            totalPriceDisplay.putExtra("SelectedMenu", selectedMenu);
+            GlobalVariable.selectedMenuQuantity = selectedMenu;
             MenuDisplay.this.startActivity(totalPriceDisplay);
         }
 
