@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -47,46 +46,44 @@ public class TotalPriceDisplay extends AppCompatActivity {
         listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                Toast.makeText(getApplicationContext(), "click one item : "+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "click one item : "+position, Toast.LENGTH_SHORT).show();
 
                 totalPriceDetail = totalPriceInformation.get(position);
 
-                // Menu class is the container for the intent.
-//                Menu menu = new Menu(totalPriceInformation.get(position).get(0),
-//                        totalPriceInformation.get(position).get(1),
-//                        totalPriceInformation.get(position).get(6),
-//                        totalPriceInformation.get(position).get(2),
-//                        totalPriceInformation.get(position).get(3));
-                Intent totalPriceDetail = new Intent(TotalPriceDisplay.this, TotalPriceDetail.class);
-                totalPriceDetail.putExtra("ClickTotalPriceList", totalPriceDetail);
-                startActivity(totalPriceDetail);
+                Intent totalPriceDetailintent = new Intent(TotalPriceDisplay.this, TotalPriceDetail.class);
+                totalPriceDetailintent.putExtra("ClickTotalPriceList", totalPriceDetail);
+                startActivity(totalPriceDetailintent);
             }
         });
 
-        listViewTotalPrice.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "click Long one item : "+position, Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+//        listViewTotalPrice.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getApplicationContext(), "click Long one item : "+position, Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
+//        });
     }
 
     public void setDetail(){
-        Intent intent = getIntent();
+        //this is an arrayList of arraylist of String
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID, quantity
-        totalPriceInformation = (ArrayList<ArrayList<String>>) intent.getSerializableExtra("SelectedMenu");
+        totalPriceInformation = GlobalVariable.selectedMenuQuantity;
 
         stringPrice = new ArrayList<>();
         stringQuantity = new ArrayList<>();
 
+        //loop to update all the menu informations
         for(int i = 0; i < totalPriceInformation.size(); i++){
-            stringPrice.add(totalPriceInformation.get(i).get(1));
-            stringQuantity.add(totalPriceInformation.get(i).get(6));
+            stringPrice.add(totalPriceInformation.get(i).get(1)); // 1 here is the menuPrice for selected menu
+            stringQuantity.add(totalPriceInformation.get(i).get(6));// 6 here is the quantity for selected menu
         }
 
+        //update the total price and display it
         String totalPriceNumberInString= Float.toString(getTotalPrice(stringPrice, stringQuantity));
         totalPriceNumber.setText(totalPriceNumberInString);
+
+        //update the adapter
         listViewTotalPrice.setAdapter(new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation));
     }
 
