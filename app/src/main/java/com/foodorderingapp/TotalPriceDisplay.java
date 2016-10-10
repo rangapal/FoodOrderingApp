@@ -122,9 +122,7 @@ public class TotalPriceDisplay extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 GlobalVariable.selectedMenuQuantity.remove(deletePosition);
-
-                adapter.notifyDataSetChanged();
-                adapter.notifyDataSetInvalidated();
+                setDetail();
             }
         });
 
