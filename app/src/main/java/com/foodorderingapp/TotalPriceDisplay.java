@@ -1,12 +1,16 @@
 package com.foodorderingapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +21,7 @@ public class TotalPriceDisplay extends AppCompatActivity {
     private ListView listViewTotalPrice;
     private TextView totalPriceNumber;
     private ArrayList<ArrayList<String>> totalPriceInformation;
+    private BaseAdapter adapter;
     ArrayList<String> stringPrice;
     ArrayList<String> stringQuantity;
     ArrayList<String> totalPriceDetail;
@@ -38,6 +43,8 @@ public class TotalPriceDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.total_price_list_view);
 
+
+        this.setTitle("Total Price page");
         totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
 
@@ -56,13 +63,20 @@ public class TotalPriceDisplay extends AppCompatActivity {
             }
         });
 
-//        listViewTotalPrice.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getApplicationContext(), "click Long one item : "+position, Toast.LENGTH_SHORT).show();
-//                return true;
-//            }
-//        });
+        listViewTotalPrice.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                // to call method to delete an item from list view.
+
+                int currentPosition = position;
+
+                removeItemFromList(position);
+                Toast.makeText(getApplicationContext(), "the menu is deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+
+        });
     }
 
     public void setDetail(){
@@ -84,7 +98,8 @@ public class TotalPriceDisplay extends AppCompatActivity {
         totalPriceNumber.setText(totalPriceNumberInString);
 
         //update the adapter
-        listViewTotalPrice.setAdapter(new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation));
+        adapter = new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation);
+        listViewTotalPrice.setAdapter(adapter);
     }
 
     //refresh the listview when menu quantity is changed
@@ -92,6 +107,35 @@ public class TotalPriceDisplay extends AppCompatActivity {
     public void onRestart(){
         super.onRestart();
         setDetail();
+    }
+
+    // to delete an item from listView
+    protected void removeItemFromList(int position) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(TotalPriceDisplay.this);
+
+        final int deletePosition = position;
+
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete this item?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GlobalVariable.selectedMenuQuantity.remove(deletePosition);
+
+                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetInvalidated();
+            }
+        });
+
+        alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
+
     }
 
 }

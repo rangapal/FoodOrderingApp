@@ -58,7 +58,7 @@ public class TotalPriceDetail extends AppCompatActivity implements View.OnClickL
         menuDescription = totalPrieDetail.get(2);
 
         textViewName.setText(menuName);
-        textViewPrice.setText(menuPrice);
+        textViewPrice.setText("$" + menuPrice);
         textViewDescription.setText(menuDescription);
         editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
 

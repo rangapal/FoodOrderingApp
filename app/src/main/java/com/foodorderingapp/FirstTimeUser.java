@@ -33,8 +33,8 @@ public class FirstTimeUser extends AppCompatActivity {
         buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
         editTextFirstName = (EditText) findViewById(R.id.etFirstTimeUserFirstName);
         editTextLastName = (EditText) findViewById(R.id.etFirstTimeUserLastName);
-        editTextAddress = (EditText) findViewById(R.id.editTextAddress);
-        editTextAge = (EditText) findViewById(R.id.editTextAge);
+        editTextAddress = (EditText) findViewById(R.id.etFirstTimeUserAddress);
+        editTextAge = (EditText) findViewById(R.id.etFirstTimeUserAge);
 
 
         Profile profile = Profile.getCurrentProfile();
