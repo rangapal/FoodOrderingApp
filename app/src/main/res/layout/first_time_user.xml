@@ -82,7 +82,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/etFirstTimeUserAddress"
         android:hint="Enter Your Address"
@@ -107,14 +107,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/etFirstTimeUserAge"
         android:hint="Enter Your Age"
+        android:textStyle="normal|bold|italic"
         android:layout_alignBaseline="@+id/textView_age"
         android:layout_alignBottom="@+id/textView_age"
         android:layout_alignLeft="@+id/etFirstTimeUserAddress"
         android:layout_alignStart="@+id/etFirstTimeUserAddress"
-        android:textStyle="normal|bold|italic" />
+        android:inputType="number" />
 
 </RelativeLayout>

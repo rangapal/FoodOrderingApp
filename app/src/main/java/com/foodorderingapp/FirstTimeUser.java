@@ -36,9 +36,10 @@ public class FirstTimeUser extends AppCompatActivity {
         editTextAddress = (EditText) findViewById(R.id.etFirstTimeUserAddress);
         editTextAge = (EditText) findViewById(R.id.etFirstTimeUserAge);
 
+        this.setTitle("User Details");
 
         Profile profile = Profile.getCurrentProfile();
-        ID = profile.getId();
+        ID = profile.getId().toString();
         permission = "user";
 
         columnName = new ArrayList<>();
@@ -55,8 +56,6 @@ public class FirstTimeUser extends AppCompatActivity {
         dataToWrite.add(ID);
         dataToWrite.add(editTextFirstName.getText().toString());
         dataToWrite.add(editTextLastName.getText().toString());
-        //Log.d("Text is", editTextName.getText().toString());
-        //dataToWrite.add("there");
         dataToWrite.add(editTextAge.getText().toString());
         dataToWrite.add(editTextAddress.getText().toString());
         dataToWrite.add(permission);
