@@ -44,7 +44,7 @@ public class TotalPriceDisplay extends AppCompatActivity {
         setContentView(R.layout.total_price_list_view);
 
 
-        this.setTitle("Total Price page");
+        this.setTitle("Summary Section");
         totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
 
