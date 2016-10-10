@@ -121,7 +121,9 @@ public class TotalPriceDisplay extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                String deleteMenuName = GlobalVariable.selectedMenuQuantity.get(deletePosition).get(0);
                 GlobalVariable.selectedMenuQuantity.remove(deletePosition);
+                GlobalVariable.menuItemQuantity.put(deleteMenuName, "0");
                 setDetail();
             }
         });
