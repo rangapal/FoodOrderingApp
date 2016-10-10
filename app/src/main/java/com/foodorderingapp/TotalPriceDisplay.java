@@ -111,12 +111,13 @@ public class TotalPriceDisplay extends AppCompatActivity {
 
     // to delete an item from listView
     protected void removeItemFromList(int position) {
+
         AlertDialog.Builder alert = new AlertDialog.Builder(TotalPriceDisplay.this);
 
         final int deletePosition = position;
 
         alert.setTitle("Delete");
-        alert.setMessage("Do you want delete this item?");
+        alert.setMessage("Do you want delete this menu?");
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
