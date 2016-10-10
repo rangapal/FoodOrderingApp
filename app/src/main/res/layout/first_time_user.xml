@@ -8,83 +8,113 @@
         android:text="Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/buttonSaveUserDetail"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="onClick"/>
 
     <TextView
-        android:text="Name"
+        android:text="FirstName:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="37dp"
-        android:id="@+id/textView_name"
-        tools:text="name"
-        android:textSize="20sp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toLeftOf="@+id/buttonSaveUserDetail"
+        android:layout_toStartOf="@+id/buttonSaveUserDetail"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_firstname"
+        android:textStyle="normal|bold|italic" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp"
-        android:id="@+id/editTextName"
-        android:layout_alignBaseline="@+id/textView_name"
-        android:layout_alignBottom="@+id/textView_name"
-        android:layout_toRightOf="@+id/textView_name"
-        android:layout_toEndOf="@+id/textView_name"
-        android:hint="Enter your name" />
+        android:id="@+id/etFirstTimeUserFirstName"
+        android:hint="Enter Your First Name"
+        android:textStyle="normal|bold|italic"
+        android:layout_toRightOf="@+id/textView_firstname"
+        android:layout_alignBaseline="@+id/textView_firstname"
+
+         />
 
     <TextView
-        android:text="address"
+        android:text="LastName:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView_address"
-        android:textSize="20sp"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/editTextName"
-        android:layout_alignLeft="@+id/textView_name"
-        android:layout_alignStart="@+id/textView_name" />
+        android:layout_below="@+id/etFirstTimeUserFirstName"
+        android:layout_alignLeft="@+id/textView_firstname"
+        android:layout_alignStart="@+id/textView_firstname"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_lastname"
+        android:textStyle="normal|bold|italic" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
+        android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editTextAddress"
-        android:hint="Enter your address"
+        android:layout_below="@+id/etFirstTimeUserFirstName"
+        android:layout_alignLeft="@+id/etFirstTimeUserFirstName"
+        android:layout_alignStart="@+id/etFirstTimeUserFirstName"
+        android:layout_alignBaseline="@+id/textView_lastname"
+
+        android:id="@+id/etFirstTimeUserLastName"
+        android:hint="Enter Your Last Name"
+        android:textStyle="normal|bold|italic" />
+
+    <TextView
+        android:text="Address:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_address"
+        android:layout_below="@+id/etFirstTimeUserLastName"
+        android:layout_alignLeft="@+id/textView_lastname"
+        android:layout_alignStart="@+id/textView_lastname"
+        android:textStyle="normal|bold|italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etFirstTimeUserAddress"
+        android:hint="Enter Your Address"
         android:layout_alignBaseline="@+id/textView_address"
         android:layout_alignBottom="@+id/textView_address"
-        android:layout_alignLeft="@+id/editTextName"
-        android:layout_alignStart="@+id/editTextName" />
+        android:layout_alignLeft="@+id/etFirstTimeUserLastName"
+        android:layout_alignStart="@+id/etFirstTimeUserLastName"
+        android:textStyle="normal|bold|italic" />
 
     <TextView
-        android:text="age"
+        android:text="Age:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView_Age"
-        android:textSize="20sp"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/editTextAddress"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_age"
+        android:layout_below="@+id/etFirstTimeUserAddress"
         android:layout_alignLeft="@+id/textView_address"
-        android:layout_alignStart="@+id/textView_address" />
+        android:layout_alignStart="@+id/textView_address"
+        android:textStyle="normal|bold|italic" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editTextAge"
-        android:hint="Enter your age"
-        android:layout_alignBaseline="@+id/textView_Age"
-        android:layout_alignBottom="@+id/textView_Age"
-        android:layout_alignLeft="@+id/editTextAddress"
-        android:layout_alignStart="@+id/editTextAddress" />
+        android:id="@+id/etFirstTimeUserAge"
+        android:hint="Enter Your Age"
+        android:layout_alignBaseline="@+id/textView_age"
+        android:layout_alignBottom="@+id/textView_age"
+        android:layout_alignLeft="@+id/etFirstTimeUserAddress"
+        android:layout_alignStart="@+id/etFirstTimeUserAddress"
+        android:textStyle="normal|bold|italic" />
+
 </RelativeLayout>
