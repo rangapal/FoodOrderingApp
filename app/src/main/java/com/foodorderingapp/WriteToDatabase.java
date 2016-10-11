@@ -46,7 +46,7 @@ public class WriteToDatabase {
                     public void onResponse(String response) {
                         PD.dismiss();
                         Toast.makeText(context,
-                                "Data Inserted Successfully",
+                                "User details saved successfully",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
@@ -61,6 +61,8 @@ public class WriteToDatabase {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 for(int i = 0; i< columnName.size(); i++){
+                    //key is the variable name for php file on database
+                    //value is the values from user input when login for first time
                     params.put(columnName.get(i), dataTowrite.get(i));
                 }
                 return params;

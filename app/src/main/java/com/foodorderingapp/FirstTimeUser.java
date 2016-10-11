@@ -40,6 +40,7 @@ public class FirstTimeUser extends AppCompatActivity {
         this.setTitle("User Details");
 
         Profile profile = Profile.getCurrentProfile();
+        //get ID from facebook
         ID = profile.getId().toString();
         permission = "user";
 

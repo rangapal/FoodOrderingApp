@@ -99,7 +99,7 @@ public class MenuDisplay extends AppCompatActivity {
 
                 //add menu quantity only when the value is greater than 0
                 if(quantity > 0){
-                    // if the quantity is not in the arraylist, add it to arraylist
+                    // if quantity variable is not in the arraylist, add it to arraylist
                     // else set the quantity with new value
                     if(menuDetailArray.size() == 6)
                         menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));

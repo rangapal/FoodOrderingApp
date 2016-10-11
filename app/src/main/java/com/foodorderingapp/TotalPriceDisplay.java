@@ -50,31 +50,30 @@ public class TotalPriceDisplay extends AppCompatActivity {
         totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
 
+        //method to display the ordered menu item
         setDetail();
+        //pop up to tell the user how to delete the menu item
         showPressAndHoldToDeleteAlertDialog();
 
+        //listener for when user click the menu item
         listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                //Toast.makeText(getApplicationContext(), "click one item : "+position, Toast.LENGTH_SHORT).show();
-
+                //arraylist of arraylist of string which is passed on to next activity to be used
                 totalPriceDetail = totalPriceInformation.get(position);
-
                 Intent totalPriceDetailintent = new Intent(TotalPriceDisplay.this, TotalPriceDetail.class);
                 totalPriceDetailintent.putExtra("ClickTotalPriceList", totalPriceDetail);
                 startActivity(totalPriceDetailintent);
             }
         });
 
+        //listener for when user press and hold the menu item
         listViewTotalPrice.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 // to call method to delete an item from list view.
-
-                int currentPosition = position;
-
                 removeItemFromList(position);
-                Toast.makeText(getApplicationContext(), "the menu is deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -98,7 +97,7 @@ public class TotalPriceDisplay extends AppCompatActivity {
         String totalPriceNumberInString= Float.toString(getTotalPrice(stringPrice, stringQuantity));
         totalPriceNumber.setText(totalPriceNumberInString);
 
-        //update the adapter
+        //update the menu items if there any changes from totalpricedetail activity
         adapter = new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation);
         listViewTotalPrice.setAdapter(adapter);
     }
@@ -122,8 +121,11 @@ public class TotalPriceDisplay extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String deleteMenuName = GlobalVariable.selectedMenuQuantity.get(deletePosition).get(0);
+                //remove the arraylist from selectedMenuQuantity
                 GlobalVariable.selectedMenuQuantity.remove(deletePosition);
+                //set the quantity of the menu to zero
                 GlobalVariable.menuItemQuantity.put(deleteMenuName, "0");
+                //update the menu items and display it to screen
                 setDetail();
             }
         });
@@ -137,6 +139,8 @@ public class TotalPriceDisplay extends AppCompatActivity {
         alert.show();
     }
 
+    //this method is used for display the information on how to delete the menu item
+    //it should only display once
     protected void showPressAndHoldToDeleteAlertDialog(){
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean pressAndHoldToDeleteShown = mPrefs.getBoolean(pressAndHoldToDeletePref, false);

@@ -65,7 +65,7 @@ public class TotalPriceDetail extends AppCompatActivity implements View.OnClickL
         //set logo of menu
         Picasso.with(TotalPriceDetail.this)
                 .load(totalPrieDetail.get(3))
-                .fit() // will explain later
+                .fit()
                 .centerInside()
                 .into(imageViewIcon);
 
@@ -96,12 +96,13 @@ public class TotalPriceDetail extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    //method to update the selectedQuantity variable in GlobalVariable class
     private void updateGlobalSelectedQuantity(int quantity){
         for(int i = 0; i < GlobalVariable.selectedMenuQuantity.size();i++){
             if(GlobalVariable.selectedMenuQuantity.get(i).get(0).equals(menuName)){
-                if(quantity == 0)
+                if(quantity == 0) // if quantity is zero then remove the arraylist from selectedMenuQuantity
                 GlobalVariable.selectedMenuQuantity.remove(i);
-                else
+                else // replace the quantity value according to changes made by user
                 GlobalVariable.selectedMenuQuantity.get(i).set(6, editTextQuantity.getText().toString());
             }
         }
