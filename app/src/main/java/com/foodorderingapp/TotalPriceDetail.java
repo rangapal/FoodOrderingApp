@@ -90,15 +90,18 @@ public class TotalPriceDetail extends AppCompatActivity implements View.OnClickL
         //when confirm to order is pressed, change the screen back to menu display
         else if(v == buttonOrder){
             GlobalVariable.menuItemQuantity.put(menuName,Integer.toString(quantity));
-            updateGlobalSelectedQuantity();
+            updateGlobalSelectedQuantity(quantity);
             onBackPressed();
             finish();
         }
     }
 
-    private void updateGlobalSelectedQuantity(){
+    private void updateGlobalSelectedQuantity(int quantity){
         for(int i = 0; i < GlobalVariable.selectedMenuQuantity.size();i++){
             if(GlobalVariable.selectedMenuQuantity.get(i).get(0).equals(menuName)){
+                if(quantity == 0)
+                GlobalVariable.selectedMenuQuantity.remove(i);
+                else
                 GlobalVariable.selectedMenuQuantity.get(i).set(6, editTextQuantity.getText().toString());
             }
         }

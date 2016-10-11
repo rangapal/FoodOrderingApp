@@ -3,7 +3,9 @@ package com.foodorderingapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +27,7 @@ public class TotalPriceDisplay extends AppCompatActivity {
     ArrayList<String> stringPrice;
     ArrayList<String> stringQuantity;
     ArrayList<String> totalPriceDetail;
+    final String pressAndHoldToDeletePref = "pressAndHoldToDeleteShown";
 
     public float getTotalPrice(ArrayList<String> stringPrice, ArrayList<String> StringQuantity){
         float totalPrice = 0f;
@@ -43,12 +46,12 @@ public class TotalPriceDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.total_price_list_view);
 
-
         this.setTitle("Summary Section");
         totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
 
         setDetail();
+        showPressAndHoldToDeleteAlertDialog();
 
         listViewTotalPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -74,8 +77,6 @@ public class TotalPriceDisplay extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "the menu is deleted", Toast.LENGTH_SHORT).show();
                 return true;
             }
-
-
         });
     }
 
@@ -113,7 +114,6 @@ public class TotalPriceDisplay extends AppCompatActivity {
     protected void removeItemFromList(int position) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(TotalPriceDisplay.this);
-
         final int deletePosition = position;
 
         alert.setTitle("Delete");
@@ -134,9 +134,25 @@ public class TotalPriceDisplay extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
         alert.show();
-
     }
+
+    protected void showPressAndHoldToDeleteAlertDialog(){
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean pressAndHoldToDeleteShown = mPrefs.getBoolean(pressAndHoldToDeletePref, false);
+
+        if(!pressAndHoldToDeleteShown){
+            new AlertDialog.Builder(this).setTitle("Information").setMessage("Press and Hold on the menu item to delete it").setPositiveButton(
+                    "OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putBoolean(pressAndHoldToDeletePref, true);
+            editor.commit();
+        }
+    }
+
 
 }

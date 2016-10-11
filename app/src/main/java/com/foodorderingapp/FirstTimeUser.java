@@ -23,7 +23,7 @@ public class FirstTimeUser extends AppCompatActivity {
     EditText editTextAge;
     String permission;
     String ID;
-    String url = "http://aaacars.co.nz/writeToUserData.php";
+    String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect with database
     ArrayList<String> columnName;
 
     @Override
@@ -36,12 +36,14 @@ public class FirstTimeUser extends AppCompatActivity {
         editTextAddress = (EditText) findViewById(R.id.etFirstTimeUserAddress);
         editTextAge = (EditText) findViewById(R.id.etFirstTimeUserAge);
 
+        //set the title of activity
         this.setTitle("User Details");
 
         Profile profile = Profile.getCurrentProfile();
         ID = profile.getId().toString();
         permission = "user";
 
+        //this arraylist is use to match the name of variable on the php file in database
         columnName = new ArrayList<>();
         columnName.add("id");
         columnName.add("firstName");
@@ -52,6 +54,7 @@ public class FirstTimeUser extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+        //this arraylist is for saving the value that need to write to database
         ArrayList<String> dataToWrite = new ArrayList<>();
         dataToWrite.add(ID);
         dataToWrite.add(editTextFirstName.getText().toString());
@@ -63,6 +66,7 @@ public class FirstTimeUser extends AppCompatActivity {
         WriteToDatabase writeToDatabase = new WriteToDatabase(columnName,dataToWrite,url,FirstTimeUser.this);
         writeToDatabase.write();
 
+        //start new activity after writing to database
         Intent intent = new Intent(FirstTimeUser.this, testClass.class);
         startActivity(intent);
     }
