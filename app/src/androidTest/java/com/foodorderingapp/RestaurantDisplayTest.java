@@ -15,7 +15,7 @@ public class RestaurantDisplayTest {
 //            new ActivityTestRule(ButtonGoToRestaurantSelection.class,true,true);
 
     @Rule
-    public ActivityTestRule<RestaurantDisplay> startClass = new ActivityTestRule<RestaurantDisplay>(RestaurantDisplay.class,true,true);
+        public ActivityTestRule<RestaurantDisplay> startClass = new ActivityTestRule<RestaurantDisplay>(RestaurantDisplay.class,true,true);
 
     String JsonString = "{\"Restaurant\":" +
             "[" +

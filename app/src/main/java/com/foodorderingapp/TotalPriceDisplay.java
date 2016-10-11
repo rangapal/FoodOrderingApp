@@ -29,24 +29,12 @@ public class TotalPriceDisplay extends AppCompatActivity {
     ArrayList<String> totalPriceDetail;
     final String pressAndHoldToDeletePref = "pressAndHoldToDeleteShown";
 
-    public float getTotalPrice(ArrayList<String> stringPrice, ArrayList<String> StringQuantity){
-        float totalPrice = 0f;
-
-        for(int i = 0; i < stringPrice.size(); i++){
-            float value = Float.parseFloat(stringPrice.get(i));
-            float quantityValue = Float.parseFloat(StringQuantity.get(i));
-            totalPrice += (value*quantityValue);
-        }
-
-        return totalPrice;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.total_price_list_view);
 
-        this.setTitle("Summary Section");
+        this.setTitle("Order Summary");
         totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
 
@@ -157,6 +145,20 @@ public class TotalPriceDisplay extends AppCompatActivity {
             editor.commit();
         }
     }
+
+    //calculating the totalPrice
+    public float getTotalPrice(ArrayList<String> stringPrice, ArrayList<String> StringQuantity){
+        float totalPrice = 0f;
+
+        for(int i = 0; i < stringPrice.size(); i++){
+            float value = Float.parseFloat(stringPrice.get(i));
+            float quantityValue = Float.parseFloat(StringQuantity.get(i));
+            totalPrice += (value*quantityValue);
+        }
+
+        return totalPrice;
+    }
+
 
 
 }

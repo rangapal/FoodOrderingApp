@@ -82,26 +82,17 @@
         android:id="@+id/editTextTotalPriceDetailQuantity"
         android:inputType="number"
         android:ems="10"
-        android:layout_alignBottom="@+id/buttonForMinus"
+        android:layout_alignBottom="@+id/buttonMinusTotalPriceDetail"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:text="0" />
-
-    <Button
-        android:text="+"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickPlus"
-        android:id="@+id/buttonForPlus"
-        android:layout_alignBottom="@+id/editTextTotalPriceDetailQuantity"
-        android:layout_toRightOf="@+id/editTextTotalPriceDetailQuantity"/>
 
     <Button
         android:text="-"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickMinus"
-        android:id="@+id/buttonForMinus"
+        android:id="@+id/buttonMinusTotalPriceDetail"
         android:layout_toLeftOf="@+id/editTextTotalPriceDetailQuantity"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"/>
@@ -121,6 +112,16 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:textStyle="bold" />
+
+    <Button
+        android:text="+"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickPlus"
+        android:id="@+id/buttonPlusTotalPriceDetail"
+        android:layout_above="@+id/buttonTotalPriceDetailOrder"
+        android:layout_toRightOf="@+id/editTextTotalPriceDetailQuantity"
+        android:layout_toEndOf="@+id/editTextTotalPriceDetailQuantity" />
 
 
 </RelativeLayout>

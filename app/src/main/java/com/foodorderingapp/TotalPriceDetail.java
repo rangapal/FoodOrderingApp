@@ -41,8 +41,8 @@ public class TotalPriceDetail extends AppCompatActivity implements View.OnClickL
         this.setTitle(totalPrieDetail.get(4));
 
         editTextQuantity = (EditText) findViewById(R.id.editTextTotalPriceDetailQuantity);
-        buttonPlus = (Button) findViewById(R.id.buttonForPlus);
-        buttonMinus = (Button) findViewById(R.id.buttonForMinus);
+        buttonPlus = (Button) findViewById(R.id.buttonPlusTotalPriceDetail);
+        buttonMinus = (Button) findViewById(R.id.buttonMinusTotalPriceDetail);
         buttonOrder = (Button) findViewById(R.id.buttonTotalPriceDetailOrder);
         textViewName = (TextView)findViewById(R.id.textViewTotalPriceDetailName);
         textViewDescription = (TextView) findViewById(R.id.textViewTotalPriceDetailDescription);
