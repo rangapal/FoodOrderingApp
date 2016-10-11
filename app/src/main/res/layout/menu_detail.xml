@@ -95,19 +95,6 @@
         android:textAlignment="center"
         android:text="0" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Menu Price"
-        android:id="@+id/textViewMenuDetailPrice"
-        android:textColor="#151414"
-        android:layout_alignBottom="@+id/textView_Price"
-        android:layout_toRightOf="@+id/textView_Price"
-        android:layout_toEndOf="@+id/textView_Price"
-        android:layout_marginLeft="20dp"
-        android:textSize="22dp" />
-
     <Button
         android:layout_width="150dp"
         android:layout_height="60dp"
@@ -116,6 +103,23 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView_quantityText"
         android:layout_alignEnd="@+id/textView_quantityText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Menu Price"
+        android:id="@+id/textViewMenuDetailPrice"
+        android:textColor="#fa2929"
+        android:layout_marginLeft="8dp"
+        android:textSize="22dp"
+        android:textColorHint="#fa2929"
+        android:layout_alignBaseline="@+id/textView_Price"
+        android:layout_alignBottom="@+id/textView_Price"
+        android:layout_toRightOf="@+id/textView_Price"
+        android:layout_toEndOf="@+id/textView_Price"
+        android:layout_marginStart="8dp"
+        android:textStyle="normal|bold" />
 
 
 </RelativeLayout>

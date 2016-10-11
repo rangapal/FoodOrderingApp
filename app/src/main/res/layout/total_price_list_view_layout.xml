@@ -28,19 +28,6 @@
 
 
     <TextView
-        android:id="@+id/textViewPriceTotalPriceLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:text="price :"
-        android:textColor="#fa2929"
-        android:textSize="20dp"
-        android:layout_below="@+id/textViewNameTotalPriceLayout"
-        android:layout_toRightOf="@+id/imageViewTotalPriceLayout"
-        android:layout_toEndOf="@+id/imageViewTotalPriceLayout" />
-
-    <TextView
         android:id="@+id/textViewQuantityTotalPriceLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,20 +36,9 @@
         android:text="Qty : "
         android:textColor="@android:color/black"
         android:textSize="20dp"
-        android:layout_below="@+id/textViewPriceTotalPriceLayout"
+        android:layout_below="@+id/textViewPriceValueTotalPriceLayout"
         android:layout_toRightOf="@+id/imageViewTotalPriceLayout"
         android:layout_toEndOf="@+id/imageViewTotalPriceLayout" />
-
-    <TextView
-        android:text="000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewPriceValueTotalPriceLayout"
-        android:textColor="#fa2929"
-        android:textSize="20dp"
-        android:layout_alignTop="@+id/textViewPriceTotalPriceLayout"
-        android:layout_toRightOf="@+id/textViewPriceTotalPriceLayout"
-        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:text="0"
@@ -75,6 +51,17 @@
         android:layout_toRightOf="@+id/textViewQuantityTotalPriceLayout"
         android:layout_marginLeft="10dp"
         android:id="@+id/textViewQuantityValueTotalPriceLayout" />
+
+    <TextView
+        android:text="000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewPriceValueTotalPriceLayout"
+        android:textColor="#fa2929"
+        android:textSize="20dp"
+        android:layout_below="@+id/textViewNameTotalPriceLayout"
+        android:layout_alignLeft="@+id/textViewQuantityTotalPriceLayout"
+        android:layout_alignStart="@+id/textViewQuantityTotalPriceLayout" />
 
 
 </RelativeLayout>

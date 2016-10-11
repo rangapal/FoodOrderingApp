@@ -62,19 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Menu Price"
-        android:id="@+id/textViewTotalPriceDetailPriceNumber"
-        android:textSize="22dp"
-        android:textColor="#151414"
-        android:layout_alignBottom="@+id/textViewTotalPriceDetailPrice"
-        android:layout_toRightOf="@+id/textViewTotalPriceDetailPrice"
-        android:layout_toEndOf="@+id/textViewTotalPriceDetailPrice"
-        android:layout_marginLeft="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Please enter the amount you would like to order"
         android:id="@+id/textViewQuantityText"
         android:layout_above="@+id/editTextTotalPriceDetailQuantity"
@@ -118,6 +105,22 @@
         android:layout_toLeftOf="@+id/editTextTotalPriceDetailQuantity"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Menu Price"
+        android:id="@+id/textViewTotalPriceDetailPriceNumber"
+        android:textSize="22dp"
+        android:textColor="#fa2929"
+        android:layout_alignBaseline="@+id/textViewTotalPriceDetailPrice"
+        android:layout_alignBottom="@+id/textViewTotalPriceDetailPrice"
+        android:layout_toRightOf="@+id/textViewTotalPriceDetailPrice"
+        android:layout_toEndOf="@+id/textViewTotalPriceDetailPrice"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

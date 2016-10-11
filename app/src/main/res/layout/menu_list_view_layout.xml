@@ -26,18 +26,6 @@
         android:textColor="#325afb" />
 
     <TextView
-        android:id="@+id/textViewMenuPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewMenuName"
-        android:layout_toRightOf="@+id/imageViewMenu"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:text="price :"
-        android:textSize="20dp"
-        android:textColor="#fa2929" />
-
-    <TextView
         android:id="@+id/textViewMenuQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,6 +41,17 @@
          />
 
     <TextView
+        android:text="000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#fa2929"
+        android:id="@+id/textViewMenuPriceValue"
+        android:layout_below="@+id/textViewMenuName"
+        android:layout_alignLeft="@+id/textViewMenuName"
+        android:layout_alignStart="@+id/textViewMenuName" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -60,21 +59,8 @@
         android:textSize="20dp"
         android:id="@+id/textView_Quantity"
         android:textColor="#0d0d0d"
-        android:layout_below="@+id/textViewMenuPrice"
-        android:layout_alignLeft="@+id/textViewMenuPrice"
-        android:layout_alignStart="@+id/textViewMenuPrice" />
-
-    <TextView
-        android:text="000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textViewMenuPrice"
-        android:layout_toRightOf="@+id/textViewMenuPrice"
-        android:layout_toEndOf="@+id/textViewMenuPrice"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:textSize="20dp"
-        android:textColor="#fa2929"
-        android:id="@+id/textViewMenuPriceValue" />
+        android:layout_below="@+id/textViewMenuPriceValue"
+        android:layout_alignLeft="@+id/textViewMenuPriceValue"
+        android:layout_alignStart="@+id/textViewMenuPriceValue" />
 
 </RelativeLayout>
