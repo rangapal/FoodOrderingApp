@@ -45,4 +45,13 @@
         android:layout_marginTop="32dp"
         android:id="@+id/buttonLogOutTest" />
 
+    <Button
+        android:text="Go User Account Detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonGoTOUserDetail"
+        android:layout_below="@+id/buttonLogOutTest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp" />
+
 </RelativeLayout>

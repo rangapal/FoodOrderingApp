@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/buttonEditUserDetail"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonForEdit"/>
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:id="@+id/buttonSaveUserAccountDetail"
+        android:onClick="onButtonForSave" />
+
+    <TextView
+        android:text="FirstName:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/buttonEditUserDetail"
+        android:layout_toStartOf="@+id/buttonEditUserDetail"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_firstname"
+        android:textStyle="normal|bold|italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etUserAccountDetailFirstName"
+        android:hint="Enter Your First Name"
+        android:textStyle="normal|bold|italic"
+        android:layout_toRightOf="@+id/textView_firstname"
+        android:layout_alignBaseline="@+id/textView_firstname"
+        android:visibility="invisible"
+         />
+
+    <TextView
+        android:text="LastName:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etUserAccountDetailFirstName"
+        android:layout_alignLeft="@+id/textView_firstname"
+        android:layout_alignStart="@+id/textView_firstname"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_lastname"
+        android:textStyle="normal|bold|italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/etUserAccountDetailFirstName"
+        android:layout_alignLeft="@+id/etUserAccountDetailFirstName"
+        android:layout_alignStart="@+id/etUserAccountDetailFirstName"
+        android:layout_alignBaseline="@+id/textView_lastname"
+
+        android:id="@+id/etUserAccountDetailLastName"
+        android:hint="Enter Your Last Name"
+        android:textStyle="normal|bold|italic"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:text="Address:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_address"
+        android:layout_below="@+id/etUserAccountDetailLastName"
+        android:layout_alignLeft="@+id/textView_lastname"
+        android:layout_alignStart="@+id/textView_lastname"
+        android:textStyle="normal|bold|italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/etUserAccountDetailAddress"
+        android:hint="Enter Your Address"
+        android:layout_alignBaseline="@+id/textView_address"
+        android:layout_alignBottom="@+id/textView_address"
+        android:layout_alignLeft="@+id/etUserAccountDetailLastName"
+        android:layout_alignStart="@+id/etUserAccountDetailLastName"
+        android:textStyle="normal|bold|italic"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:text="Age:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:id="@+id/textView_age"
+        android:layout_below="@+id/etUserAccountDetailAddress"
+        android:layout_alignLeft="@+id/textView_address"
+        android:layout_alignStart="@+id/textView_address"
+        android:textStyle="normal|bold|italic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/etUserAccountDetailAge"
+        android:hint="Enter Your Age"
+        android:textStyle="normal|bold|italic"
+        android:layout_alignBaseline="@+id/textView_age"
+        android:layout_alignBottom="@+id/textView_age"
+        android:layout_alignLeft="@+id/etUserAccountDetailAddress"
+        android:layout_alignStart="@+id/etUserAccountDetailAddress"
+        android:inputType="number"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:text="First Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/textView_firstname"
+        android:layout_toRightOf="@+id/textView_firstname"
+        android:layout_alignBaseline="@+id/textView_firstname"
+        android:id="@+id/tvUserAccountFirstName"
+        />
+
+    <TextView
+        android:text="Lase Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etUserAccountDetailFirstName"
+        android:layout_alignLeft="@+id/etUserAccountDetailFirstName"
+        android:layout_alignStart="@+id/etUserAccountDetailFirstName"
+        android:layout_alignBaseline="@+id/textView_lastname"
+        android:id="@+id/tvUserAccountLastName"
+        />
+
+    <TextView
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_address"
+        android:layout_alignBottom="@+id/textView_address"
+        android:layout_alignLeft="@+id/etUserAccountDetailLastName"
+        android:layout_alignStart="@+id/etUserAccountDetailLastName"
+        android:id="@+id/tvUserAccountAddress"
+        />
+
+    <TextView
+        android:text="Age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_age"
+        android:layout_alignBottom="@+id/textView_age"
+        android:layout_alignLeft="@+id/etUserAccountDetailAddress"
+        android:layout_alignStart="@+id/etUserAccountDetailAddress"
+        android:id="@+id/tvUserAccountAge"
+        />
+
+
+
+
+</RelativeLayout>

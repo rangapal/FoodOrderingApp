@@ -12,6 +12,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
     Button buttonOrder;
     Button buttonUser;
     Button buttonLogOut;
+    Button buttonGoToUserDetail;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,12 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
         buttonLogOut = (Button)findViewById(R.id.buttonLogOutTest);
         buttonOrder = (Button)findViewById(R.id.buttonOrder);
         buttonUser = (Button)findViewById(R.id.buttonUser);
+        buttonGoToUserDetail = (Button) findViewById(R.id.buttonGoTOUserDetail);
 
         buttonLogOut.setOnClickListener(this);
         buttonUser.setOnClickListener(this);
         buttonOrder.setOnClickListener(this);
+        buttonGoToUserDetail.setOnClickListener(this);
 //
 //
 //        button = (Button)findViewById(R.id.buttonGet);
@@ -54,8 +57,16 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
         }
         else if(v == buttonUser){
             Intent intent = new Intent(testClass.this,FirstTimeUser.class);
+
             startActivity(intent);
 
+        }
+        else if(v == buttonGoToUserDetail){
+            Intent intent = new Intent(testClass.this, UserAccountDetail.class);
+            ConnectAndRetrieveDB connectAndRetrieveDB = new ConnectAndRetrieveDB(
+                    testClass.this, "http://aaacars.co.nz/getUser.php", getUserDetail(), "none");
+            connectAndRetrieveDB.execute();
+            startActivity(intent);
         }
     }
 
@@ -84,5 +95,26 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
         };
 
        return asyncResponse;
+    }
+
+    private AsyncResponse getUserDetail() {
+        AsyncResponse asyncResponse = new AsyncResponse() {
+            @Override
+            public void onTaskComplete(Object object) {
+                String s = (String) object;
+                //ConvertJSON convertJSON = new ConvertJSON(s,"User");
+                //convertJSON.getTreeMap();
+
+
+                Intent intent = new Intent(testClass.this, RestaurantDisplay.class);
+                intent.putExtra("JSONString", s);
+//                if(post != null){
+//                    intent.putExtra("restaurantID",post);
+//                }
+                startActivity(intent);
+            }
+        };
+
+        return asyncResponse;
     }
 }

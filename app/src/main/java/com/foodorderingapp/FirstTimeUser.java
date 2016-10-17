@@ -37,7 +37,7 @@ public class FirstTimeUser extends AppCompatActivity {
         editTextAge = (EditText) findViewById(R.id.etFirstTimeUserAge);
 
         //set the title of activity
-        this.setTitle("User Details");
+        this.setTitle("New User Details");
 
         Profile profile = Profile.getCurrentProfile();
         //get ID from facebook
