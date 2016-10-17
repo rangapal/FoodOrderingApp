@@ -66,7 +66,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
             ConnectAndRetrieveDB connectAndRetrieveDB = new ConnectAndRetrieveDB(
                     testClass.this, "http://aaacars.co.nz/getUser.php", getUserDetail(), "none");
             connectAndRetrieveDB.execute();
-            startActivity(intent);
+
         }
     }
 
@@ -107,7 +107,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
 
 
                 Intent intent = new Intent(testClass.this, RestaurantDisplay.class);
-                intent.putExtra("JSONString", s);
+                intent.putExtra("JSONStringForUserDetail", s);
 //                if(post != null){
 //                    intent.putExtra("restaurantID",post);
 //                }

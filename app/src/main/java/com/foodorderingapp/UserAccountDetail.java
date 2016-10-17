@@ -11,12 +11,19 @@ import android.widget.TextView;
 import com.facebook.Profile;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.TreeMap;
 
 /**
  * Created by User on 10/3/2016.
  */
 
 public class UserAccountDetail extends AppCompatActivity {
+    private final String JSONARRAY = "User";
+    TreeMap<String, ArrayList<String>> userAccountDetailTreeMap;
+    Object[] userAccountDetailValues;
+    ArrayList<String> userAccountDetailByID;
+
     Button buttonEdit;
     Button buttonSave;
 
@@ -39,14 +46,26 @@ public class UserAccountDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_account_detail);
+
+        Intent intent = getIntent();
+        String JSONString = intent.getStringExtra("JSONStringForUserDetail");
+        ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
+
+        //Value in TreeMap is the following order
+        //id, firstName, lastName, age, address, permission
+        userAccountDetailTreeMap = convertJSON.getTreeMap();
+
+        //Convert treemap into object array to pass into adapter
+        Collection<ArrayList<String>> collection = userAccountDetailTreeMap.values();
+        userAccountDetailValues = collection.toArray();
+
+        // allocate each view or layout by id
         buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
         buttonEdit = (Button)findViewById(R.id.buttonEditUserDetail);
-
         editTextFirstName = (EditText) findViewById(R.id.etUserAccountDetailFirstName);
         editTextLastName = (EditText) findViewById(R.id.etUserAccountDetailLastName);
         editTextAddress = (EditText) findViewById(R.id.etUserAccountDetailAddress);
         editTextAge = (EditText) findViewById(R.id.etUserAccountDetailAge);
-
         textViewFirstName = (TextView) findViewById(R.id.tvUserAccountFirstName);
         textViewLastName = (TextView) findViewById(R.id.tvUserAccountLastName);
         textViewAddress = (TextView) findViewById(R.id.tvUserAccountAddress);
@@ -61,10 +80,13 @@ public class UserAccountDetail extends AppCompatActivity {
         ID = profile.getId().toString();
         permission = "user";
 
-        textViewFirstName.setText(profile.getFirstName().toString());
-        textViewLastName.setText(profile.getLastName().toString());
-        textViewAddress.setText("38 happy Jeff");
-        textViewAge.setText("25");
+        userAccountDetailByID = new ArrayList<>();
+        userAccountDetailByID = this.matchID(userAccountDetailValues, ID);
+
+        textViewFirstName.setText(userAccountDetailByID.get(1));
+        textViewLastName.setText(userAccountDetailByID.get(2));
+        textViewAddress.setText(userAccountDetailByID.get(4));
+        textViewAge.setText(userAccountDetailByID.get(3));
 
 
         //this arraylist is use to match the name of variable on the php file in database
@@ -75,6 +97,17 @@ public class UserAccountDetail extends AppCompatActivity {
         columnName.add("age");
         columnName.add("address");
         columnName.add("permission");
+    }
+
+    private ArrayList<String> matchID(Object[] userAccountDetailValues, String ID){
+
+        for(int i = 0; i < userAccountDetailValues.length; i++){
+            ArrayList<String> tempArrayList = (ArrayList<String>) userAccountDetailValues[i];
+            if(ID == tempArrayList.get(0)){
+                return tempArrayList;
+            }
+        }
+        return null;
     }
 
     public void onButtonForSave(View view) {
