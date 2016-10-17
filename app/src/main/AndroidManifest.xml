@@ -41,10 +41,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".FirstTimeUser"></activity>
-        <activity android:name=".testClass"></activity>
+        <activity android:name=".testClass">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
         <activity android:name=".TotalPriceDetail"></activity>
         <activity android:name=".TotalPriceDisplay"></activity>
         <activity android:name=".RestaurantOwnerPage"></activity>
+        <activity android:name=".UserAccountDetail"></activity>
 
 
 

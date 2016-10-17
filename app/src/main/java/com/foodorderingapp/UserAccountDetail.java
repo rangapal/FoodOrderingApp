@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.facebook.Profile;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.TreeMap;
 
 /**
@@ -20,9 +19,9 @@ import java.util.TreeMap;
 
 public class UserAccountDetail extends AppCompatActivity {
     private final String JSONARRAY = "User";
-    TreeMap<String, ArrayList<String>> userAccountDetailTreeMap;
-    Object[] userAccountDetailValues;
-    ArrayList<String> userAccountDetailByID;
+    private TreeMap<String, ArrayList<String>> userAccountDetailTreeMap;
+    Object[] user;
+    private ArrayList<String> userAccountDetailValues;
 
     Button buttonEdit;
     Button buttonSave;
@@ -47,21 +46,9 @@ public class UserAccountDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_account_detail);
 
-        Intent intent = getIntent();
-        String JSONString = intent.getStringExtra("JSONStringForUserDetail");
-        ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
-
-        //Value in TreeMap is the following order
-        //id, firstName, lastName, age, address, permission
-        userAccountDetailTreeMap = convertJSON.getTreeMap();
-
-        //Convert treemap into object array to pass into adapter
-        Collection<ArrayList<String>> collection = userAccountDetailTreeMap.values();
-        userAccountDetailValues = collection.toArray();
-
         // allocate each view or layout by id
-        buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
-        buttonEdit = (Button)findViewById(R.id.buttonEditUserDetail);
+        buttonSave = (Button)findViewById(R.id.buttonSaveUserAccountDetail);
+        buttonEdit = (Button)findViewById(R.id.buttonEditUserAccountDetail);
         editTextFirstName = (EditText) findViewById(R.id.etUserAccountDetailFirstName);
         editTextLastName = (EditText) findViewById(R.id.etUserAccountDetailLastName);
         editTextAddress = (EditText) findViewById(R.id.etUserAccountDetailAddress);
@@ -78,15 +65,19 @@ public class UserAccountDetail extends AppCompatActivity {
         Profile profile = Profile.getCurrentProfile();
         //get ID from facebook
         ID = profile.getId().toString();
-        permission = "user";
 
-        userAccountDetailByID = new ArrayList<>();
-        userAccountDetailByID = this.matchID(userAccountDetailValues, ID);
 
-        textViewFirstName.setText(userAccountDetailByID.get(1));
-        textViewLastName.setText(userAccountDetailByID.get(2));
-        textViewAddress.setText(userAccountDetailByID.get(4));
-        textViewAge.setText(userAccountDetailByID.get(3));
+        //method to convert the JSONString of user and extract the correct user details to be used
+        getUserDetail();
+
+        //userAccountDetailValues = new ArrayList<>();
+        //userAccountDetailValues = this.matchID(userAccountDetailValues, ID);
+
+        textViewFirstName.setText(userAccountDetailValues.get(1));
+        textViewLastName.setText(userAccountDetailValues.get(2));
+        textViewAge.setText(userAccountDetailValues.get(3));
+        textViewAddress.setText(userAccountDetailValues.get(4));
+        permission = userAccountDetailValues.get(5);
 
 
         //this arraylist is use to match the name of variable on the php file in database
@@ -99,15 +90,30 @@ public class UserAccountDetail extends AppCompatActivity {
         columnName.add("permission");
     }
 
-    private ArrayList<String> matchID(Object[] userAccountDetailValues, String ID){
+//    private ArrayList<String> matchID(Object[] userAccountDetailValues, String ID){
+//
+//        for(int i = 0; i < userAccountDetailValues.length; i++){
+//            ArrayList<String> tempArrayList = (ArrayList<String>) userAccountDetailValues[i];
+//            if(ID == tempArrayList.get(0)){
+//                return tempArrayList;
+//            }
+//        }
+//        return null;
+//    }
 
-        for(int i = 0; i < userAccountDetailValues.length; i++){
-            ArrayList<String> tempArrayList = (ArrayList<String>) userAccountDetailValues[i];
-            if(ID == tempArrayList.get(0)){
-                return tempArrayList;
-            }
-        }
-        return null;
+    public void getUserDetail(){
+        Intent intent = getIntent();
+        String JSONString = intent.getStringExtra("JSONStringForUserDetail");
+        ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
+
+        //Value in TreeMap is the following order
+        //id, firstName, lastName, age, address, permission
+        userAccountDetailValues = convertJSON.getTreeMap().get(ID);
+
+//        //Convert treemap into object array to pass into adapter
+//        Collection<ArrayList<String>> collection = userAccountDetailTreeMap.values();
+//        //userAccountDetailValues = collection.toArray();
+
     }
 
     public void onButtonForSave(View view) {
@@ -145,7 +151,5 @@ public class UserAccountDetail extends AppCompatActivity {
         editTextAddress.setVisibility(View.VISIBLE);
         editTextAge.setVisibility(View.VISIBLE);
         buttonSave.setVisibility(View.VISIBLE);
-
-
     }
 }

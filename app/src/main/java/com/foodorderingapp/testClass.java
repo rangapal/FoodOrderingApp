@@ -47,10 +47,8 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         if(v == buttonLogOut){
             logout();
-
         }
         else if(v == buttonOrder){
-
             ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
                     testClass.this,"http://aaacars.co.nz/getRestaurant.php",initiateRestaurantDisplay(),"none");
             connectDB.execute();
@@ -62,7 +60,6 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
 
         }
         else if(v == buttonGoToUserDetail){
-            Intent intent = new Intent(testClass.this, UserAccountDetail.class);
             ConnectAndRetrieveDB connectAndRetrieveDB = new ConnectAndRetrieveDB(
                     testClass.this, "http://aaacars.co.nz/getUser.php", getUserDetail(), "none");
             connectAndRetrieveDB.execute();
@@ -106,7 +103,7 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
                 //convertJSON.getTreeMap();
 
 
-                Intent intent = new Intent(testClass.this, RestaurantDisplay.class);
+                Intent intent = new Intent(testClass.this, UserAccountDetail.class);
                 intent.putExtra("JSONStringForUserDetail", s);
 //                if(post != null){
 //                    intent.putExtra("restaurantID",post);
