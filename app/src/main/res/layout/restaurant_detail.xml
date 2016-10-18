@@ -1,127 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--This is the Drawer Layout-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:verticalScrollbarPosition="right">
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true">
 
-    <ImageView
+    <!--This is the toolbar-->
+    <include
+        android:id="@+id/layoutToolbar"
+        layout="@layout/tool_bar" />
+
+    <!--This is the content-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/imageViewRestaurantDetail"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@mipmap/ic_launcher"
-        android:cropToPadding="true"
-        android:background="#787676" />
+        android:layout_height="match_parent"
+        android:verticalScrollbarPosition="right"
+        android:layout_marginTop="55dp">
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:text="Go to Menu"
-        android:id="@+id/buttonGoMenu"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick"/>
+        <ImageView
+            android:id="@+id/imageViewRestaurantDetail"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#787676"
+            android:cropToPadding="true"
+            android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Subway"
-        android:id="@+id/textViewRestaurantDetailName"
-        android:textStyle="bold"
-        android:textSize="35dp"
-        android:textColor="#2160de"
-        android:layout_below="@+id/imageViewRestaurantDetail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/buttonGoMenu"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="onClick"
+            android:text="Go to Menu" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="1486, Auckland"
-        android:id="@+id/textViewRestaurantDetailAddress"
-        android:textSize="20dp"
-        android:textColor="@color/abc_tint_default"
-        android:layout_below="@+id/textViewRestaurantDetailName"
-        android:layout_marginTop="10dp"
-        android:enabled="true"
-        android:layout_marginLeft="120dp" />
+        <TextView
+            android:id="@+id/textViewRestaurantDetailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageViewRestaurantDetail"
+            android:text="Subway"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#2160de"
+            android:textSize="35dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="0215356"
-        android:id="@+id/textViewRestaurantDetailPhoneNumber"
-        android:textSize="20dp"
-        android:layout_alignTop="@+id/textView_PhoneNumber"
-        android:layout_alignLeft="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignStart="@+id/textViewRestaurantDetailAddress"
-        android:layout_marginTop="10dp"
-        android:enabled="true" />
+        <TextView
+            android:id="@+id/textViewRestaurantDetailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewRestaurantDetailName"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="10dp"
+            android:enabled="true"
+            android:text="1486, Auckland"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/abc_tint_default"
+            android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Address:"
-        android:id="@+id/textView_Price"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_alignBaseline="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignBottom="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="7dp"
-        android:enabled="true"
-        android:textColor="#0c0b0b" />
+        <TextView
+            android:id="@+id/textViewRestaurantDetailPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewRestaurantDetailAddress"
+            android:layout_alignStart="@+id/textViewRestaurantDetailAddress"
+            android:layout_alignTop="@+id/textView_PhoneNumber"
+            android:layout_marginTop="10dp"
+            android:enabled="true"
+            android:text="0215356"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone Number:"
-        android:id="@+id/textView_PhoneNumber"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/textViewRestaurantDetailAddress"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView_Price"
-        android:layout_alignEnd="@+id/textView_Price"
-        android:layout_marginLeft="7dp"
-        android:enabled="true"
-        android:textColor="#0e0c0c" />
+        <TextView
+            android:id="@+id/textView_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textViewRestaurantDetailAddress"
+            android:layout_alignBottom="@+id/textViewRestaurantDetailAddress"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="7dp"
+            android:enabled="true"
+            android:text="Address:"
+            android:textColor="#0c0b0b"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price Range:"
-        android:id="@+id/textView_PriceRange"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:enabled="true"
-        android:textColor="#0e0c0c"
-        android:layout_below="@+id/textView_PhoneNumber"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:layout_alignRight="@+id/textView_PhoneNumber"
-        android:layout_alignEnd="@+id/textView_PhoneNumber"
-        android:layout_marginLeft="7dp" />
+        <TextView
+            android:id="@+id/textView_PhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView_Price"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/textView_Price"
+            android:layout_below="@+id/textViewRestaurantDetailAddress"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
+            android:enabled="true"
+            android:text="Phone Number:"
+            android:textColor="#0e0c0c"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="5 ~ 10"
-        android:id="@+id/textViewRestaurantDetailPriceRange"
-        android:textSize="20dp"
-        android:enabled="true"
-        android:layout_alignTop="@+id/textView_PriceRange"
-        android:layout_alignLeft="@+id/textViewRestaurantDetailAddress"
-        android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/textView_PriceRange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView_PhoneNumber"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/textView_PhoneNumber"
+            android:layout_below="@+id/textView_PhoneNumber"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
+            android:enabled="true"
+            android:text="Price Range:"
+            android:textColor="#0e0c0c"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewRestaurantDetailPriceRange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewRestaurantDetailAddress"
+            android:layout_alignTop="@+id/textView_PriceRange"
+            android:layout_marginTop="10dp"
+            android:enabled="true"
+            android:text="5 ~ 10"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <!-- The navigation drawer list-->
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/cardview_light_background" />
+
+</android.support.v4.widget.DrawerLayout>

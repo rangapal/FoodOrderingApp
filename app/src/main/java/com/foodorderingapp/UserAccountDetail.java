@@ -2,7 +2,6 @@ package com.foodorderingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +16,7 @@ import java.util.TreeMap;
  * Created by User on 10/3/2016.
  */
 
-public class UserAccountDetail extends AppCompatActivity {
+public class UserAccountDetail extends NavigationDrawerUser {
     private final String JSONARRAY = "User";
     private TreeMap<String, ArrayList<String>> userAccountDetailTreeMap;
     Object[] user;
@@ -36,15 +35,18 @@ public class UserAccountDetail extends AppCompatActivity {
     TextView textViewAddress;
     TextView textViewAge;
 
-    String permission;
-    String ID;
-    String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect with database
-    ArrayList<String> columnName;
+    private String permission;
+    private String ID;
+    private String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect and write to database
+    private ArrayList<String> columnName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_account_detail);
+
+        //set the toolbar and navigation drawer
+        navigation_drawer();
 
         // allocate each view or layout by id
         buttonSave = (Button)findViewById(R.id.buttonSaveUserAccountDetail);
@@ -66,12 +68,8 @@ public class UserAccountDetail extends AppCompatActivity {
         //get ID from facebook
         ID = profile.getId().toString();
 
-
         //method to convert the JSONString of user and extract the correct user details to be used
         getUserDetail();
-
-        //userAccountDetailValues = new ArrayList<>();
-        //userAccountDetailValues = this.matchID(userAccountDetailValues, ID);
 
         textViewFirstName.setText(userAccountDetailValues.get(1));
         textViewLastName.setText(userAccountDetailValues.get(2));

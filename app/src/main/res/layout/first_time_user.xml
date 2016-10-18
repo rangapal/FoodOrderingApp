@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <!--This is the toolbar-->
+    <include
+        android:id="@+id/layoutToolbar"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:text="Save"
@@ -18,15 +25,16 @@
         android:text="FirstName:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentTop="false"
         android:layout_toLeftOf="@+id/buttonSaveUserDetail"
         android:layout_toStartOf="@+id/buttonSaveUserDetail"
         android:layout_marginRight="30dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="30dp"
         android:textSize="20dp"
         android:id="@+id/textView_firstname"
-        android:textStyle="normal|bold|italic" />
+        android:textStyle="normal|bold|italic"
+        android:layout_below="@+id/layoutToolbar"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -38,8 +46,7 @@
         android:textStyle="normal|bold|italic"
         android:layout_toRightOf="@+id/textView_firstname"
         android:layout_alignBaseline="@+id/textView_firstname"
-
-        />
+        android:layout_below="@+id/layoutToolbar"/>
 
     <TextView
         android:text="LastName:"

@@ -7,14 +7,17 @@
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true">
 
-    <!--This is a custom toolbar-->
-    <include layout="@layout/tool_bar" />
+    <!--This is the toolbar-->
+    <include
+        android:id="@+id/layoutToolbar"
+        layout="@layout/tool_bar"/>
 
     <!--This is the content-->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:layout_marginTop="55dp">
 
         <ListView
             android:id="@+id/listViewRestaurant"
@@ -23,7 +26,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:divider="#feffff"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="1dp"/>
     </RelativeLayout>
 
     <!-- The navigation drawer list-->

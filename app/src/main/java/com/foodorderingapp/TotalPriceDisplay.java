@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by JeffChoi on 19/09/2016.
  */
-public class TotalPriceDisplay extends AppCompatActivity {
+public class TotalPriceDisplay extends NavigationDrawerUser {
     private ListView listViewTotalPrice;
     private TextView totalPriceNumber;
     private ArrayList<ArrayList<String>> totalPriceInformation;
@@ -33,6 +32,9 @@ public class TotalPriceDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.total_price_list_view);
+
+        //set the toolbar and navigation drawer
+        navigation_drawer();
 
         this.setTitle("Order Summary");
         totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);

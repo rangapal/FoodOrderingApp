@@ -20,11 +20,11 @@ import java.util.Map;
  */
 
 public class WriteToDatabase {
-    ArrayList<String> columnName;
-    ArrayList<String> dataTowrite;
-    String url;
+    private ArrayList<String> columnName;
+    private ArrayList<String> dataTowrite;
+    private String url;
     ProgressDialog PD;
-    RequestQueue requestQueue;
+    private RequestQueue requestQueue;
     Context context;
 
     public WriteToDatabase(ArrayList<String> columnName, ArrayList<String> dataTowrite, String url, Context context){

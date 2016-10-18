@@ -2,13 +2,12 @@ package com.foodorderingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.facebook.login.LoginManager;
 
-public class testClass extends AppCompatActivity implements View.OnClickListener{
+public class testClass extends NavigationDrawerUser implements View.OnClickListener{
     Button buttonOrder;
     Button buttonUser;
     Button buttonLogOut;
@@ -28,6 +27,8 @@ public class testClass extends AppCompatActivity implements View.OnClickListener
         buttonUser.setOnClickListener(this);
         buttonOrder.setOnClickListener(this);
         buttonGoToUserDetail.setOnClickListener(this);
+
+        navigation_drawer();
 //
 //
 //        button = (Button)findViewById(R.id.buttonGet);

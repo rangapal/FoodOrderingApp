@@ -55,4 +55,5 @@ dependencies {
 //        // hasn't moved to Marshmallow yet)
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    }
+    compile 'com.android.support:design:24.2.1'
 }

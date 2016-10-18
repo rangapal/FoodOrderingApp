@@ -4,14 +4,15 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Welcome"
+        android:text="Welcome Restaurant Owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
         android:id="@+id/textViewWelcome"
         android:textSize="40sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
 
     <Button
         android:text="Log out"
@@ -22,4 +23,5 @@
         android:layout_marginBottom="100dp"
         android:id="@+id/buttonLogOutWelcome"
         android:onClick="onClick"/>
+
 </RelativeLayout>

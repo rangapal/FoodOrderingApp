@@ -2,7 +2,6 @@ package com.foodorderingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
 
-public class MenuDisplay extends AppCompatActivity {
+public class MenuDisplay extends NavigationDrawerUser {
     ListView listViewMenu;
     Button buttonOrderSummary;
     private final String JSONARRAY = "Menu";
@@ -25,6 +24,10 @@ public class MenuDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_list_view);
+
+        //set the toolbar and navigation drawer
+        navigation_drawer();
+
         menuTreeMap = new TreeMap<>();
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
 

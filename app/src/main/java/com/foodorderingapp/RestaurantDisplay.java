@@ -13,7 +13,7 @@ import java.util.TreeMap;
 /**
  * Created by User on 9/18/2016.
  */
-public class RestaurantDisplay extends BaseNavigationDrawer {
+public class RestaurantDisplay extends NavigationDrawerUser {
     ListView listViewRestaurant;
     private final String JSONARRAY = "Restaurant";
     TreeMap<String, ArrayList<String>> restaurantTreeMap;
@@ -24,10 +24,12 @@ public class RestaurantDisplay extends BaseNavigationDrawer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant_list_view);
 
+        //set the toolbar and navigation drawer
         navigation_drawer();
 
         listViewRestaurant = (ListView) findViewById(R.id.listViewRestaurant);
 
+        //get the JSONString and convert it into treemap
         Intent intent = getIntent();
         String JSONString = intent.getStringExtra("JSONString");
         ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);

@@ -1,129 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--This is the Drawer Layout-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:verticalScrollbarPosition="right" >
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true">
 
+    <!--This is the toolbar-->
+    <include
+        android:id="@+id/layoutToolbar"
+        layout="@layout/tool_bar" />
 
-    <ImageView
+    <!--This is the content-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/imageViewToTalPriceDetail"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@mipmap/ic_launcher"
-        android:cropToPadding="true" />
+        android:layout_height="match_parent"
+        android:verticalScrollbarPosition="right"
+        android:layout_marginTop="55dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewTotalPriceDetailName"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu Name"
-        android:textStyle="bold"
-        android:textSize="35dp"
-        android:textColor="#2160de"
-        android:layout_below="@+id/imageViewToTalPriceDetail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp" />
+        <ImageView
+            android:id="@+id/imageViewToTalPriceDetail"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:cropToPadding="true"
+            android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Description of menu item"
-        android:id="@+id/textViewTotalPriceDetailDescription"
-        android:textSize="20dp"
-        android:textColor="@color/abc_tint_default"
-        android:enabled="true"
-        android:layout_below="@+id/textViewTotalPriceDetailName"
-        android:layout_alignLeft="@+id/textViewTotalPriceDetailName"
-        android:layout_alignStart="@+id/textViewTotalPriceDetailName"
-        android:layout_marginTop="15dp" />
+        <TextView
+            android:id="@+id/textViewTotalPriceDetailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageViewToTalPriceDetail"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:text="Menu Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#2160de"
+            android:textSize="35dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price :"
-        android:id="@+id/textViewTotalPriceDetailPrice"
-        android:textSize="22dp"
-        android:textStyle="bold"
-        android:enabled="true"
-        android:textColor="#0c0b0b"
-        android:layout_marginBottom="68dp"
-        android:layout_above="@+id/textViewQuantityText"
-        android:layout_alignLeft="@+id/textViewTotalPriceDetailDescription"
-        android:layout_alignStart="@+id/textViewTotalPriceDetailDescription" />
+        <TextView
+            android:id="@+id/textViewTotalPriceDetailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewTotalPriceDetailName"
+            android:layout_alignStart="@+id/textViewTotalPriceDetailName"
+            android:layout_below="@+id/textViewTotalPriceDetailName"
+            android:layout_marginTop="15dp"
+            android:enabled="true"
+            android:text="Description of menu item"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/abc_tint_default"
+            android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Please enter the amount you would like to order"
-        android:id="@+id/textViewQuantityText"
-        android:layout_above="@+id/editTextTotalPriceDetailQuantity"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/textViewTotalPriceDetailPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textViewQuantityText"
+            android:layout_alignLeft="@+id/textViewTotalPriceDetailDescription"
+            android:layout_alignStart="@+id/textViewTotalPriceDetailDescription"
+            android:layout_marginBottom="68dp"
+            android:enabled="true"
+            android:text="Price :"
+            android:textColor="#0c0b0b"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:text="@string/add_to_order"
-        android:id="@+id/buttonTotalPriceDetailOrder"
-        android:layout_below="@+id/editTextTotalPriceDetailQuantity"
-        android:layout_alignEnd="@+id/textViewQuantityText"
-        android:layout_alignRight="@+id/textViewQuantityText" />
+        <TextView
+            android:id="@+id/textViewQuantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editTextTotalPriceDetailQuantity"
+            android:layout_centerHorizontal="true"
+            android:text="Please enter the amount you would like to order"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextTotalPriceDetailQuantity"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_alignBottom="@+id/buttonMinusTotalPriceDetail"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:text="0" />
+        <Button
+            android:id="@+id/buttonTotalPriceDetailOrder"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignEnd="@+id/textViewQuantityText"
+            android:layout_alignRight="@+id/textViewQuantityText"
+            android:layout_below="@+id/editTextTotalPriceDetailQuantity"
+            android:text="@string/add_to_order" />
 
-    <Button
-        android:text="-"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMinus"
-        android:id="@+id/buttonMinusTotalPriceDetail"
-        android:layout_toLeftOf="@+id/editTextTotalPriceDetailQuantity"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"/>
+        <EditText
+            android:id="@+id/editTextTotalPriceDetailQuantity"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/buttonMinusTotalPriceDetail"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Menu Price"
-        android:id="@+id/textViewTotalPriceDetailPriceNumber"
-        android:textSize="22dp"
-        android:textColor="#fa2929"
-        android:layout_alignBaseline="@+id/textViewTotalPriceDetailPrice"
-        android:layout_alignBottom="@+id/textViewTotalPriceDetailPrice"
-        android:layout_toRightOf="@+id/textViewTotalPriceDetailPrice"
-        android:layout_toEndOf="@+id/textViewTotalPriceDetailPrice"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/buttonMinusTotalPriceDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_toLeftOf="@+id/editTextTotalPriceDetailQuantity"
+            android:onClick="onClickMinus"
+            android:text="-" />
 
-    <Button
-        android:text="+"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickPlus"
-        android:id="@+id/buttonPlusTotalPriceDetail"
-        android:layout_above="@+id/buttonTotalPriceDetailOrder"
-        android:layout_toRightOf="@+id/editTextTotalPriceDetailQuantity"
-        android:layout_toEndOf="@+id/editTextTotalPriceDetailQuantity" />
+        <TextView
+            android:id="@+id/textViewTotalPriceDetailPriceNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textViewTotalPriceDetailPrice"
+            android:layout_alignBottom="@+id/textViewTotalPriceDetailPrice"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/textViewTotalPriceDetailPrice"
+            android:layout_toRightOf="@+id/textViewTotalPriceDetailPrice"
+            android:text="Menu Price"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fa2929"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/buttonPlusTotalPriceDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonTotalPriceDetailOrder"
+            android:layout_toEndOf="@+id/editTextTotalPriceDetailQuantity"
+            android:layout_toRightOf="@+id/editTextTotalPriceDetailQuantity"
+            android:onClick="onClickPlus"
+            android:text="+" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <!-- The navigation drawer list-->
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/cardview_light_background" />
+
+</android.support.v4.widget.DrawerLayout>

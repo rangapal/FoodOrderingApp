@@ -3,6 +3,7 @@ package com.foodorderingapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,10 @@ public class FirstTimeUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_time_user);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
         editTextFirstName = (EditText) findViewById(R.id.etFirstTimeUserFirstName);
         editTextLastName = (EditText) findViewById(R.id.etFirstTimeUserLastName);
