@@ -19,27 +19,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="55dp">
 
-        <Button
-            android:id="@+id/buttonEditUserAccountDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:onClick="onButtonForEdit"
-            android:text="Edit" />
-
-        <Button
-            android:id="@+id/buttonSaveUserAccountDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:onClick="onButtonForSave"
-            android:text="Save"
-            android:visibility="invisible" />
-
         <TextView
             android:id="@+id/textView_firstname"
             android:layout_width="wrap_content"
@@ -48,8 +27,8 @@
             android:layout_marginEnd="40dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="30dp"
-            android:layout_toLeftOf="@+id/buttonEditUserAccountDetail"
-            android:layout_toStartOf="@+id/buttonEditUserAccountDetail"
+            android:layout_toLeftOf="@+id/buttonSaveUserAccountDetail"
+            android:layout_toStartOf="@+id/buttonSaveUserAccountDetail"
             android:text="FirstName:"
             android:textSize="20dp"
             android:textStyle="normal|bold|italic" />
@@ -183,6 +162,44 @@
             android:layout_alignLeft="@+id/etUserAccountDetailAddress"
             android:layout_alignStart="@+id/etUserAccountDetailAddress"
             android:text="Age" />
+
+        <Button
+            android:id="@+id/buttonSaveUserAccountDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonForSave"
+            android:text="Save"
+
+            android:layout_marginBottom="17dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonEditUserAccountDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonForEdit"
+            android:text="Edit"
+            android:layout_alignBaseline="@+id/buttonSaveUserAccountDetail"
+            android:layout_alignBottom="@+id/buttonSaveUserAccountDetail"
+            android:layout_toLeftOf="@+id/buttonSaveUserAccountDetail"
+            android:layout_toStartOf="@+id/buttonSaveUserAccountDetail"
+            android:layout_marginRight="13dp" />
+
+        <Button
+            android:id="@+id/buttonLogOutUserAccountDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonForLogOut"
+            android:text="Log Out"
+            android:layout_alignBaseline="@+id/buttonSaveUserAccountDetail"
+            android:layout_alignBottom="@+id/buttonSaveUserAccountDetail"
+            android:layout_toRightOf="@+id/buttonSaveUserAccountDetail"
+            android:layout_toEndOf="@+id/buttonSaveUserAccountDetail"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp" />
+
     </RelativeLayout>
 
     <!-- The navigation drawer list-->

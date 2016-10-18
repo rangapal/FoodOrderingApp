@@ -12,7 +12,7 @@ import org.junit.Test;
 public class RestaurantDisplayTest {
 //    @Rule
 //    public ActivityTestRule<RestaurantDisplay> getButton =
-//            new ActivityTestRule(ButtonGoToRestaurantSelection.class,true,true);
+//            new ActivityTestRule(CustomerHomePage.class,true,true);
 
     @Rule
         public ActivityTestRule<RestaurantDisplay> startClass = new ActivityTestRule<RestaurantDisplay>(RestaurantDisplay.class,true,true);

@@ -26,7 +26,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
     ArrayList<String> stringPrice;
     ArrayList<String> stringQuantity;
     ArrayList<String> totalPriceDetail;
-    final String pressAndHoldToDeletePref = "pressAndHoldToDeleteShown";
+    private final String pressAndHoldToDeletePref = "pressAndHoldToDeleteShown";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         });
     }
 
-    public void setDetail(){
+    private void setDetail(){
         //this is an arrayList of arraylist of String
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID, quantity
         totalPriceInformation = GlobalVariable.selectedMenuQuantity;
@@ -100,7 +100,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
     }
 
     // to delete an item from listView
-    protected void removeItemFromList(int position) {
+    private void removeItemFromList(int position) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(TotalPriceDisplay.this);
         final int deletePosition = position;
@@ -131,7 +131,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
 
     //this method is used for display the information on how to delete the menu item
     //it should only display once
-    protected void showPressAndHoldToDeleteAlertDialog(){
+    private void showPressAndHoldToDeleteAlertDialog(){
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean pressAndHoldToDeleteShown = mPrefs.getBoolean(pressAndHoldToDeletePref, false);
 
@@ -149,7 +149,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
     }
 
     //calculating the totalPrice
-    public float getTotalPrice(ArrayList<String> stringPrice, ArrayList<String> StringQuantity){
+    private float getTotalPrice(ArrayList<String> stringPrice, ArrayList<String> StringQuantity){
         float totalPrice = 0f;
 
         for(int i = 0; i < stringPrice.size(); i++){

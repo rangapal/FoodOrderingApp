@@ -29,19 +29,6 @@ public class testClass extends NavigationDrawerUser implements View.OnClickListe
         buttonGoToUserDetail.setOnClickListener(this);
 
         navigation_drawer();
-//
-//
-//        button = (Button)findViewById(R.id.buttonGet);
-//
-//    }
-//    public void onClick(View view) {
-////        HomeFragment homeFragment = new HomeFragment();
-////        Intent intent = new Intent(testClass.this, homeFragment.getClass());
-////        testClass.this.startActivity(intent);
-//
-//        GetJSON getJSON = new GetJSON(testClass.this,"http://aaacars.co.nz/getRestaurant.php",RestaurantDisplay.class,null);
-//
-//        //String s = getJSON.getJsonString();
     }
 
     @Override
@@ -100,15 +87,8 @@ public class testClass extends NavigationDrawerUser implements View.OnClickListe
             @Override
             public void onTaskComplete(Object object) {
                 String s = (String) object;
-                //ConvertJSON convertJSON = new ConvertJSON(s,"User");
-                //convertJSON.getTreeMap();
-
-
                 Intent intent = new Intent(testClass.this, UserAccountDetail.class);
                 intent.putExtra("JSONStringForUserDetail", s);
-//                if(post != null){
-//                    intent.putExtra("restaurantID",post);
-//                }
                 startActivity(intent);
             }
         };

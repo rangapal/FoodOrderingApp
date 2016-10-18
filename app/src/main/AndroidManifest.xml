@@ -18,7 +18,7 @@
         <activity android:name=".RestaurantDisplay"
             android:label="@string/Restaurant">
         </activity>
-        <activity android:name=".ButtonGoToRestaurantSelection">
+        <activity android:name=".CustomerHomePage">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
@@ -49,7 +49,7 @@
         </activity>
         <activity android:name=".TotalPriceDetail"></activity>
         <activity android:name=".TotalPriceDisplay"></activity>
-        <activity android:name=".RestaurantOwnerPage"></activity>
+        <activity android:name=".RestaurantOwnerHomePage"></activity>
         <activity android:name=".UserAccountDetail"></activity>
 
 

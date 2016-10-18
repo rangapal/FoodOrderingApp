@@ -12,19 +12,19 @@ import com.facebook.login.LoginManager;
  * Created by User on 10/4/2016.
  */
 
-public class RestaurantOwnerPage extends AppCompatActivity {
+public class RestaurantOwnerHomePage extends AppCompatActivity {
     Button buttonLogOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome);
+        setContentView(R.layout.restaurant_owner_homepage);
         buttonLogOut = (Button)findViewById(R.id.buttonLogOutWelcome);
 
     }
 
     public void onClick(View view) {
         LoginManager.getInstance().logOut();
-        Intent intent = new Intent(RestaurantOwnerPage.this,Login.class);
+        Intent intent = new Intent(RestaurantOwnerHomePage.this,Login.class);
         startActivity(intent);
     }
 }

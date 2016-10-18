@@ -140,7 +140,7 @@ public class LoginFragment extends Fragment {
 
     }
 
-    public void initiateActivity(){
+    private void initiateActivity(){
         //connect to database and execute the intent
         ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
                 getContext(),"http://aaacars.co.nz/getUser.php",checkUser(),"none");
@@ -148,7 +148,7 @@ public class LoginFragment extends Fragment {
     }
 
     //this method check for the user permission and create activity accordingly
-    public AsyncResponse checkUser(){
+    private AsyncResponse checkUser(){
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override
             public void onTaskComplete(Object object) {
@@ -159,9 +159,9 @@ public class LoginFragment extends Fragment {
                 if(isNewUser(s)){
                     intent = new Intent(getContext(), FirstTimeUser.class);
                 }else{
-                    //go to RestaurantOwnerPage page for admin
+                    //go to RestaurantOwnerHomePage page for admin
                     if(isAdmin(s)){
-                        intent = new Intent(getContext(), RestaurantOwnerPage.class);
+                        intent = new Intent(getContext(), RestaurantOwnerHomePage.class);
                     }else{ // go to restaurant selection page for current user
                         intent = new Intent(getContext(), testClass.class);
                     }
@@ -173,7 +173,7 @@ public class LoginFragment extends Fragment {
     }
 
     //this method is use to check for new user to the app
-    public boolean isNewUser(String JSONString){
+    private boolean isNewUser(String JSONString){
         Profile profile = Profile.getCurrentProfile();
         ConvertJSON convertJSON = new ConvertJSON(JSONString,"User");
 
@@ -186,12 +186,13 @@ public class LoginFragment extends Fragment {
     }
 
     //this method is use to check whether user permission is admin or user
-    public boolean isAdmin(String JSONString){
+    private boolean isAdmin(String JSONString){
         Profile profile = Profile.getCurrentProfile();
         ConvertJSON convertJSON = new ConvertJSON(JSONString,"User");
 
         ArrayList<String> userDetails = convertJSON.getTreeMap().get(profile.getId());
 
+        //5 is the index for permission
         if(userDetails.get(5).equals("admin")){
             return true;
         }else{

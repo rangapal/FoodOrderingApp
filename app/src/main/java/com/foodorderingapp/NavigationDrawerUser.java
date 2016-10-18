@@ -17,10 +17,11 @@ import android.widget.ListView;
 public class NavigationDrawerUser extends AppCompatActivity{
     private ListView listView;
     private ArrayAdapter<String> listAdapter;
-    private String navigationDrawerItemsName[] = {"Order","User Account"};
+    private String navigationDrawerItemsName[] = {"Home","Order","User Account"};
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
-    private String URL = "http://aaacars.co.nz/getRestaurant.php";
+    private String URLOrder = "http://aaacars.co.nz/getRestaurant.php";
+    private String URLAccount = "http://aaacars.co.nz/getUser.php";
     private String postRequestString = "none";
 
     public void navigation_drawer(){
@@ -48,20 +49,27 @@ public class NavigationDrawerUser extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch(i){
-                    case 0:
-                        ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
-                                NavigationDrawerUser.this,URL,initiateRestaurantDisplay(),postRequestString);
-                        connectDB.execute();
+                    case 0: //click on Home
+                        Intent intentCustomerHome = new Intent(NavigationDrawerUser.this, CustomerHomePage.class);
+                        startActivity(intentCustomerHome);
                         break;
-                    case 1:
-                        //fragment = new Fragment_two();
+                    case 1: //click on Order
+                        ConnectAndRetrieveDB connectDBOrder = new ConnectAndRetrieveDB(
+                                NavigationDrawerUser.this,URLOrder,initiateRestaurantDisplay(),postRequestString);
+                        connectDBOrder.execute();
                         break;
+                    case 2://click on User Account
+                        ConnectAndRetrieveDB connectDBAccount = new ConnectAndRetrieveDB(
+                                NavigationDrawerUser.this,URLAccount,getUserDetail(),postRequestString);
+                        connectDBAccount.execute();
+                        break;
+
                 }
             }
         });
     }
 
-    //method to get restaurant details from database and go to restaurant display page
+    //method to get restaurant details from database and go to restaurant display class
     private AsyncResponse initiateRestaurantDisplay() {
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override
@@ -75,4 +83,21 @@ public class NavigationDrawerUser extends AppCompatActivity{
 
         return asyncResponse;
     }
+
+    //method to get user details from database and go to User account detail class
+    private AsyncResponse getUserDetail() {
+        AsyncResponse asyncResponse = new AsyncResponse() {
+            @Override
+            public void onTaskComplete(Object object) {
+                String s = (String) object;
+                Intent intent = new Intent(NavigationDrawerUser.this, UserAccountDetail.class);
+                intent.putExtra("JSONStringForUserDetail", s);
+                startActivity(intent);
+            }
+        };
+
+        return asyncResponse;
+    }
+
+
 }

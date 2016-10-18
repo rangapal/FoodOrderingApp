@@ -2,12 +2,14 @@ package com.foodorderingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -24,6 +26,7 @@ public class UserAccountDetail extends NavigationDrawerUser {
 
     Button buttonEdit;
     Button buttonSave;
+    Button buttonLogOut;
 
     EditText editTextFirstName;
     EditText editTextLastName;
@@ -48,9 +51,10 @@ public class UserAccountDetail extends NavigationDrawerUser {
         //set the toolbar and navigation drawer
         navigation_drawer();
 
-        // allocate each view or layout by id
+        // set each view or layout by id
         buttonSave = (Button)findViewById(R.id.buttonSaveUserAccountDetail);
         buttonEdit = (Button)findViewById(R.id.buttonEditUserAccountDetail);
+        buttonLogOut = (Button)findViewById(R.id.buttonLogOutUserAccountDetail);
         editTextFirstName = (EditText) findViewById(R.id.etUserAccountDetailFirstName);
         editTextLastName = (EditText) findViewById(R.id.etUserAccountDetailLastName);
         editTextAddress = (EditText) findViewById(R.id.etUserAccountDetailAddress);
@@ -60,21 +64,27 @@ public class UserAccountDetail extends NavigationDrawerUser {
         textViewAddress = (TextView) findViewById(R.id.tvUserAccountAddress);
         textViewAge = (TextView) findViewById(R.id.tvUserAccountAge);
 
-
         //set the title of activity
-        this.setTitle("User Account Detail");
+        this.setTitle("User Account Details");
 
         Profile profile = Profile.getCurrentProfile();
         //get ID from facebook
         ID = profile.getId().toString();
 
-        //method to convert the JSONString of user and extract the correct user details to be used
+        //this method set userAccountDetailValues with the current user details
         getUserDetail();
 
+        //display user details to screen
         textViewFirstName.setText(userAccountDetailValues.get(1));
         textViewLastName.setText(userAccountDetailValues.get(2));
         textViewAge.setText(userAccountDetailValues.get(3));
         textViewAddress.setText(userAccountDetailValues.get(4));
+
+        editTextFirstName.setText(userAccountDetailValues.get(1));
+        editTextLastName.setText(userAccountDetailValues.get(2));
+        editTextAge.setText(userAccountDetailValues.get(3));
+        editTextAddress.setText(userAccountDetailValues.get(4));
+
         permission = userAccountDetailValues.get(5);
 
 
@@ -88,18 +98,9 @@ public class UserAccountDetail extends NavigationDrawerUser {
         columnName.add("permission");
     }
 
-//    private ArrayList<String> matchID(Object[] userAccountDetailValues, String ID){
-//
-//        for(int i = 0; i < userAccountDetailValues.length; i++){
-//            ArrayList<String> tempArrayList = (ArrayList<String>) userAccountDetailValues[i];
-//            if(ID == tempArrayList.get(0)){
-//                return tempArrayList;
-//            }
-//        }
-//        return null;
-//    }
-
+    //method to convert the JSONString of user and extract the correct user details to be used
     public void getUserDetail(){
+        //convert JSONString into treemap for easy access and manipulation
         Intent intent = getIntent();
         String JSONString = intent.getStringExtra("JSONStringForUserDetail");
         ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
@@ -107,47 +108,84 @@ public class UserAccountDetail extends NavigationDrawerUser {
         //Value in TreeMap is the following order
         //id, firstName, lastName, age, address, permission
         userAccountDetailValues = convertJSON.getTreeMap().get(ID);
-
-//        //Convert treemap into object array to pass into adapter
-//        Collection<ArrayList<String>> collection = userAccountDetailTreeMap.values();
-//        //userAccountDetailValues = collection.toArray();
-
     }
 
-    public void onButtonForSave(View view) {
-        //this arraylist is for saving the value that need to write to database
-        ArrayList<String> dataToWrite = new ArrayList<>();
-        dataToWrite.add(ID);
-        dataToWrite.add(editTextFirstName.getText().toString());
-        dataToWrite.add(editTextLastName.getText().toString());
-        dataToWrite.add(editTextAge.getText().toString());
-        dataToWrite.add(editTextAddress.getText().toString());
-        dataToWrite.add(permission);
+    public void setVisiblity(int textViewVisibility, int editViewVisibility){
 
-        WriteToDatabase writeToDatabase = new WriteToDatabase(columnName,dataToWrite,url,UserAccountDetail.this);
-        writeToDatabase.write();
+        //set visibility of textview, editButton and LogOutButton
+        textViewFirstName.setVisibility(textViewVisibility);
+        textViewLastName.setVisibility(textViewVisibility);
+        textViewAddress.setVisibility(textViewVisibility);
+        textViewAge.setVisibility(textViewVisibility);
+        buttonEdit.setVisibility(textViewVisibility);
+        buttonLogOut.setVisibility(textViewVisibility);
 
-        //start new activity after writing to database
-        Intent intent = new Intent(UserAccountDetail.this, testClass.class);
-        startActivity(intent);
+        //set visibility of editText and saveButton
+        editTextFirstName.setVisibility(editViewVisibility);
+        editTextLastName.setVisibility(editViewVisibility);
+        editTextAddress.setVisibility(editViewVisibility);
+        editTextAge.setVisibility(editViewVisibility);
+        buttonSave.setVisibility(editViewVisibility);
     }
 
     // when click the edit button, then all textView, placed right side, and edit button
     // are unvisible then editTexts and save button show up to user.
     public void onButtonForEdit(View view) {
-
-        // textViews and edit button become unvisible.
-        textViewFirstName.setVisibility(View.GONE);
-        textViewLastName.setVisibility(View.GONE);
-        textViewAddress.setVisibility(View.GONE);
-        textViewAge.setVisibility(View.GONE);
-        buttonEdit.setVisibility(View.GONE);
-
+        // textViews, edit button and Log out button become invisible.
         // editTexts and save button show up to user.
-        editTextFirstName.setVisibility(View.VISIBLE);
-        editTextLastName.setVisibility(View.VISIBLE);
-        editTextAddress.setVisibility(View.VISIBLE);
-        editTextAge.setVisibility(View.VISIBLE);
-        buttonSave.setVisibility(View.VISIBLE);
+        setVisiblity(View.INVISIBLE, View.VISIBLE);
     }
+
+    //when user Click on save button
+    public void onButtonForSave(View view) {
+        String firstName = editTextFirstName.getText().toString();
+        String lastName = editTextLastName.getText().toString();
+        String age = editTextAge.getText().toString();
+        String address = editTextAddress.getText().toString();
+
+        //check for null/empty user input
+        if(isUserInputCorrectly(firstName,editTextFirstName) && isUserInputCorrectly(lastName, editTextLastName)
+                && isUserInputCorrectly(age, editTextAge) && isUserInputCorrectly(address,editTextAddress)){
+            //this arraylist is for saving the value that need to write to database
+            ArrayList<String> dataToWrite = new ArrayList<>();
+            dataToWrite.add(ID);
+            dataToWrite.add(firstName);
+            dataToWrite.add(lastName);
+            dataToWrite.add(age);
+            dataToWrite.add(address);
+            dataToWrite.add(permission);
+
+            //connect and write data to database
+            WriteToDatabase writeToDatabase = new WriteToDatabase(columnName, dataToWrite, url, UserAccountDetail.this);
+            writeToDatabase.write();
+
+            //update the text and display to screen
+            textViewFirstName.setText(firstName);
+            textViewLastName.setText(lastName);
+            textViewAge.setText(age);
+            textViewAddress.setText(address);
+
+            // textViews, edit button and Log out button show up to user.
+            // editTexts and save button become invisible.
+            setVisiblity(View.VISIBLE, View.INVISIBLE);
+        }
+    }
+
+    //check for empty string with user input
+    public boolean isUserInputCorrectly(String string, EditText editText){
+        if(TextUtils.isEmpty(string)) {
+            editText.setError("The item cannot be empty");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //log out when click on log out button
+    public void onButtonForLogOut(View view){
+        LoginManager.getInstance().logOut();
+        Intent intent = new Intent(UserAccountDetail.this,Login.class);
+        startActivity(intent);
+    }
+
 }

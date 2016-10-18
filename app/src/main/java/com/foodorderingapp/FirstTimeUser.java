@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,10 +23,10 @@ public class FirstTimeUser extends AppCompatActivity {
     EditText editTextLastName;
     EditText editTextAddress;
     EditText editTextAge;
-    String permission;
-    String ID;
-    String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect with database
-    ArrayList<String> columnName;
+    private String permission;
+    private String ID;
+    private String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect with database
+    private ArrayList<String> columnName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +61,39 @@ public class FirstTimeUser extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        //this arraylist is for saving the value that need to write to database
-        ArrayList<String> dataToWrite = new ArrayList<>();
-        dataToWrite.add(ID);
-        dataToWrite.add(editTextFirstName.getText().toString());
-        dataToWrite.add(editTextLastName.getText().toString());
-        dataToWrite.add(editTextAge.getText().toString());
-        dataToWrite.add(editTextAddress.getText().toString());
-        dataToWrite.add(permission);
+        String firstName = editTextFirstName.getText().toString();
+        String lastName = editTextLastName.getText().toString();
+        String age = editTextAge.getText().toString();
+        String address = editTextAddress.getText().toString();
 
-        WriteToDatabase writeToDatabase = new WriteToDatabase(columnName,dataToWrite,url,FirstTimeUser.this);
-        writeToDatabase.write();
+        //check for null/empty user input
+        if(isUserInputCorrectly(firstName,editTextFirstName) && isUserInputCorrectly(lastName, editTextLastName)
+                && isUserInputCorrectly(age, editTextAge) && isUserInputCorrectly(address,editTextAddress)) {
+            //this arraylist is for saving the value that need to write to database
+            ArrayList<String> dataToWrite = new ArrayList<>();
+            dataToWrite.add(ID);
+            dataToWrite.add(firstName);
+            dataToWrite.add(lastName);
+            dataToWrite.add(age);
+            dataToWrite.add(address);
+            dataToWrite.add(permission);
 
-        //start new activity after writing to database
-        Intent intent = new Intent(FirstTimeUser.this, testClass.class);
-        startActivity(intent);
+            WriteToDatabase writeToDatabase = new WriteToDatabase(columnName, dataToWrite, url, FirstTimeUser.this);
+            writeToDatabase.write();
+
+            //start new activity after writing to database
+            Intent intent = new Intent(FirstTimeUser.this, testClass.class);
+            startActivity(intent);
+        }
+    }
+
+    //check for empty string with user input
+    public boolean isUserInputCorrectly(String string, EditText editText){
+        if(TextUtils.isEmpty(string)) {
+            editText.setError("The item cannot be empty");
+            return false;
+        }else{
+            return true;
+        }
     }
 }
