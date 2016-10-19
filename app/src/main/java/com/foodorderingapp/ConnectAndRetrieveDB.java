@@ -16,18 +16,19 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by User on 10/3/2016.
+ * This class is used to connect with database and retrieve the JSONString
+ *
  */
 
 public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
     private String jsonURL;
-    private String post; //
+    private String postRequestString;
     private Context context;
     private AsyncResponse asyncResponse; //An interface
     ProgressDialog loading;
 
     public ConnectAndRetrieveDB(Context context, String jsonURL, AsyncResponse asyncResponse, String post){
-        this.post = post;
+        this.postRequestString = post;
         this.context = context;
         this.asyncResponse = asyncResponse;
         this.jsonURL = jsonURL;
@@ -45,19 +46,22 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(String jsonString) {
+        super.onPostExecute(jsonString);
         loading.dismiss();
         //need to implement the onTaskComplete method when using this class
         //since asyncResponse is an interface
-        asyncResponse.onTaskComplete(s);
+        asyncResponse.onTaskComplete(jsonString);
     }
 
-    public String getJSONData() {
+    /*
+    This method connect to database and retrieve the JSON string for the input URL
+     */
+    private String getJSONData() {
         StringBuilder sb = new StringBuilder();
         try {
             String data = URLEncoder.encode("restaurant", "UTF-8")
-                    + "=" + URLEncoder.encode(post, "UTF-8");
+                    + "=" + URLEncoder.encode(postRequestString, "UTF-8");
 
             //open connection to database
             URL url = new URL(jsonURL);

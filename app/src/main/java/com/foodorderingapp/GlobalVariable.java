@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
- * Created by User on 9/23/2016.
+ * This class is used for storing global variable
  */
 public class GlobalVariable {
     //this treemap contains all the menu item quantity

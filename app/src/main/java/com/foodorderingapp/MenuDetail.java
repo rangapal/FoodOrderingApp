@@ -12,6 +12,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+/*
+    A class that display details such as image, name, description and price of the specific menu
+    user can also change the quantity of the menu
+ */
 public class MenuDetail extends NavigationDrawerUser implements View.OnClickListener {
 
     TextView textViewName;
@@ -21,9 +25,9 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
     Button buttonPlus;
     Button buttonMinus;
     Button buttonOrder;
-    String menuName;
     EditText editTextQuantity;
-    ArrayList<String> menuDetails;
+    private String menuName;
+    private ArrayList<String> menuDetails;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
         String menuPrice = menuDetails.get(1);
         String menuDescription = menuDetails.get(2);
 
+        //set the values and display to screen
         textViewName.setText(menuName);
         textViewPrice.setText("$ "+ menuPrice);
         textViewDescription.setText(menuDescription);
@@ -62,8 +67,8 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
 
         //set logo of menu
         Picasso.with(MenuDetail.this)
-                .load(menuDetails.get(3))
-                .fit() // will explain later
+                .load(menuDetails.get(3)) //3 is the index for image URL
+                .fit()
                 .centerInside()
                 .into(imageViewIcon);
     }
@@ -74,7 +79,6 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
         if(view == buttonPlus){
             quantity++;
             editTextQuantity.setText(Integer.toString(quantity));
-
         }
 
         else if(view == buttonMinus){
@@ -91,6 +95,4 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
             finish();
         }
     }
-
-
 }

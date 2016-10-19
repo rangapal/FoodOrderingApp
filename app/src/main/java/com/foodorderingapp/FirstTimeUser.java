@@ -14,7 +14,8 @@ import com.facebook.Profile;
 import java.util.ArrayList;
 
 /**
- * Created by User on 10/3/2016.
+ * A page that show up only for first time login user.
+ * It asks user to input their information and save it to database
  */
 
 public class FirstTimeUser extends AppCompatActivity {
@@ -33,10 +34,11 @@ public class FirstTimeUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_time_user);
 
+        //set the toolbar
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        buttonSave = (Button)findViewById(R.id.buttonSaveUserDetail);
+        buttonSave = (Button)findViewById(R.id.buttonSaveFirstTimeUser);
         editTextFirstName = (EditText) findViewById(R.id.etFirstTimeUserFirstName);
         editTextLastName = (EditText) findViewById(R.id.etFirstTimeUserLastName);
         editTextAddress = (EditText) findViewById(R.id.etFirstTimeUserAddress);
@@ -60,6 +62,7 @@ public class FirstTimeUser extends AppCompatActivity {
         columnName.add("permission");
     }
 
+    //when user click on save button
     public void onClick(View view) {
         String firstName = editTextFirstName.getText().toString();
         String lastName = editTextLastName.getText().toString();

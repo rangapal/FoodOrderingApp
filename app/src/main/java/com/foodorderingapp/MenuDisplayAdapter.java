@@ -12,7 +12,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-
+/*
+    An adapter class to populate all menu item to MenuDisplayClass
+ */
 public class MenuDisplayAdapter extends BaseAdapter {
     private Object[] menuValue;
     private Context context;
@@ -22,7 +24,6 @@ public class MenuDisplayAdapter extends BaseAdapter {
         this.menuValue = menuValue;
         this.context = context;
         inflater = LayoutInflater.from(context);
-        //this.quantity = quantity;
     }
 
     @Override
@@ -69,14 +70,10 @@ public class MenuDisplayAdapter extends BaseAdapter {
         //set menu logo of restaurant
          Picasso.with(context)
                 .load(menuValueArray.get(3))
-                .fit() // will explain later
+                .fit()
                 .centerInside()
                 .into((ImageView) listView.findViewById(R.id.imageViewMenu));
 
         return listView;
     }
-
-
-
-
 }

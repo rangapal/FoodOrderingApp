@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
- * Created by User on 9/18/2016.
+ * This class convert the JSONString into a treemap so data can be accessed easily
  */
 public class ConvertJSON {
     private TreeMap<String, ArrayList<String>> treeMap;
@@ -19,40 +19,45 @@ public class ConvertJSON {
         convertToTreeMap(JSONString, JSONArray);
     }
 
-    public void convertToTreeMap(String JSONString, String JSONArray){
+    public void convertToTreeMap(String JSONString, String JSONArrayString){
         try {
+            //parse JSON object
             JSONObject jsonObjectRoot = new JSONObject(JSONString);
-            JSONArray jsonArray = jsonObjectRoot.getJSONArray(JSONArray);
+            JSONArray jsonArrayObject = jsonObjectRoot.getJSONArray(JSONArrayString);
 
-            //this is used for storing each column name
+            //this is used for storing each column name from database
             ArrayList<String> valueTag = new ArrayList<>();
 
-            //this is used for adding value of the column to hashmap
+            //this is used for adding value of the column  from database to hashmap
             ArrayList<String> eachColumnArray;
 
-            //add each column name to valueTag
-            Iterator<String> iterator = jsonArray.getJSONObject(0).keys();
+            //add each column name from database to valueTag
+            Iterator<String> iterator = jsonArrayObject.getJSONObject(0).keys();
             while(iterator.hasNext()){
                 valueTag.add(iterator.next());
             }
 
             JSONObject jo;
 
-            //loop to get number of item object in jsonArray
-            for(int i = 0; i < jsonArray.length(); i++){
+            //loop to get each item object in jsonArray
+            for(int i = 0; i < jsonArrayObject.length(); i++){
 
-                eachColumnArray = new ArrayList<>();// initiate new ArrayList
+                //since we are adding this to treemap, we have to clear the arraylist for each loop
+                eachColumnArray = new ArrayList<>();//
 
-                jo = jsonArray.getJSONObject(i); // get the i jsonObject
+                //this JSONobject contains each row of the table from database
+                jo = jsonArrayObject.getJSONObject(i);
 
-                //loop to get value of each name/value pair
+                // go through each valueTag to get each column value from the jo
+                // and add it to each ColumnArray
                 for(int j = 0; j < valueTag.size(); j++){
-                    //get string value from name/value and add it to arraylist
                     eachColumnArray.add(jo.getString(valueTag.get(j)));
                 }
 
-                //add each restaurant ArrayList to HashMap
-                    treeMap.put(eachColumnArray.get(0),eachColumnArray);
+                //add each row value to HashMap
+                //key is the first column value
+                //value is the row value
+                treeMap.put(eachColumnArray.get(0),eachColumnArray);
             }
 
         } catch (JSONException e) {

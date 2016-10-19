@@ -8,7 +8,7 @@ import android.preference.PreferenceManager;
 import android.widget.TextView;
 
 /**
- * Created by User on 9/23/2016.
+ * Home page for customer when they log in
  */
 public class CustomerHomePage extends NavigationDrawerUser{
     TextView textViewWelcome;
@@ -21,11 +21,10 @@ public class CustomerHomePage extends NavigationDrawerUser{
 
         //set the toolbar and navigation drawer
         navigation_drawer();
+        //display info on how to use navigation drawer
         showNavigationDrawerInfo();
 
         textViewWelcome = (TextView) findViewById(R.id.textViewWelcomeCustomerHomepage);
-
-
     }
 
     //this method is used for display the information on how to delete the menu item

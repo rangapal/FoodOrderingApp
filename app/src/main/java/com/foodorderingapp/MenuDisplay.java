@@ -10,13 +10,15 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
-
+/*
+    This class display all menu items of the selected restaurant
+ */
 public class MenuDisplay extends NavigationDrawerUser {
     ListView listViewMenu;
+    TreeMap<String, ArrayList<String>> menuTreeMap;
     Button buttonOrderSummary;
     private final String JSONARRAY = "Menu";
     private ArrayList<String> menuDetailArray;
-    TreeMap<String, ArrayList<String>> menuTreeMap;
     private String menuName;
     private Object[] menuValues;
 
@@ -30,10 +32,8 @@ public class MenuDisplay extends NavigationDrawerUser {
 
         menuTreeMap = new TreeMap<>();
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
-
-        Intent intent = getIntent();
-
         buttonOrderSummary = (Button)findViewById(R.id.buttonMenuOrderSummary);
+        Intent intent = getIntent();
 
         //get the restaurant ID so we can populate the menu for the restaurant
         String restaurantName = intent.getStringExtra("restaurantID");
@@ -60,13 +60,13 @@ public class MenuDisplay extends NavigationDrawerUser {
         {
             menuDetailArray = (ArrayList<String>) menuValues[i];
             menuName = menuDetailArray.get(0); // getting the menu name
-            //check if the menu exist in the menuItemQuantity yet
+            //check if the menu already exist in the menuItemQuantity
             //if it does not exsit, set it to zero
             if(!(GlobalVariable.menuItemQuantity.containsKey(menuName)))
             GlobalVariable.menuItemQuantity.put(menuName,"0");
         }
 
-        //set adapter for lsitview
+        //set adapter for listview
         listViewMenu.setAdapter(new MenuDisplayAdapter(MenuDisplay.this, menuValues));
 
         //when an item is click from the listview, it goes to menu detail activity
@@ -76,15 +76,14 @@ public class MenuDisplay extends NavigationDrawerUser {
 
                 menuDetailArray = (ArrayList<String>) menuValues[position];
                 Intent menuDetail = new Intent(MenuDisplay.this,MenuDetail.class);
-
-                //passing the details of the menu to menu detail activity
+                //passing the details of the menu to MenuDetail class
                 menuDetail.putExtra("ClickMenu", menuDetailArray);
                 MenuDisplay.this.startActivity(menuDetail);
             }
         });
     }
 
-    //when viewOrderSummary button is click, it goes to totalprice activity
+    //when viewOrderSummary button is click, it goes to TotalPrice class
     public void onClick(View view) {
         if(view == buttonOrderSummary){
             Intent totalPriceDisplay = new Intent(MenuDisplay.this, TotalPriceDisplay.class);
@@ -111,14 +110,12 @@ public class MenuDisplay extends NavigationDrawerUser {
                     selectedMenu.add(menuDetailArray);
                 }
             }
-
             GlobalVariable.selectedMenuQuantity = selectedMenu;
             MenuDisplay.this.startActivity(totalPriceDisplay);
         }
-
     }
 
-    //refresh the listview when menu quantity is changed
+    //update the display when menu quantity is changed
     @Override
     public void onRestart(){
         super.onRestart();

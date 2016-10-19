@@ -11,7 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * Created by User on 10/7/2016.
+ * This class set the toolbar and navigation drawer for all classes
+ * that related to customer 
  */
 
 public class NavigationDrawerUser extends AppCompatActivity{
@@ -63,7 +64,6 @@ public class NavigationDrawerUser extends AppCompatActivity{
                                 NavigationDrawerUser.this,URLAccount,getUserDetail(),postRequestString);
                         connectDBAccount.execute();
                         break;
-
                 }
             }
         });
@@ -80,7 +80,6 @@ public class NavigationDrawerUser extends AppCompatActivity{
                 startActivity(intent);
             }
         };
-
         return asyncResponse;
     }
 
@@ -95,9 +94,6 @@ public class NavigationDrawerUser extends AppCompatActivity{
                 startActivity(intent);
             }
         };
-
         return asyncResponse;
     }
-
-
 }

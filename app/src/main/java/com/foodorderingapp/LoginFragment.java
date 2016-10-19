@@ -29,7 +29,6 @@ public class LoginFragment extends Fragment {
     private CallbackManager callbackManager = null;
     private AccessTokenTracker mtracker = null;
     private ProfileTracker mprofileTracker = null;
-    public static final String PARCEL_KEY = "parcel_key";
     private LoginButton loginButton;
 
     FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
@@ -37,7 +36,7 @@ public class LoginFragment extends Fragment {
         @Override
         public void onSuccess(LoginResult loginResult) {
             Profile profile = Profile.getCurrentProfile();
-            homeFragment(profile);
+            goToSuitableActivity(profile);
         }
 
         @Override
@@ -67,7 +66,7 @@ public class LoginFragment extends Fragment {
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
 
                 Log.v("Session Tracker", "oldProfile=" + oldProfile + "||" + "currentProfile" + currentProfile);
-                homeFragment(currentProfile);
+                goToSuitableActivity(currentProfile);
             }
         };
 
@@ -75,21 +74,9 @@ public class LoginFragment extends Fragment {
         mprofileTracker.startTracking();
     }
 
-    private void homeFragment(Profile profile){
+    private void goToSuitableActivity(Profile profile){
         if(profile!=null){
             initiateActivity();
-//            Intent intent = new Intent(getActivity(), testClass.class);
-//            startActivity(intent);
-            //Bundle mBundle = new Bundle();
-            //mBundle.putParcelable(PARCEL_KEY,profile);
-//            HomeFragment hf = new HomeFragment();
-//            hf.setArguments(mBundle);
-//
-//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//            fragmentTransaction.replace(R.id.mainContainer, new HomeFragment());
-//            fragmentTransaction.commit();
         }
     }
 
@@ -131,11 +118,10 @@ public class LoginFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         if(isLoggedIn()){
             loginButton.setVisibility(View.INVISIBLE);
             Profile profile = Profile.getCurrentProfile();
-            homeFragment(profile);
+            goToSuitableActivity(profile);
         }
 
     }
@@ -147,7 +133,7 @@ public class LoginFragment extends Fragment {
         connectDB.execute();
     }
 
-    //this method check for the user permission and create activity accordingly
+    //this method check for the user permission and intent activity accordingly
     private AsyncResponse checkUser(){
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override
@@ -173,12 +159,11 @@ public class LoginFragment extends Fragment {
     }
 
     //this method is use to check for new user to the app
-    private boolean isNewUser(String JSONString){
+    private boolean isNewUser(String JSONStringUser){
         Profile profile = Profile.getCurrentProfile();
-        ConvertJSON convertJSON = new ConvertJSON(JSONString,"User");
+        ConvertJSON convertJSON = new ConvertJSON(JSONStringUser,"User");
 
         if(convertJSON.getTreeMap().containsKey(profile.getId())){
-            ArrayList<String> userDetails = convertJSON.getTreeMap().get(profile.getId());
             return false;
         }else{
             return true;
@@ -199,7 +184,4 @@ public class LoginFragment extends Fragment {
             return false;
         }
     }
-
-
-
 }
