@@ -6,10 +6,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
+
+import static com.foodorderingapp.GlobalVariable.menuItemQuantity;
+
 /*
     This class display all menu items of the selected restaurant
  */
@@ -62,8 +66,8 @@ public class MenuDisplay extends NavigationDrawerUser {
             menuName = menuDetailArray.get(0); // getting the menu name
             //check if the menu already exist in the menuItemQuantity
             //if it does not exsit, set it to zero
-            if(!(GlobalVariable.menuItemQuantity.containsKey(menuName)))
-            GlobalVariable.menuItemQuantity.put(menuName,"0");
+            if(!(menuItemQuantity.containsKey(menuName)))
+            menuItemQuantity.put(menuName,"0");
         }
 
         //set adapter for listview
@@ -97,21 +101,27 @@ public class MenuDisplay extends NavigationDrawerUser {
                 menuName = menuDetailArray.get(0); // get menu Name
 
                 // get integer value of the menu
-                int quantity = Integer.parseInt(GlobalVariable.menuItemQuantity.get(menuName));
+                int quantity = Integer.parseInt(menuItemQuantity.get(menuName));
 
                 //add menu quantity only when the value is greater than 0
                 if(quantity > 0){
                     // if quantity variable is not in the arraylist, add it to arraylist
                     // else set the quantity with new value
                     if(menuDetailArray.size() == 6)
-                        menuDetailArray.add(GlobalVariable.menuItemQuantity.get(menuName));
+                        menuDetailArray.add(menuItemQuantity.get(menuName));
                     else
-                        menuDetailArray.set(6,GlobalVariable.menuItemQuantity.get(menuName));
+                        menuDetailArray.set(6, menuItemQuantity.get(menuName));
                     selectedMenu.add(menuDetailArray);
                 }
             }
             GlobalVariable.selectedMenuQuantity = selectedMenu;
-            MenuDisplay.this.startActivity(totalPriceDisplay);
+            if(selectedMenu.isEmpty()){
+                Toast.makeText(getApplicationContext(), "Please choose the menu for order", Toast.LENGTH_SHORT).show();
+            }else{
+                MenuDisplay.this.startActivity(totalPriceDisplay);
+            }
+            //MenuDisplay.this.startActivity(totalPriceDisplay);
+
         }
     }
 
