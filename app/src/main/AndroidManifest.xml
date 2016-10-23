@@ -11,50 +11,48 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-
-        <activity android:name=".RestaurantDisplay"
-            android:label="@string/Restaurant">
-        </activity>
+        <activity
+            android:name=".RestaurantDisplay"
+            android:label="@string/Restaurant"></activity>
         <activity android:name=".CustomerHomePage">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".RestaurantDetail"></activity>
-        <activity android:name=".MenuDisplay"></activity>
-        <activity android:name=".MenuDetail"></activity>
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".RestaurantDetail" />
+        <activity android:name=".MenuDisplay" />
+        <activity android:name=".MenuDetail" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
-            tools:replace="android:theme"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            tools:replace="android:theme" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FirstTimeUser"></activity>
+        <activity android:name=".FirstTimeUser" />
         <activity android:name=".testClass">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".TotalPriceDetail"></activity>
-        <activity android:name=".TotalPriceDisplay"></activity>
-        <activity android:name=".RestaurantOwnerHomePage"></activity>
-        <activity android:name=".UserAccountDetail"></activity>
-
-
-
-
+        <activity android:name=".TotalPriceDetail" />
+        <activity android:name=".TotalPriceDisplay" />
+        <activity android:name=".RestaurantOwnerHomePage" />
+        <activity android:name=".UserAccountDetail" />
     </application>
 
 </manifest>

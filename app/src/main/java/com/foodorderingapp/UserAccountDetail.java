@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 
@@ -46,6 +47,7 @@ public class UserAccountDetail extends NavigationDrawerUser {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.user_account_detail);
 
         //set the toolbar and navigation drawer
@@ -74,6 +76,7 @@ public class UserAccountDetail extends NavigationDrawerUser {
         //this method set userAccountDetailValues with the current user details
         getUserDetail();
 
+
         //display user details to screen
         textViewFirstName.setText(userAccountDetailValues.get(1));
         textViewLastName.setText(userAccountDetailValues.get(2));
@@ -95,8 +98,7 @@ public class UserAccountDetail extends NavigationDrawerUser {
         columnName.add("lastName");
         columnName.add("age");
         columnName.add("address");
-        columnName.add("permission");
-    }
+        columnName.add("permission");}
 
     //method to convert the JSONString of user and extract the correct user details to be used
     public void getUserDetail(){

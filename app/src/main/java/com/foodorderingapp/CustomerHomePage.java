@@ -5,13 +5,15 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 /**
  * Home page for customer when they log in
  */
 public class CustomerHomePage extends NavigationDrawerUser{
-    TextView textViewWelcome;
+    //TextView textViewWelcome;
+    ImageView imageViewForWelcome;
+    ImageView imageViewForFoodPicture;
     private final String navigationdrawerInfo = "navigationdrawerInfo";
 
     @Override
@@ -22,7 +24,8 @@ public class CustomerHomePage extends NavigationDrawerUser{
         navigation_drawer();//set the toolbar and navigation drawer
         showNavigationDrawerInfo();//display info on how to use navigation drawer
 
-        textViewWelcome = (TextView) findViewById(R.id.textViewWelcomeCustomerHomepage);
+        imageViewForWelcome = (ImageView) findViewById(R.id.imageViewForWelcome);
+        imageViewForFoodPicture = (ImageView) findViewById(R.id.imageViewForFoodPicture);
     }
 
     //this method is used for display the information on how to delete the menu item
