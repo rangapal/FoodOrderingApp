@@ -31,8 +31,8 @@ public class RestaurantDisplay extends NavigationDrawerUser {
 
         //get the JSONString and convert it into treemap
         Intent intent = getIntent();
-        String JSONString = intent.getStringExtra("JSONString");
-        ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
+        String JSONStringRestaurant = intent.getStringExtra("JSONStringRestaurant");
+        ConvertJSON convertJSON = new ConvertJSON(JSONStringRestaurant,JSONARRAY);
 
         //Value in TreeMap is the following order
         //name, address, phoneNumber, cuisine, priceRange, imageURL

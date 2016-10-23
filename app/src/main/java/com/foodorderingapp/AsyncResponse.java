@@ -1,7 +1,7 @@
 package com.foodorderingapp;
 
 /**
- * Created by User on 10/3/2016.
+ * An abstract class used after the background process finishing running in the AsynTask
  */
 
 public interface AsyncResponse {

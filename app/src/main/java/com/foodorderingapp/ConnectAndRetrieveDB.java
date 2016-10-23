@@ -17,7 +17,7 @@ import java.net.URLEncoder;
 
 /**
  * This class is used to connect with database and retrieve the JSONString
- *
+ * from input URL
  */
 
 public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
@@ -63,15 +63,14 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
             String data = URLEncoder.encode("restaurant", "UTF-8")
                     + "=" + URLEncoder.encode(postRequestString, "UTF-8");
 
-            //open connection to database
+            //open connection to database and set request as post
             URL url = new URL(jsonURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
             con.setDoInput(true);
             con.setDoOutput(true);
 
-            //Creating an output stream
-            OutputStream os = con.getOutputStream();
+            OutputStream os = con.getOutputStream();//Creating an output stream
 
             //Writing data to php file on database
             BufferedWriter writer = new BufferedWriter(
@@ -92,7 +91,6 @@ public class ConnectAndRetrieveDB extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //this is the JSONString
-        return sb.toString().trim();
+        return sb.toString().trim();//return the JSONString
     }
 }

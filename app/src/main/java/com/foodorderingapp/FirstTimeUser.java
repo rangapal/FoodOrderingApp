@@ -34,7 +34,7 @@ public class FirstTimeUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_time_user);
 
-        //set the toolbar
+        //assign id to toolbar variable and set the toolbar
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,14 +44,12 @@ public class FirstTimeUser extends AppCompatActivity {
         editTextAddress = (EditText) findViewById(R.id.etFirstTimeUserAddress);
         editTextAge = (EditText) findViewById(R.id.etFirstTimeUserAge);
 
-        //set the title of activity
-        this.setTitle("New User Details");
+        this.setTitle("New User Details");//set the title of activity
 
         Profile profile = Profile.getCurrentProfile();
-        //get ID from facebook
-        ID = profile.getId().toString();
-        permission = "user";
 
+        ID = profile.getId().toString();//get ID from facebook
+        permission = "user";
         //this arraylist is use to match the name of variable on the php file in database
         columnName = new ArrayList<>();
         columnName.add("id");
@@ -62,7 +60,7 @@ public class FirstTimeUser extends AppCompatActivity {
         columnName.add("permission");
     }
 
-    //when user click on save button
+    //when user click on save button, save the input data to database
     public void onClick(View view) {
         String firstName = editTextFirstName.getText().toString();
         String lastName = editTextLastName.getText().toString();
@@ -72,7 +70,7 @@ public class FirstTimeUser extends AppCompatActivity {
         //check for null/empty user input
         if(isUserInputCorrectly(firstName,editTextFirstName) && isUserInputCorrectly(lastName, editTextLastName)
                 && isUserInputCorrectly(age, editTextAge) && isUserInputCorrectly(address,editTextAddress)) {
-            //this arraylist is for saving the value that need to write to database
+            //this arraylist is for matching the variable name on database so it can be written to database
             ArrayList<String> dataToWrite = new ArrayList<>();
             dataToWrite.add(ID);
             dataToWrite.add(firstName);
@@ -84,8 +82,7 @@ public class FirstTimeUser extends AppCompatActivity {
             WriteToDatabase writeToDatabase = new WriteToDatabase(columnName, dataToWrite, url, FirstTimeUser.this);
             writeToDatabase.write();
 
-            //start new activity after writing to database
-            Intent intent = new Intent(FirstTimeUser.this, testClass.class);
+            Intent intent = new Intent(FirstTimeUser.this, CustomerHomePage.class);
             startActivity(intent);
         }
     }

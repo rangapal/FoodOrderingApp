@@ -16,7 +16,7 @@ import android.widget.ListView;
  */
 
 public class NavigationDrawerUser extends AppCompatActivity{
-    private ListView listView;
+    ListView listView;
     private ArrayAdapter<String> listAdapter;
     private String navigationDrawerItemsName[] = {"Home","Order","User Account"};
     private Toolbar toolbar;
@@ -26,8 +26,8 @@ public class NavigationDrawerUser extends AppCompatActivity{
     private String postRequestString = "none";
 
     public void navigation_drawer(){
-
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        //set toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -76,7 +76,7 @@ public class NavigationDrawerUser extends AppCompatActivity{
             public void onTaskComplete(Object object) {
                 String s = (String) object;
                 Intent intent = new Intent(NavigationDrawerUser.this, RestaurantDisplay.class);
-                intent.putExtra("JSONString", s);
+                intent.putExtra("JSONStringRestaurant", s);
                 startActivity(intent);
             }
         };

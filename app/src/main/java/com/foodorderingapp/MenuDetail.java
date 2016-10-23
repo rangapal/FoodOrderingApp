@@ -33,14 +33,16 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_detail);
 
-        //set the toolbar and navigation drawer
-        navigation_drawer();
+        navigation_drawer();//set the toolbar and navigation drawer
 
         Intent intent = getIntent();
-        //Value is the following order
+        //Value index is the following order
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
         menuDetails = intent.getStringArrayListExtra("ClickMenu");
-        this.setTitle(menuDetails.get(4));
+        menuName = menuDetails.get(0);
+        String menuPrice = menuDetails.get(1);
+        String menuDescription = menuDetails.get(2);
+        this.setTitle(menuName);
 
         editTextQuantity = (EditText) findViewById(R.id.editTextMenuDetailQuantity);
         buttonPlus = (Button) findViewById(R.id.buttonPlusMenuDetail);
@@ -55,9 +57,7 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
         buttonMinus.setOnClickListener(this);
         buttonOrder.setOnClickListener(this);
 
-        menuName = menuDetails.get(0);
-        String menuPrice = menuDetails.get(1);
-        String menuDescription = menuDetails.get(2);
+
 
         //set the values and display to screen
         textViewName.setText(menuName);

@@ -11,7 +11,7 @@ import android.os.Bundle;
 import com.facebook.FacebookSdk;
 
 /*
-    This class for Facebook Login
+    This class is for Facebook Login
  */
 public class Login extends AppCompatActivity {
     @Override

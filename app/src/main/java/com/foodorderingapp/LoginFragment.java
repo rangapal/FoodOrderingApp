@@ -1,7 +1,7 @@
 package com.foodorderingapp;
 
 /**
- * Created by User on 9/22/2016.
+ * Fragment to connect with facebook login
  */
 
 import android.content.Intent;
@@ -123,18 +123,17 @@ public class LoginFragment extends Fragment {
             Profile profile = Profile.getCurrentProfile();
             goToSuitableActivity(profile);
         }
-
     }
 
-    private void initiateActivity(){
+    protected void initiateActivity(){
         //connect to database and execute the intent
         ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
-                getContext(),"http://aaacars.co.nz/getUser.php",checkUser(),"none");
+                    getContext(),"http://aaacars.co.nz/getUser.php",checkUser(),"none");
         connectDB.execute();
     }
 
-    //this method check for the user permission and intent activity accordingly
-    private AsyncResponse checkUser(){
+    //this method check for the user permission and start activity accordingly
+    protected AsyncResponse checkUser(){
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override
             public void onTaskComplete(Object object) {
@@ -145,11 +144,10 @@ public class LoginFragment extends Fragment {
                 if(isNewUser(s)){
                     intent = new Intent(getContext(), FirstTimeUser.class);
                 }else{
-                    //go to RestaurantOwnerHomePage page for admin
-                    if(isAdmin(s)){
+                    if(isAdmin(s)){//go to RestaurantOwnerHomePage page for admin
                         intent = new Intent(getContext(), RestaurantOwnerHomePage.class);
                     }else{ // go to restaurant selection page for current user
-                        intent = new Intent(getContext(), testClass.class);
+                        intent = new Intent(getContext(), CustomerHomePage.class);
                     }
                 }
                 startActivity(intent);
@@ -159,7 +157,7 @@ public class LoginFragment extends Fragment {
     }
 
     //this method is use to check for new user to the app
-    private boolean isNewUser(String JSONStringUser){
+    protected boolean isNewUser(String JSONStringUser){
         Profile profile = Profile.getCurrentProfile();
         ConvertJSON convertJSON = new ConvertJSON(JSONStringUser,"User");
 
@@ -171,7 +169,7 @@ public class LoginFragment extends Fragment {
     }
 
     //this method is use to check whether user permission is admin or user
-    private boolean isAdmin(String JSONString){
+    protected boolean isAdmin(String JSONString){
         Profile profile = Profile.getCurrentProfile();
         ConvertJSON convertJSON = new ConvertJSON(JSONString,"User");
 

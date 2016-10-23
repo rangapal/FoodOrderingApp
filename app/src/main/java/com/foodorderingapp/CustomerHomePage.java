@@ -19,10 +19,8 @@ public class CustomerHomePage extends NavigationDrawerUser{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_homepage);
 
-        //set the toolbar and navigation drawer
-        navigation_drawer();
-        //display info on how to use navigation drawer
-        showNavigationDrawerInfo();
+        navigation_drawer();//set the toolbar and navigation drawer
+        showNavigationDrawerInfo();//display info on how to use navigation drawer
 
         textViewWelcome = (TextView) findViewById(R.id.textViewWelcomeCustomerHomepage);
     }
@@ -45,5 +43,4 @@ public class CustomerHomePage extends NavigationDrawerUser{
             editor.commit();
         }
     }
-
 }

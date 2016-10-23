@@ -33,7 +33,7 @@ public class WriteToDatabase {
         this.url = url;
         this.context = context;
         PD = new ProgressDialog(context);
-        PD.setMessage("Loading.....");
+        PD.setMessage("Saving.....");
         PD.setCancelable(false);
         requestQueue = Volley.newRequestQueue(context);
     }
@@ -71,7 +71,4 @@ public class WriteToDatabase {
         };
         requestQueue.add(postRequest);
     }
-
-
-
 }

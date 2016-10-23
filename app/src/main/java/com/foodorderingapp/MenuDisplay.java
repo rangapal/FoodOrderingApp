@@ -31,9 +31,7 @@ public class MenuDisplay extends NavigationDrawerUser {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_list_view);
 
-        //set the toolbar and navigation drawer
-        navigation_drawer();
-
+        navigation_drawer();//set the toolbar and navigation drawer
         menuTreeMap = new TreeMap<>();
         listViewMenu = (ListView) findViewById(R.id.listViewMenuDisplay);
         buttonOrderSummary = (Button)findViewById(R.id.buttonMenuOrderSummary);
@@ -44,15 +42,11 @@ public class MenuDisplay extends NavigationDrawerUser {
         this.setTitle(restaurantName +" Menu");
 
         //get the jsonString so we can convert it to treeMap
-        String JSONString = intent.getStringExtra("JSONString");
-        ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
+        String JSONStringMenu = intent.getStringExtra("JSONStringMenu");
+        ConvertJSON convertJSON = new ConvertJSON(JSONStringMenu,JSONARRAY);
 
         //Value in TreeMap is the following order
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
-        /*
-         This treemap is use to check restaurant name that user select
-         and get all the details for the menu and put it in a the menuTreeMap
-          */
         menuTreeMap = convertJSON.getTreeMap();
 
         //Convert treemap into object array to pass into adapter
@@ -114,14 +108,14 @@ public class MenuDisplay extends NavigationDrawerUser {
                     selectedMenu.add(menuDetailArray);
                 }
             }
-            GlobalVariable.selectedMenuQuantity = selectedMenu;
+            //check for when user did not choose any menu item
             if(selectedMenu.isEmpty()){
-                Toast.makeText(getApplicationContext(), "Please choose the menu for order", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please choose a menu item before proceed", Toast.LENGTH_SHORT).show();
             }else{
                 MenuDisplay.this.startActivity(totalPriceDisplay);
             }
-            //MenuDisplay.this.startActivity(totalPriceDisplay);
-
+            //set menu quantity to global variable for easy usage
+            GlobalVariable.selectedMenuQuantity = selectedMenu;
         }
     }
 
