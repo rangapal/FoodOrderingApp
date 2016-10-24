@@ -23,7 +23,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 
 /**
- * Created by User on 9/23/2016.
+ * test for User account detail
  */
 @RunWith(AndroidJUnit4.class)
 public class UserAccountDetailTest {

@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.anything;
 
 
 /**
- * Created by User on 9/23/2016.
+ * test class for Total price display
  */
 @RunWith(AndroidJUnit4.class)
 public class TotalPriceDisplayTest {

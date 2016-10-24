@@ -14,7 +14,7 @@ import java.util.TreeMap;
 import static junit.framework.Assert.assertEquals;
 
 /**
- * Created by User on 10/11/2016.
+ * Test class for writeToDatabase
  */
 @RunWith(AndroidJUnit4.class)
 public class WriteToDatabaseTest {
