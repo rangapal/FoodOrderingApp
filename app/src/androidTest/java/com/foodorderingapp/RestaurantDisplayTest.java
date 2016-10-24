@@ -1,48 +1,35 @@
 package com.foodorderingapp;
 
-/**
- * Created by User on 9/23/2016.
- */
-
+import android.support.test.annotation.UiThreadTest;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+/**
+ * Created by User on 9/23/2016.
+ */
+@RunWith(AndroidJUnit4.class)
 public class RestaurantDisplayTest {
-//    @Rule
-//    public ActivityTestRule<RestaurantDisplay> getButton =
-//            new ActivityTestRule(CustomerHomePage.class,true,true);
 
     @Rule
-        public ActivityTestRule<RestaurantDisplay> startClass = new ActivityTestRule<RestaurantDisplay>(RestaurantDisplay.class,true,true);
+    public ActivityTestRule<NavigationDrawerUser> loginClass = new ActivityTestRule<>(NavigationDrawerUser.class,true,true);
 
-    String JsonString = "{\"Restaurant\":" +
-            "[" +
-            "{\"name\":\"Burger King\"," +
-            "\"ID\":\"001\"}," +
-            "{\"name\":\"Subway\"," +
-            "\"ID\":\"002\"}," +
-            "]" +
-            "}";
-
-//    @Test
-//    public void validateRestaurantDisplay() {
-//        onView(withId(R.id.buttonGet)).perform(click());
-//        intended(hasComponent(activityTestRule.toString()));
-//    }
-
-    //@Test
-    public void checkQuantity(){
-        //onView(withId(R.id.buttonGet)).perform(click());
-
-        //getButton.getActivity();
-//        onView(withId(R.id.buttonMinusMenuDetail))
-//                .check(ViewAssertions.matches(ViewMatchers.withText(R.id.editTextMenuDetailQuantity)))
-//                .perform(ViewActions.click());
-    }
     @Test
-    public void checkItemInRestaurantDisplay() {
+    public void checkIsNewUser(){
+//        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+//        onView(withId(R.id.drawer_layout)).check(matches(isOpen()));
+
+
+        //assertEquals(falseStatment, check);
+    }
+
+
+    @Test
+    @UiThreadTest
+    public void checkIsAdmin(){
 
     }
 }

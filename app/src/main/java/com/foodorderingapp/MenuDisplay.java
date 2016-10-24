@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
 
-import static com.foodorderingapp.GlobalVariable.menuItemQuantity;
+import static com.foodorderingapp.GlobalVariable.allMenuItemsQuantity;
 
 /*
     This class display all menu items of the selected restaurant
@@ -21,7 +21,7 @@ public class MenuDisplay extends NavigationDrawerUser {
     ListView listViewMenu;
     TreeMap<String, ArrayList<String>> menuTreeMap;
     Button buttonOrderSummary;
-    private final String JSONARRAY = "Menu";
+    private final String JSONARRAYMenu = "Menu";
     private ArrayList<String> menuDetailArray;
     private String menuName;
     private Object[] menuValues;
@@ -43,7 +43,7 @@ public class MenuDisplay extends NavigationDrawerUser {
 
         //get the jsonString so we can convert it to treeMap
         String JSONStringMenu = intent.getStringExtra("JSONStringMenu");
-        ConvertJSON convertJSON = new ConvertJSON(JSONStringMenu,JSONARRAY);
+        ConvertJSON convertJSON = new ConvertJSON(JSONStringMenu, JSONARRAYMenu);
 
         //Value in TreeMap is the following order
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
@@ -53,15 +53,15 @@ public class MenuDisplay extends NavigationDrawerUser {
         Collection<ArrayList<String>> collection = menuTreeMap.values();
         menuValues = collection.toArray();
 
-        //putting the menu name and quantity to the menuItemQuantity variable
+        //putting the menu name and quantity to the allMenuItemsQuantity variable
         for(int i =0; i < menuValues.length;i++)
         {
             menuDetailArray = (ArrayList<String>) menuValues[i];
             menuName = menuDetailArray.get(0); // getting the menu name
-            //check if the menu already exist in the menuItemQuantity
+            //check if the menu already exist in the allMenuItemsQuantity
             //if it does not exsit, set it to zero
-            if(!(menuItemQuantity.containsKey(menuName)))
-            menuItemQuantity.put(menuName,"0");
+            if(!(allMenuItemsQuantity.containsKey(menuName)))
+            allMenuItemsQuantity.put(menuName,"0");
         }
 
         //set adapter for listview
@@ -95,16 +95,16 @@ public class MenuDisplay extends NavigationDrawerUser {
                 menuName = menuDetailArray.get(0); // get menu Name
 
                 // get integer value of the menu
-                int quantity = Integer.parseInt(menuItemQuantity.get(menuName));
+                int quantity = Integer.parseInt(allMenuItemsQuantity.get(menuName));
 
                 //add menu quantity only when the value is greater than 0
                 if(quantity > 0){
                     // if quantity variable is not in the arraylist, add it to arraylist
                     // else set the quantity with new value
                     if(menuDetailArray.size() == 6)
-                        menuDetailArray.add(menuItemQuantity.get(menuName));
+                        menuDetailArray.add(allMenuItemsQuantity.get(menuName));
                     else
-                        menuDetailArray.set(6, menuItemQuantity.get(menuName));
+                        menuDetailArray.set(6, allMenuItemsQuantity.get(menuName));
                     selectedMenu.add(menuDetailArray);
                 }
             }
@@ -115,7 +115,7 @@ public class MenuDisplay extends NavigationDrawerUser {
                 MenuDisplay.this.startActivity(totalPriceDisplay);
             }
             //set menu quantity to global variable for easy usage
-            GlobalVariable.selectedMenuQuantity = selectedMenu;
+            GlobalVariable.userSelectedMenuItemQuantity = selectedMenu;
         }
     }
 

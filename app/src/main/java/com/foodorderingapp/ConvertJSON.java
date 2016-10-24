@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
- * This class convert the JSONString into a treemap so data can be accessed easily
+ * This class convert the JSONString into a TreeMap so data can be accessed easily
  */
 public class ConvertJSON {
     private TreeMap<String, ArrayList<String>> treeMap;

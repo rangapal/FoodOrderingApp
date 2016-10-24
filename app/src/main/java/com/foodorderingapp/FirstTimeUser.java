@@ -14,7 +14,7 @@ import com.facebook.Profile;
 import java.util.ArrayList;
 
 /**
- * A page that show up only for first time login user.
+ * A class that show a page for first time login user only.
  * It asks user to input their information and save it to database
  */
 
@@ -26,7 +26,7 @@ public class FirstTimeUser extends AppCompatActivity {
     EditText editTextAge;
     private String permission;
     private String ID;
-    private String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect with database
+    private String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect and write to DB
     private ArrayList<String> columnName;
 
     @Override
@@ -47,7 +47,6 @@ public class FirstTimeUser extends AppCompatActivity {
         this.setTitle("New User Details");//set the title of activity
 
         Profile profile = Profile.getCurrentProfile();
-
         ID = profile.getId().toString();//get ID from facebook
         permission = "user";
         //this arraylist is use to match the name of variable on the php file in database
@@ -88,7 +87,7 @@ public class FirstTimeUser extends AppCompatActivity {
     }
 
     //check for empty string with user input
-    public boolean isUserInputCorrectly(String string, EditText editText){
+    protected boolean isUserInputCorrectly(String string, EditText editText){
         if(TextUtils.isEmpty(string)) {
             editText.setError("The item cannot be empty");
             return false;

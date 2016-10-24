@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by User on 9/18/2016.
+ * An adapter class to populate all restaurant item to RestaurantDisplay class
  */
 public class RestaurantDisplayAdapter extends BaseAdapter {
     private Object[] restaurantValues;
@@ -45,7 +45,7 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View listView; //this view is used to mimic view from restaurant_list_view_layout.xml
 
-        //typecast menuValues from object to ArrayList
+        //typecast restaurantValueArray from object to ArrayList
         ArrayList<String> restaurantValueArray = (ArrayList<String>)restaurantValues[position];
 
         if(convertView == null){
@@ -61,16 +61,13 @@ public class RestaurantDisplayAdapter extends BaseAdapter {
         }else {
             listView = convertView;
         }
-
         //set logo of restaurant
          Picasso.with(context)
                 .load(restaurantValueArray.get(5))
-                .fit() // will explain later
+                .fit()
                 .centerInside()
                 .into((ImageView) listView.findViewById(R.id.imageViewRestaurant));
 
         return listView;
     }
-
-
 }

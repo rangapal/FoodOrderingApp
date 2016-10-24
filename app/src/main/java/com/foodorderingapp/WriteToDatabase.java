@@ -16,13 +16,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by User on 10/4/2016.
+ * This class is for writing information to database using volley api
  */
 
 public class WriteToDatabase {
     private ArrayList<String> columnName;
     private ArrayList<String> dataTowrite;
-    private String url;
+    private String URL;
     ProgressDialog PD;
     private RequestQueue requestQueue;
     Context context;
@@ -30,7 +30,7 @@ public class WriteToDatabase {
     public WriteToDatabase(ArrayList<String> columnName, ArrayList<String> dataTowrite, String url, Context context){
         this.dataTowrite = dataTowrite;
         this.columnName = columnName;
-        this.url = url;
+        this.URL = url;
         this.context = context;
         PD = new ProgressDialog(context);
         PD.setMessage("Saving.....");
@@ -38,9 +38,10 @@ public class WriteToDatabase {
         requestQueue = Volley.newRequestQueue(context);
     }
 
+    //method to write to database
     public void write(){
         PD.show();
-        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
@@ -67,7 +68,6 @@ public class WriteToDatabase {
                 }
                 return params;
             }
-
         };
         requestQueue.add(postRequest);
     }

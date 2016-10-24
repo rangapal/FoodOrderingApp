@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /*
-    An adapter class to populate all menu item to MenuDisplayClass
+    An adapter class to populate all menu item to MenuDisplay class
  */
 public class MenuDisplayAdapter extends BaseAdapter {
     private Object[] menuValue;
@@ -47,7 +47,7 @@ public class MenuDisplayAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View listView; //this view is used to mimic view from menu_list_view_layout.xml
 
-        //typecast menuValues from object to ArrayList
+        //typecast menuValueArray from object to ArrayList
         ArrayList<String> menuValueArray = (ArrayList<String>) menuValue[position];
 
         if(convertView == null){
@@ -58,7 +58,7 @@ public class MenuDisplayAdapter extends BaseAdapter {
 
             String menuName = menuValueArray.get(0);
             String menuPrice = menuValueArray.get(1);
-            String quantity = GlobalVariable.menuItemQuantity.get(menuName);
+            String quantity = GlobalVariable.allMenuItemsQuantity.get(menuName);
 
             textViewName.setText(menuName); //set name of menu
             textViewPrice.setText("$ "+menuPrice); //set price of menu
@@ -66,8 +66,7 @@ public class MenuDisplayAdapter extends BaseAdapter {
         }else {
             listView = convertView;
         }
-
-        //set menu logo of restaurant
+        //set menu logo of menu
          Picasso.with(context)
                 .load(menuValueArray.get(3))
                 .fit()

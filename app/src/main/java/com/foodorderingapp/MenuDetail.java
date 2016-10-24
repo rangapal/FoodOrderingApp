@@ -57,13 +57,11 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
         buttonMinus.setOnClickListener(this);
         buttonOrder.setOnClickListener(this);
 
-
-
         //set the values and display to screen
         textViewName.setText(menuName);
         textViewPrice.setText("$ "+ menuPrice);
         textViewDescription.setText(menuDescription);
-        editTextQuantity.setText(GlobalVariable.menuItemQuantity.get(menuName));
+        editTextQuantity.setText(GlobalVariable.allMenuItemsQuantity.get(menuName));
 
         //set logo of menu
         Picasso.with(MenuDetail.this)
@@ -73,24 +71,25 @@ public class MenuDetail extends NavigationDrawerUser implements View.OnClickList
                 .into(imageViewIcon);
     }
 
+    //method when user click on the minus,plus and order button
     public void onClick(View view) {
         int quantity = Integer.parseInt(editTextQuantity.getText().toString());
 
-        if(view == buttonPlus){
+        if(view == buttonPlus){//increase the quantity value by one when plus button is click
             quantity++;
             editTextQuantity.setText(Integer.toString(quantity));
         }
 
-        else if(view == buttonMinus){
+        else if(view == buttonMinus){//decrease the quantity value by one when minus button is click
             if (quantity>0){
                 quantity--;
                 editTextQuantity.setText(Integer.toString(quantity));
             }
         }
 
-        //when confirm to order is pressed, change the screen back to menu display
+        //when confirm to order is pressed, change the screen back to MenuDisplay class
         else if(view == buttonOrder){
-            GlobalVariable.menuItemQuantity.put(menuName,Integer.toString(quantity));
+            GlobalVariable.allMenuItemsQuantity.put(menuName,Integer.toString(quantity));
             onBackPressed();
             finish();
         }

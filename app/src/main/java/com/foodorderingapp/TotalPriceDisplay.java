@@ -15,18 +15,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.foodorderingapp.GlobalVariable.selectedMenuQuantity;
-
 /**
- * Created by JeffChoi on 19/09/2016.
+ * This class is for displaying the total price of the food that user selected
  */
 public class TotalPriceDisplay extends NavigationDrawerUser {
     private ListView listViewTotalPrice;
-    private TextView totalPriceNumber;
+    private TextView textViewTotalPrice;
     private ArrayList<ArrayList<String>> totalPriceInformation;
     private BaseAdapter adapter;
-    ArrayList<String> stringPrice;
-    ArrayList<String> stringQuantity;
+    ArrayList<String> arrayListMenuPrice;
+    ArrayList<String> arrayListMenuQuantity;
     ArrayList<String> totalPriceDetail;
     private final String pressAndHoldToDeletePref = "pressAndHoldToDeleteShown";
 
@@ -37,12 +35,11 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
 
         //set the toolbar and navigation drawer
         navigation_drawer();
-
         this.setTitle("Order Summary");
-        totalPriceNumber = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
+        textViewTotalPrice = (TextView) findViewById(R.id.textViewTotalPriceGridViewPriceNumber);
         listViewTotalPrice = (ListView) findViewById(R.id.listViewTotalPrice);
 
-        //method to display the ordered menu item
+        //method to display the menu items that user ordered
         setDetail();
         //pop up to tell the user how to delete the menu item
         showPressAndHoldToDeleteAlertDialog();
@@ -71,25 +68,26 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         });
     }
 
+    //method to set the value to total price and display the menu items that user ordered to screen
     private void setDetail(){
-        //this is an arrayList of arraylist of String
+        //this is an ArrayList of Arraylist of String
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID, quantity
-        totalPriceInformation = selectedMenuQuantity;
+        totalPriceInformation = GlobalVariable.userSelectedMenuItemQuantity;
 
-        stringPrice = new ArrayList<>();
-        stringQuantity = new ArrayList<>();
+        arrayListMenuPrice = new ArrayList<>();
+        arrayListMenuQuantity = new ArrayList<>();
 
         //loop to update all the menu informations
         for(int i = 0; i < totalPriceInformation.size(); i++){
-            stringPrice.add(totalPriceInformation.get(i).get(1)); // 1 here is the menuPrice for selected menu
-            stringQuantity.add(totalPriceInformation.get(i).get(6));// 6 here is the quantity for selected menu
+            arrayListMenuPrice.add(totalPriceInformation.get(i).get(1)); // 1 here is the menuPrice for selected menu
+            arrayListMenuQuantity.add(totalPriceInformation.get(i).get(6));// 6 here is the quantity for selected menu
         }
 
         //update the total price and display it
-        String totalPriceNumberInString= Float.toString(getTotalPrice(stringPrice, stringQuantity));
-        totalPriceNumber.setText("$ "+totalPriceNumberInString);
+        String totalPriceNumberInString= Float.toString(getTotalPrice(arrayListMenuPrice, arrayListMenuQuantity));
+        textViewTotalPrice.setText("$ "+totalPriceNumberInString);
 
-        //update the menu items if there any changes from totalpricedetail activity
+        //set the menu items if there any changes from TotalPriceDetail class
         adapter = new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation);
         listViewTotalPrice.setAdapter(adapter);
     }
@@ -101,7 +99,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         setDetail();
     }
 
-    // to delete an item from listView
+    // method to delete a menu item
     private void removeItemFromList(int position) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(TotalPriceDisplay.this);
@@ -112,20 +110,19 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String deleteMenuName = selectedMenuQuantity.get(deletePosition).get(0);
-                //remove the arraylist from selectedMenuQuantity
-                selectedMenuQuantity.remove(deletePosition);
+                String deleteMenuName = GlobalVariable.userSelectedMenuItemQuantity.get(deletePosition).get(0);
+                //remove the arraylist from userSelectedMenuItemQuantity
+                GlobalVariable.userSelectedMenuItemQuantity.remove(deletePosition);
                 //set the quantity of the menu to zero
-                GlobalVariable.menuItemQuantity.put(deleteMenuName, "0");
+                GlobalVariable.allMenuItemsQuantity.put(deleteMenuName, "0");
                 //update the menu items and display it to screen
                 setDetail();
                 Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
                 // if there is no menu after deleting all, then go back to menu display page
-                if(selectedMenuQuantity.isEmpty())
+                if(GlobalVariable.userSelectedMenuItemQuantity.isEmpty())
                     onBackPressed();
             }
         });
-
         alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -157,13 +154,11 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
     //calculating the totalPrice
     private float getTotalPrice(ArrayList<String> stringPrice, ArrayList<String> StringQuantity){
         float totalPrice = 0f;
-
         for(int i = 0; i < stringPrice.size(); i++){
             float value = Float.parseFloat(stringPrice.get(i));
             float quantityValue = Float.parseFloat(StringQuantity.get(i));
             totalPrice += (value*quantityValue);
         }
-
         return totalPrice;
     }
 

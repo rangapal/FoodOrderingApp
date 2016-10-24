@@ -8,8 +8,8 @@ import java.util.TreeMap;
  */
 public class GlobalVariable {
     //this treemap contains all the menu item quantity
-    public static TreeMap<String,String> menuItemQuantity = new TreeMap<>();
+    public static TreeMap<String,String> allMenuItemsQuantity = new TreeMap<>();
 
     //this arraylist contains only the menu item has quantity bigger than zero
-    public static ArrayList<ArrayList<String>> selectedMenuQuantity = new ArrayList<>();
+    public static ArrayList<ArrayList<String>> userSelectedMenuItemQuantity = new ArrayList<>();
 }

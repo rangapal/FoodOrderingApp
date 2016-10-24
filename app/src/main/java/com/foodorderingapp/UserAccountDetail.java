@@ -13,36 +13,30 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 /**
- * Created by User on 10/3/2016.
+ * This class is for user to view their account information and edit them
+ * It has a logout button for user to log out as well
  */
 
 public class UserAccountDetail extends NavigationDrawerUser {
-    private final String JSONARRAY = "User";
-    private TreeMap<String, ArrayList<String>> userAccountDetailTreeMap;
-    Object[] user;
+    private final String JSONARRAYUser = "User";
     private ArrayList<String> userAccountDetailValues;
-
+    private String permission;
+    private String ID;
+    private String URL = "http://aaacars.co.nz/writeToUserData.php"; //URL to connect and write to database
+    private ArrayList<String> columnName;
     Button buttonEdit;
     Button buttonSave;
     Button buttonLogOut;
-
     EditText editTextFirstName;
     EditText editTextLastName;
     EditText editTextAddress;
     EditText editTextAge;
-
     TextView textViewFirstName;
     TextView textViewLastName;
     TextView textViewAddress;
     TextView textViewAge;
-
-    private String permission;
-    private String ID;
-    private String url = "http://aaacars.co.nz/writeToUserData.php"; //url to connect and write to database
-    private ArrayList<String> columnName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,30 +60,24 @@ public class UserAccountDetail extends NavigationDrawerUser {
         textViewAddress = (TextView) findViewById(R.id.tvUserAccountAddress);
         textViewAge = (TextView) findViewById(R.id.tvUserAccountAge);
 
-        //set the title of activity
-        this.setTitle("User Account Details");
-
+        this.setTitle("User Account Details");//set the title of activity
         Profile profile = Profile.getCurrentProfile();
         //get ID from facebook
         ID = profile.getId().toString();
 
-        //this method set userAccountDetailValues with the current user details
+        //this method set userAccountDetailValues ArrayList with the current user details
         getUserDetail();
 
-
-        //display user details to screen
+        //set text for TextView and EditView
         textViewFirstName.setText(userAccountDetailValues.get(1));
         textViewLastName.setText(userAccountDetailValues.get(2));
         textViewAge.setText(userAccountDetailValues.get(3));
         textViewAddress.setText(userAccountDetailValues.get(4));
-
         editTextFirstName.setText(userAccountDetailValues.get(1));
         editTextLastName.setText(userAccountDetailValues.get(2));
         editTextAge.setText(userAccountDetailValues.get(3));
         editTextAddress.setText(userAccountDetailValues.get(4));
-
         permission = userAccountDetailValues.get(5);
-
 
         //this arraylist is use to match the name of variable on the php file in database
         columnName = new ArrayList<>();
@@ -105,15 +93,14 @@ public class UserAccountDetail extends NavigationDrawerUser {
         //convert JSONString into treemap for easy access and manipulation
         Intent intent = getIntent();
         String JSONString = intent.getStringExtra("JSONStringForUserDetail");
-        ConvertJSON convertJSON = new ConvertJSON(JSONString,JSONARRAY);
-
+        ConvertJSON convertJSON = new ConvertJSON(JSONString, JSONARRAYUser);
         //Value in TreeMap is the following order
         //id, firstName, lastName, age, address, permission
         userAccountDetailValues = convertJSON.getTreeMap().get(ID);
     }
 
+    //method to set visibility of textview and editview
     public void setVisiblity(int textViewVisibility, int editViewVisibility){
-
         //set visibility of textview, editButton and LogOutButton
         textViewFirstName.setVisibility(textViewVisibility);
         textViewLastName.setVisibility(textViewVisibility);
@@ -130,15 +117,15 @@ public class UserAccountDetail extends NavigationDrawerUser {
         buttonSave.setVisibility(editViewVisibility);
     }
 
-    // when click the edit button, then all textView, placed right side, and edit button
-    // are unvisible then editTexts and save button show up to user.
+    // changes the visibility when user click on edit button
     public void onButtonForEdit(View view) {
         // textViews, edit button and Log out button become invisible.
         // editTexts and save button show up to user.
         setVisiblity(View.INVISIBLE, View.VISIBLE);
     }
 
-    //when user Click on save button
+    //changes the visibility when user Click on save button
+    //write user data to database if there are changes
     public void onButtonForSave(View view) {
         String firstName = editTextFirstName.getText().toString();
         String lastName = editTextLastName.getText().toString();
@@ -158,7 +145,7 @@ public class UserAccountDetail extends NavigationDrawerUser {
             dataToWrite.add(permission);
 
             //connect and write data to database
-            WriteToDatabase writeToDatabase = new WriteToDatabase(columnName, dataToWrite, url, UserAccountDetail.this);
+            WriteToDatabase writeToDatabase = new WriteToDatabase(columnName, dataToWrite, URL, UserAccountDetail.this);
             writeToDatabase.write();
 
             //update the text and display to screen
@@ -189,5 +176,4 @@ public class UserAccountDetail extends NavigationDrawerUser {
         Intent intent = new Intent(UserAccountDetail.this,Login.class);
         startActivity(intent);
     }
-
 }

@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.facebook.login.LoginManager;
 
 /**
- * Created by User on 10/4/2016.
+ * Home page for restaurant owner when they log in
  */
 
 public class RestaurantOwnerHomePage extends AppCompatActivity {
@@ -19,7 +19,6 @@ public class RestaurantOwnerHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant_owner_homepage);
         buttonLogOut = (Button)findViewById(R.id.buttonLogOutWelcome);
-
     }
 
     public void onClick(View view) {

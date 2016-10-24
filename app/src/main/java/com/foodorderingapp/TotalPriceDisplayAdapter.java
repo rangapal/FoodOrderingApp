@@ -13,22 +13,21 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by JeffChoi on 19/09/2016.
+ * An adapter class to populate user selected menu items to TotalPriceDisplay class
  */
 public class TotalPriceDisplayAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<ArrayList<String>> totalPriceInfor;
+    private ArrayList<ArrayList<String>> totalPriceInfo;
     private LayoutInflater inflater;
 
-    public TotalPriceDisplayAdapter(Context context, ArrayList<ArrayList<String>> totalPriceInfor){
-
+    public TotalPriceDisplayAdapter(Context context, ArrayList<ArrayList<String>> totalPriceInfo){
         this.context = context;
-        this.totalPriceInfor = totalPriceInfor;
+        this.totalPriceInfo = totalPriceInfo;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
-    public int getCount() {return totalPriceInfor.size();}
+    public int getCount() {return totalPriceInfo.size();}
 
     @Override
     public Object getItem(int position) {return null;}
@@ -36,39 +35,35 @@ public class TotalPriceDisplayAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {return 0;}
 
+    //Value in ArrayList of ArrayList is the following order
+    //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        View listView;
+        View listView; //this view is used to mimic view from total_price_list_view_layout.xml
 
         if(convertView == null){
             listView= inflater.inflate(R.layout.total_price_list_view_layout, parent, false);
+            TextView txMenuName = (TextView) listView.findViewById(R.id.textViewNameTotalPriceLayout);
+            TextView txMenuPrice = (TextView) listView.findViewById(R.id.textViewPriceValueTotalPriceLayout);
+            TextView txMenuQuantity = (TextView) listView.findViewById(R.id.textViewQuantityValueTotalPriceLayout);
 
-            //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID
-            TextView nameMenu = (TextView) listView.findViewById(R.id.textViewNameTotalPriceLayout);
-            TextView priceMenu = (TextView) listView.findViewById(R.id.textViewPriceValueTotalPriceLayout);
-            TextView quantityMenu = (TextView) listView.findViewById(R.id.textViewQuantityValueTotalPriceLayout);
-            //ImageView imageViewMenu = (ImageView) listView.findViewById(R.id.imageViewTotalPriceLayout);
-
-            String menuName = totalPriceInfor.get(position).get(0);
-            String menuPrice = totalPriceInfor.get(position).get(1);
-            String menuQuantity = totalPriceInfor.get(position).get(6);
-
-            nameMenu.setText(menuName);
-            priceMenu.setText("$ "+menuPrice);
-            quantityMenu.setText(menuQuantity);
-
+            //position is refer to each of the menu items
+            //0 is index for name, 1 is index for price, 6 is index for quantity
+            String menuName = totalPriceInfo.get(position).get(0);
+            String menuPrice = totalPriceInfo.get(position).get(1);
+            String menuQuantity = totalPriceInfo.get(position).get(6);
+            txMenuName.setText(menuName);
+            txMenuPrice.setText("$ "+menuPrice);
+            txMenuQuantity.setText(menuQuantity);
         }else{
             listView = convertView;
         }
-
-        //set menu logo of restaurant
+        //set logo of menu
         Picasso.with(context)
-                .load(totalPriceInfor.get(position).get(3))
-                .fit() // will explain later
+                .load(totalPriceInfo.get(position).get(3))
+                .fit()
                 .centerInside()
                 .into((ImageView) listView.findViewById(R.id.imageViewTotalPriceLayout));
-
         return listView;
     }
 }

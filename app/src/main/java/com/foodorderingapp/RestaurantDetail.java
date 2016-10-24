@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * This class is for display restaurant information that user selected
+ * This class is for displaying restaurant information that user selected
  */
 public class RestaurantDetail extends NavigationDrawerUser {
 
@@ -34,7 +34,7 @@ public class RestaurantDetail extends NavigationDrawerUser {
         ArrayList<String> restaurantDetails = intent.getStringArrayListExtra("ClickRestaurant");
 
         restaurantName = restaurantDetails.get(0);
-        this.setTitle(restaurantName); // set title of the restaurant
+        this.setTitle(restaurantName); // set restaurant name as title of the screen
 
         textViewName = (TextView)findViewById(R.id.textViewRestaurantDetailName);
         textViewAddress = (TextView)findViewById(R.id.textViewRestaurantDetailAddress);

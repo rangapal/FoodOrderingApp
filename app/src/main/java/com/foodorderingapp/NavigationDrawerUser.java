@@ -25,6 +25,7 @@ public class NavigationDrawerUser extends AppCompatActivity{
     private String URLAccount = "http://aaacars.co.nz/getUser.php";
     private String postRequestString = "none";
 
+    //method to set the toolbars and navigation drawer to each activity
     public void navigation_drawer(){
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         //set toolbar
@@ -69,7 +70,7 @@ public class NavigationDrawerUser extends AppCompatActivity{
         });
     }
 
-    //method to get restaurant details from database and go to restaurant display class
+    //method to get restaurant data from database and go to restaurant display class
     private AsyncResponse initiateRestaurantDisplay() {
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override
@@ -83,7 +84,7 @@ public class NavigationDrawerUser extends AppCompatActivity{
         return asyncResponse;
     }
 
-    //method to get user details from database and go to User account detail class
+    //method to get user data from database and go to User account detail class
     private AsyncResponse getUserDetail() {
         AsyncResponse asyncResponse = new AsyncResponse() {
             @Override

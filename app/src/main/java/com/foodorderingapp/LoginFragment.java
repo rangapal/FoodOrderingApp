@@ -33,10 +33,11 @@ public class LoginFragment extends Fragment {
 
     FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
 
+        //after login success, initiateActivity check for the right display depending on the user
         @Override
         public void onSuccess(LoginResult loginResult) {
             Profile profile = Profile.getCurrentProfile();
-            goToSuitableActivity(profile);
+            initiateActivity(profile);
         }
 
         @Override
@@ -66,18 +67,12 @@ public class LoginFragment extends Fragment {
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
 
                 Log.v("Session Tracker", "oldProfile=" + oldProfile + "||" + "currentProfile" + currentProfile);
-                goToSuitableActivity(currentProfile);
+                initiateActivity(currentProfile);
             }
         };
 
         mtracker.startTracking();
         mprofileTracker.startTracking();
-    }
-
-    private void goToSuitableActivity(Profile profile){
-        if(profile!=null){
-            initiateActivity();
-        }
     }
 
     @Nullable
@@ -121,15 +116,19 @@ public class LoginFragment extends Fragment {
         if(isLoggedIn()){
             loginButton.setVisibility(View.INVISIBLE);
             Profile profile = Profile.getCurrentProfile();
-            goToSuitableActivity(profile);
+            initiateActivity(profile);
         }
     }
 
-    protected void initiateActivity(){
-        //connect to database and execute the intent
-        ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
+    //this method connect to database and retrieve user data
+    //checkUser() method is called here to check for user permission
+    protected void initiateActivity(Profile profile){
+        if(profile!=null){
+            //connect to database and execute the intent
+            ConnectAndRetrieveDB connectDB = new ConnectAndRetrieveDB(
                     getContext(),"http://aaacars.co.nz/getUser.php",checkUser(),"none");
-        connectDB.execute();
+            connectDB.execute();
+        }
     }
 
     //this method check for the user permission and start activity accordingly

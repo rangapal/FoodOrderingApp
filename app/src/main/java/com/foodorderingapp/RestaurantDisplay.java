@@ -11,11 +11,11 @@ import java.util.Collection;
 import java.util.TreeMap;
 
 /**
- * Created by User on 9/18/2016.
+ * This class is for displaying all the restaurants that is available from database
  */
 public class RestaurantDisplay extends NavigationDrawerUser {
     ListView listViewRestaurant;
-    private final String JSONARRAY = "Restaurant";
+    private final String JSONARRAYRestaurant = "Restaurant";
     TreeMap<String, ArrayList<String>> restaurantTreeMap;
     Object[] restaurantValues;
 
@@ -32,7 +32,7 @@ public class RestaurantDisplay extends NavigationDrawerUser {
         //get the JSONString and convert it into treemap
         Intent intent = getIntent();
         String JSONStringRestaurant = intent.getStringExtra("JSONStringRestaurant");
-        ConvertJSON convertJSON = new ConvertJSON(JSONStringRestaurant,JSONARRAY);
+        ConvertJSON convertJSON = new ConvertJSON(JSONStringRestaurant, JSONARRAYRestaurant);
 
         //Value in TreeMap is the following order
         //name, address, phoneNumber, cuisine, priceRange, imageURL
@@ -42,17 +42,19 @@ public class RestaurantDisplay extends NavigationDrawerUser {
         Collection<ArrayList<String>> collection = restaurantTreeMap.values();
         restaurantValues = collection.toArray();
 
+        //set adapter for listview
         listViewRestaurant.setAdapter(new RestaurantDisplayAdapter(RestaurantDisplay.this, restaurantValues));
 
         listViewRestaurant.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ArrayList<String> restaurantDetailArray = (ArrayList<String>) restaurantValues[position];
-
+                //go to restaurant details class when user click on the restaurant
                 Intent restaurantDetail = new Intent(RestaurantDisplay.this,RestaurantDetail.class);
+                //pass the arraylist so restaurant detail so we can display the information according
+                //to what the user selected
                 restaurantDetail.putExtra("ClickRestaurant", restaurantDetailArray);
                 RestaurantDisplay.this.startActivity(restaurantDetail);
-
             }
         });
     }
