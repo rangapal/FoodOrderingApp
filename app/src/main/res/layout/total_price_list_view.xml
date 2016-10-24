@@ -26,7 +26,9 @@
             android:layout_alignBaseline="@+id/textViewTotalPriceGridViewPriceNumber"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="Total Price : $"
+            android:text="Total Price :"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
             android:textSize="25dp" />
 
         <TextView
@@ -38,6 +40,8 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/textViewTotalPriceGridViewTotalPrice"
             android:text="Price"
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold"
             android:textSize="25dp" />
 
         <Button

@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.foodorderingapp.GlobalVariable.selectedMenuQuantity;
+
 /**
  * Created by JeffChoi on 19/09/2016.
  */
@@ -63,8 +65,8 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 // to call method to delete an item from list view.
                 removeItemFromList(position);
-                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
                 return true;
+
             }
         });
     }
@@ -72,7 +74,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
     private void setDetail(){
         //this is an arrayList of arraylist of String
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID, quantity
-        totalPriceInformation = GlobalVariable.selectedMenuQuantity;
+        totalPriceInformation = selectedMenuQuantity;
 
         stringPrice = new ArrayList<>();
         stringQuantity = new ArrayList<>();
@@ -85,7 +87,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
 
         //update the total price and display it
         String totalPriceNumberInString= Float.toString(getTotalPrice(stringPrice, stringQuantity));
-        totalPriceNumber.setText(totalPriceNumberInString);
+        totalPriceNumber.setText("$ "+totalPriceNumberInString);
 
         //update the menu items if there any changes from totalpricedetail activity
         adapter = new TotalPriceDisplayAdapter(TotalPriceDisplay.this, totalPriceInformation);
@@ -110,13 +112,17 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String deleteMenuName = GlobalVariable.selectedMenuQuantity.get(deletePosition).get(0);
+                String deleteMenuName = selectedMenuQuantity.get(deletePosition).get(0);
                 //remove the arraylist from selectedMenuQuantity
-                GlobalVariable.selectedMenuQuantity.remove(deletePosition);
+                selectedMenuQuantity.remove(deletePosition);
                 //set the quantity of the menu to zero
                 GlobalVariable.menuItemQuantity.put(deleteMenuName, "0");
                 //update the menu items and display it to screen
                 setDetail();
+                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                // if there is no menu after deleting all, then go back to menu display page
+                if(selectedMenuQuantity.isEmpty())
+                    onBackPressed();
             }
         });
 
@@ -161,7 +167,25 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         return totalPrice;
     }
 
+    // to show up the message to customer to say thank you
+    public void onButtonForConfirm(View v){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TotalPriceDisplay.this);
 
+        alertDialogBuilder.setTitle("Dear Customer");
 
+        alertDialogBuilder.setMessage("Thank you for ordering menu from our app :)")
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
+            // create alert dialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
+
+            // show it
+            alertDialog.show();
+    }
 }

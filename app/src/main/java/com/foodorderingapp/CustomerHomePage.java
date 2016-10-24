@@ -25,7 +25,7 @@ public class CustomerHomePage extends NavigationDrawerUser{
         showNavigationDrawerInfo();//display info on how to use navigation drawer
 
         imageViewForWelcome = (ImageView) findViewById(R.id.imageViewForWelcome);
-        imageViewForFoodPicture = (ImageView) findViewById(R.id.imageViewForFoodPicture);
+        imageViewForFoodPicture = (ImageView) findViewById(R.id.imageViewForBackgroud);
     }
 
     //this method is used for display the information on how to delete the menu item

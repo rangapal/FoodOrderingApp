@@ -23,22 +23,20 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/welcome"
-            android:id="@+id/imageViewForWelcome"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/backgroud"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="274dp"
+            android:id="@+id/imageViewForBackgroud" />
 
         <ImageView
             android:layout_width="match_parent"
-            app:srcCompat="@drawable/food"
-            android:id="@+id/imageViewForFoodPicture"
-            android:layout_height="470dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/welcome2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/imageViewForWelcome" />
     </RelativeLayout>
 
     <!-- The navigation drawer list-->
