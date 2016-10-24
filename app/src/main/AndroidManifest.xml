@@ -37,18 +37,17 @@
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".FirstTimeUser" />
-        <activity android:name=".testClass">
+        <!--<activity android:name=".testClass">-->
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+             <!--<intent-filter> -->
+             <!--<action android:name="android.intent.action.MAIN" /> -->
+             <!--<category android:name="android.intent.category.LAUNCHER" /> -->
+             <!--</intent-filter> -->
+        <!--</activity>-->
         <activity android:name=".TotalPriceDetail" />
         <activity android:name=".TotalPriceDisplay" />
         <activity android:name=".RestaurantOwnerHomePage" />
