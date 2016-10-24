@@ -106,7 +106,7 @@ public class TotalPriceDisplay extends NavigationDrawerUser {
         final int deletePosition = position;
 
         alert.setTitle("Delete");
-        alert.setMessage("Do you want delete this menu?");
+        alert.setMessage("Do you want to delete this menu?");
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
