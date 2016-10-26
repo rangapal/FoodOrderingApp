@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * This class is for displaying the menu item that user selected from the TotalPriceDisplay class
  */
 public class TotalPriceDetail extends NavigationDrawerUser implements View.OnClickListener {
-
     TextView textViewName;
     TextView textViewDescription;
     TextView textViewPrice;
