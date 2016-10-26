@@ -42,7 +42,7 @@ public class TotalPriceDetail extends NavigationDrawerUser implements View.OnCli
         //Value is the following order
         //menuName, menuPrice, menuDescription, menuImage, restaurantName, restaurant ID, quantity
         totalPrieDetail = intent.getStringArrayListExtra("ClickTotalPriceList");
-        this.setTitle(totalPrieDetail.get(4));//set menu name as screen title
+        this.setTitle(totalPrieDetail.get(0));//set menu name as screen title
 
         editTextQuantity = (EditText) findViewById(R.id.editTextTotalPriceDetailQuantity);
         buttonPlus = (Button) findViewById(R.id.buttonPlusTotalPriceDetail);
